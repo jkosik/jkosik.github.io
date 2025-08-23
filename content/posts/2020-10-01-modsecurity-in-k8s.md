@@ -1,7 +1,7 @@
 ---
 title: "ModSecurity Rules Management in Kubernetes"
 date: 2020-10-01T14:15:05+07:00
-slug: /modsecurity/
+slug: modsecurity
 description: ModSecurity-based Web application firewall in Kubernetes.
 image: images/modsec-in-k8s/big.png
 categories:

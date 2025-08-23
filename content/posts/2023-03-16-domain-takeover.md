@@ -1,7 +1,7 @@
 ---
 title: "Subdomain Takeover"
 date: 2023-03-16T14:15:05+07:00
-slug: /domain-takeover/
+slug: domain-takeover
 description: Stealing domain of a world-known company may be easy when company lacks scrutiny around their DNS records.
 image: images/domain-takeover/big.png
 categories:

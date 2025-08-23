@@ -1,7 +1,7 @@
 ---
 title: "Microk8s NFS Addon "
 date: 2022-05-20T14:15:05+07:00
-slug: /microk8s/
+slug: microk8s
 description: How to develop Microk8s "Addon" and make it up to the official version release.
 image: images/microk8s-addon/big.png
 categories:
