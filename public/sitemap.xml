@@ -2,79 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jkosik.github.io/tags/ai/</loc>
+    <loc>http://localhost:1313/tags/ai/</loc>
     <lastmod>2025-05-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2025-05-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/feature/</loc>
+    <loc>http://localhost:1313/tags/feature/</loc>
     <lastmod>2025-05-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-05-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-05-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/posts/ai/</loc>
+    <loc>http://localhost:1313/posts/ai/</loc>
     <lastmod>2025-05-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-05-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/categories/tech/</loc>
+    <loc>http://localhost:1313/categories/tech/</loc>
     <lastmod>2025-05-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/crypto/</loc>
+    <loc>http://localhost:1313/tags/crypto/</loc>
     <lastmod>2024-12-29T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/posts/crypto/</loc>
+    <loc>http://localhost:1313/posts/crypto/</loc>
     <lastmod>2024-12-29T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/architecture/</loc>
+    <loc>http://localhost:1313/tags/architecture/</loc>
     <lastmod>2024-09-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/posts/ai/</loc>
+    <loc>http://localhost:1313/posts/ai/</loc>
     <lastmod>2024-09-04T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2023-10-06T20:37:29+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/cloud/</loc>
+    <loc>http://localhost:1313/tags/cloud/</loc>
     <lastmod>2023-03-16T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/dns/</loc>
+    <loc>http://localhost:1313/tags/dns/</loc>
     <lastmod>2023-03-16T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/posts/domain-takeover/</loc>
+    <loc>http://localhost:1313/posts/domain-takeover/</loc>
     <lastmod>2023-03-16T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/kubernetes/</loc>
+    <loc>http://localhost:1313/tags/kubernetes/</loc>
     <lastmod>2022-05-20T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/posts/microk8s/</loc>
+    <loc>http://localhost:1313/posts/microk8s/</loc>
     <lastmod>2022-05-20T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/posts/modsecurity/</loc>
+    <loc>http://localhost:1313/posts/modsecurity/</loc>
     <lastmod>2020-10-01T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/security/</loc>
+    <loc>http://localhost:1313/tags/security/</loc>
     <lastmod>2020-10-01T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/browser/</loc>
+    <loc>http://localhost:1313/tags/browser/</loc>
     <lastmod>2019-12-03T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/google/</loc>
+    <loc>http://localhost:1313/tags/google/</loc>
     <lastmod>2019-12-03T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/posts/google-chrome/</loc>
+    <loc>http://localhost:1313/posts/google-chrome/</loc>
     <lastmod>2019-12-03T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/posts/logs-at-scale/</loc>
+    <loc>http://localhost:1313/posts/logs-at-scale/</loc>
     <lastmod>2018-06-13T14:15:05+07:00</lastmod>
   </url><url>
-    <loc>https://jkosik.github.io/tags/logs/</loc>
+    <loc>http://localhost:1313/tags/logs/</loc>
     <lastmod>2018-06-13T14:15:05+07:00</lastmod>
   </url>
 </urlset>

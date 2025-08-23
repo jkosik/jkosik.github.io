@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Browser on Juraj Kosik</title>
-    <link>https://jkosik.github.io/tags/browser/</link>
+    <link>http://localhost:1313/tags/browser/</link>
     <description>Recent content in Browser on Juraj Kosik</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Dec 2019 14:15:05 +0700</lastBuildDate>
-    <atom:link href="https://jkosik.github.io/tags/browser/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/browser/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Google Chrome Extension</title>
-      <link>https://jkosik.github.io/posts/google-chrome/</link>
+      <link>http://localhost:1313/posts/google-chrome/</link>
       <pubDate>Tue, 03 Dec 2019 14:15:05 +0700</pubDate>
-      <guid>https://jkosik.github.io/posts/google-chrome/</guid>
+      <guid>http://localhost:1313/posts/google-chrome/</guid>
       <description>&lt;p&gt;Have you been looking for a Google Chrome Extension precisely for your usecase without any luck? Have you spent searching and trying this or that alternative and still have not found the right one? If you have been considering to write your own Chrome plugin, I am sharing a brief tutorial how to create own Extension without need to go through the extensive documentation.&lt;/p&gt;</description>
     </item>
   </channel>
