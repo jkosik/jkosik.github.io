@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Security on Juraj Kosik</title>
-    <link>http://localhost:1313/tags/security/</link>
+    <link>https://jkosik.github.io/tags/security/</link>
     <description>Recent content in Security on Juraj Kosik</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 01 Oct 2020 14:15:05 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jkosik.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ModSecurity Rules Management in Kubernetes</title>
-      <link>http://localhost:1313/posts/modsecurity/</link>
+      <link>https://jkosik.github.io/posts/modsecurity/</link>
       <pubDate>Thu, 01 Oct 2020 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/posts/modsecurity/</guid>
+      <guid>https://jkosik.github.io/posts/modsecurity/</guid>
       <description>&lt;p&gt;&lt;em&gt;This article was published in the Deutsche Telekom Pan-Net Blog&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;how-to-manage-modsecurity-rules-for-nginx-using-web-ui-kubernetes-cicd-and-git&#34;&gt;How to manage ModSecurity rules for Nginx using web UI, Kubernetes, CICD and git&lt;/h2&gt;&#xA;&lt;p&gt;Most of the online companies nowadays understand the risk of exposing web applications to the Internet. We are not any exception. As many others we are running the workloads in Kubernetes and try to utilize this platform for ensuring application security as well.&lt;/p&gt;</description>
     </item>
   </channel>

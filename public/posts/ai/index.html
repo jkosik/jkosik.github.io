@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Supercharging your AI agent with MCP (Model Context Protocol) | Juraj Kosik</title>
+<title>On-prem AI | Juraj Kosik</title>
 
-<meta name="description" content="How to add a second AI brain to the Cursor code assistant.">
-    <link rel="stylesheet" href="/css/main.css">
+<meta name="description" content="Building offline alternative to ChatGPT.">
+      <link rel="stylesheet" href="/css/main.min.584aed796ba9d245f84009d57da9662e9c02059611972780263728b442fc25ff.css" integrity="sha256-WErteWup0kX4QAnVfalmLpwCBZYRlyeAJjcotEL8Jf8=" crossorigin="anonymous">
 
-<link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg"> 
-<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico"> 
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon.png"> 
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32.png"> 
-<link rel="icon" type="image/png" sizes="64x64" href="http://localhost:1313/favicon-64.png"> 
+<link rel="icon" type="image/svg+xml" href="https://jkosik.github.io/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://jkosik.github.io/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://jkosik.github.io/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://jkosik.github.io/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://jkosik.github.io/favicon-64.png"> 
 
 </head>
 <body>
@@ -32,7 +32,7 @@
 				</span>
 			</button>
 			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
-				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="http://localhost:1313/">Juraj Kosik</a></h2>
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://jkosik.github.io/">Juraj Kosik</a></h2>
 			</div>
 		</div>
 		<div class="flex items-center ml-auto">
@@ -55,10 +55,10 @@
   <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
 	<ul class="flex space-x-4 text-sm text-zinc-500">
 		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
-			<a href="http://localhost:1313/">Juraj Kosik</a>
+			<a href="https://jkosik.github.io/">Juraj Kosik</a>
 		</li>
 		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
-			<a href="http://localhost:1313/posts/">Posts</a>
+			<a href="https://jkosik.github.io/posts/">Posts</a>
 		</li>
 	</ul>
 </div><div class="max-w-4xl mx-auto mb-14">
@@ -67,11 +67,11 @@
 
     <header class="not-prose">
 
-      <h1 id="title" class="text-4xl font-bold leading-normal">Supercharging your AI agent with MCP (Model Context Protocol)</h1>
+      <h1 id="title" class="text-4xl font-bold leading-normal">On-prem AI</h1>
 
       <div id="lead" class="my-6">
 
-        <p class="font-bold">How to add a second AI brain to the Cursor code assistant. </p>
+        <p class="font-bold">Building offline alternative to ChatGPT. </p>
 
       </div>
 
@@ -79,7 +79,7 @@
 
           <li class="font-semibold my-2"></li>
 
-          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-05-04T14:15:05&#43;07:00">May 4, 2025</time>
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2024-09-04T14:15:05&#43;07:00">September 4, 2024</time>
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
@@ -91,195 +91,94 @@
     </header>
 
     <figure id="featureimage" class="rounded-xl aspect-video">
-            <img class="rounded-lg" src="http://localhost:1313/images/mcp/big_hu_106777d88b6de6c4.png" alt="" width="750" height="422">
+            <img class="rounded-lg" src="https://jkosik.github.io/images/ai/big_hu_1bb53f6b6e1643b.png" alt="" width="750" height="422">
 
     </figure>
 
     <div id="content" class="mb-14">
-      <p>In this blog post, I’ll show you how I supercharged the Cursor code assistant by feeding it real-time data from remote data sources — essentially teaching it things it wasn’t pre-trained to know. Technology described offers huge range of other use cases and is a &ldquo;new big thing in AI&rdquo;.</p>
-<p>AI-powered code assistants like GitHub Copilot and Cursor are rapidly transforming the way we write, debug, and manage code. They’re smart, fast, and often feel like having a coding companion in your IDE. But there&rsquo;s a catch: most of these tools depend entirely on pre-trained models, which means they can be out of sync with your current project or the latest changes in your environment.</p>
-<p>That’s where things get interesting. We’ll dive into Cursor — an AI-first IDE that’s at the forefront of this evolution — and explore how you can break past those limitations using something called the Model Context Protocol (MCP). Specifically, I’ll walk you through how I connected real-time data from Splunk to Cursor, making the assistant context-aware and smarter on the fly.</p>
-<p><strong>Our today&rsquo;s goal:</strong></p>
-<figure><img src="/images/mcp/mcp-short.gif">
-</figure>
-
-<h2 id="use-cases">Use cases</h2>
-<p>Picture a cybersecurity team crafting and codifying detection rules for new threats, analyzing attack patterns, and building smart alerting systems. Now imagine giving their AI assistant direct access to the organization’s live security telemetry via Splunk. Suddenly, the assistant can spot coverage gaps, review past incidents, detect overlapping controls, and even suggest better responses - all in real time.</p>
-<p>And that’s just one use case. The possibilities explode when AI assistants are connected to remote data sources. Here are a few more:</p>
+      <p>This blog post provides a high-level overview of building a self-hosted AI system on-premises from scratch. Given the complexity of the topic, I&rsquo;ll highlight key points that should prompt further self-study. My goal is to give you a basic understanding of the components involved, how they interact, and the steps needed to set up AI infrastructure locally.</p>
+<p>I was recently tasked with creating a self-hosted AI system with strict security controls, no internet access, and capabilities similar to ChatGPT. In this post, I&rsquo;ll share my approach, the challenges I faced, and the success I achieved.</p>
+<p>We began with a clean slate and a few key requirements:</p>
 <ul>
-<li>A developer wants to surface known exploits related to their app’s dependencies by tapping into threat intelligence feeds.</li>
-<li>A journalist enriches their AI writing assistant with live updates from the Twitter API to produce timely, informed articles.</li>
-<li>A medical AI agent pulls patient records from multiple hospital databases to help draft a more accurate diagnosis.</li>
-<li>An urban planning AI analyzes real-time traffic and public transit data to propose smarter city layouts.</li>
+<li>A user experience similar to ChatGPT</li>
+<li>API-based access for future integration with AI applications</li>
+<li>Strict security measures throughout</li>
 </ul>
-<p>This goes far beyond software development. We’re stepping into a world where AI agents, each with their own specialty, can collaborate, share knowledge, and work together in a domain-aware, bi-directional way. This is the promise of Agentic AI — a new frontier of autonomous, cooperative AI agents reshaping how we interact with technology.</p>
-<h2 id="enhancing-code-assistants-the-current-state">Enhancing Code Assistants: The Current State</h2>
-<p>Code assistants already come with some powerful ways to customize and extend their behavior. Cursor, for example, supports a special file called <code>.cursorrules</code>, which lets you fine-tune how the AI responds to your queries. Think of it as giving the assistant a set of house rules — it reads them before answering you.</p>
-<p>Here’s a practical example of a <code>.cursorrules</code> file placed at the root of your repository. Cursor evaluates it in real time whenever it responds to your prompts:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Use the standard library<span style="color:#e6db74">&#39;s net/http package for API development:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Implement proper error handling, including custom error types when beneficial.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Use appropriate status codes and format JSON responses correctly.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Implement input validation for API endpoints.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Utilize Go&#39;</span>s built-in concurrency features when beneficial <span style="color:#66d9ef">for</span> API performance.
-</span></span><span style="display:flex;"><span>Follow RESTful API design principles and best practices.
-</span></span><span style="display:flex;"><span>Include necessary imports, package declarations, and any required setup code.
-</span></span></code></pre></div><p>In addition to .cursorrules, Cursor also supports importing Project Rules in the <code>.mdc</code> format. These rules offer even more granular control over how the assistant behaves, and they can include file globs and custom directives to guide the AI more precisely within specific parts of your codebase.</p>
-<p>Here’s an example of how a .mdc rule might look:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>description: General rules <span style="color:#66d9ef">for</span> Go API development using the net/http package, focusing on code quality, security, and best practices.
-</span></span><span style="display:flex;"><span>globs: /**/*_api.go
-</span></span><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>- You are an expert AI programming assistant specializing in building APIs with Go, using the standard library<span style="color:#e6db74">&#39;s net/http package and the new ServeMux introduced in Go 1.22.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Always use the latest stable version of Go (1.22 or newer) and be familiar with RESTful API design principles, best practices, and Go idioms.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Follow the user&#39;</span>s requirements carefully &amp; to the letter.
-</span></span><span style="display:flex;"><span>- First think step-by-step - describe your plan <span style="color:#66d9ef">for</span> the API structure, endpoints, and data flow in pseudocode, written out in great detail.
-</span></span><span style="display:flex;"><span>- Confirm the plan, <span style="color:#66d9ef">then</span> write code!
-</span></span></code></pre></div><h2 id="beyond-pre-trained-data-the-next-frontier">Beyond Pre-trained Data: The Next Frontier</h2>
-<p>To truly unlock the potential of the code assistants (or any other AI agents), we need to go beyond static, pre-trained knowledge of the LLM. There are several approaches to achieve this:</p>
-<ol>
-<li><strong>Retrieval-Augmented Generation (RAG)</strong>: Allows the AI to access and incorporate external information from your codebase, documentation, and other sources.</li>
-<li><strong>Model Fine-tuning</strong>: Customizes the model&rsquo;s behavior for your specific use cases and domain.</li>
-<li><strong>Custom LLM Selection</strong>: Gives you the flexibility to choose the most appropriate language model for your needs.</li>
-</ol>
-<p>While approaches like RAG have proven valuable, they often require complex infrastructure setup, lack standardization across tools, and create tight coupling between your applications and data sources. RAG implementations typically need custom vector databases, embedding pipelines, and retrieval logic - adding significant development overhead.</p>
-<p>Can we do better? Yes.</p>
-<p>The Model Context Protocol (MCP) addresses these limitations by providing a standardized way to connect AI models with external data sources in real-time, requiring minimal setup while maintaining loose coupling between components. MCP does not substitute RAG, rather it provides general-purpose standardization and integration framework.</p>
-<h2 id="introducing-the-model-context-protocol">Introducing the Model Context Protocol</h2>
-<p>The Model Context Protocol (MCP) is an innovative open protocol that standardizes how applications provide context to Large Language Models (LLMs). Think of MCP as universal connector between AI agents. This concept is critical for the future agentic AI world where all agents speak the same language.
-Without MCP, developers would need to build custom one-off integrations with the outer world with constant maintenance. With MCP, every system (in our case Splunk) will have MCP interface offered to the AI agents for integration.</p>
-<p>MCP protocol was spearheaded by the artificial intelligence company <a href="https://www.anthropic.com/news/model-context-protocol">Anthropic</a> and quickly adopted by AI leaders like OpenAI or Google. The MCP ecosystem is rapidly growing, with multiple reference implementations available on <a href="https://github.com/modelcontextprotocol/servers">GitHub</a>. These include integrations for popular services and tools like GitHub, Jira, Kubernetes, documentation systems and many more.</p>
-<p>Protocol specification and further details can be found available at <a href="https://modelcontextprotocol.io/faqs">modelcontextprotocol.io</a>.</p>
-<p>What makes MCP particularly powerful is its architecture, which follows clear separation of concerns:</p>
-<figure><img src="/images/mcp/arch.png">
-</figure>
-
-<ol>
-<li><strong>AI Agent (Client)</strong> - e.g. Cursor that provide the AI interface for the user and utilises its own access the LLM.</li>
-<li><strong>MCP Server</strong> implements the protocol, exposes backend functionalities and processes requests from the Cursor.</li>
-<li><strong>Backend Service</strong> - e.g. Splunk, that provides the actual data and capabilities.</li>
-</ol>
-<p>At the heart of MCP lies five key concepts that work together to make AI assistants more powerful and practical:</p>
-<figure><img src="/images/mcp/components.png">
-</figure>
-
-<p><strong>Tools: Your AI&rsquo;s Hands</strong>
-Tools are functions of varous compexity that let AI perform real actions in your systems. Just like clicking a button or running a command, Tools allow AI to do things like search logs, check alerts, or query databases. You can parametrise the actions on the fly in human langage. The client application backed by LLM will translate your words directly to API call parameters.</p>
-<p><strong>Resources: Your AI&rsquo;s Memory</strong>
-MCP server can expose static documents, e.g. CSV file which is parsed by the client and added into the LLM context window.</p>
-<p><strong>Prompts: Your AI&rsquo;s Instructions</strong>
-Prompts are reusable templates that tell the AI how to think about specific tasks. E.g. to use more MCP Tools in a sequence to find a corellation between Splunk indexes and Splunk alerts.</p>
-<p><strong>Sampling: Your AI&rsquo;s Questions</strong>
-Sampling allows the Model Context Protocol (MCP) to request additional information from the client when needed — much like a teammate asking follow-up questions to better understand a task.</p>
-<p><strong>Transport: Your AI&rsquo;s Communication Channel</strong>
-Transport is simply how all these pieces talk to each other securely and efficiently. Using standard protocols (like STDIO and SSE), it ensures smooth communication between your AI agent and your backend systems.</p>
+<h2 id="vocabulary">Vocabulary</h2>
+<p>Here are some AI terms I’ll use frequently:</p>
 <ul>
-<li>STDIO (Standard Input/Output) runs a binary and listens on the standard input and responds to the standard output. STDIO MCP server runs mostly locally on the laptop next to the Cursor. However, there are also services where STDIO MCP server is containerised and hosted cetrally.</li>
-<li>SSE (Server-Sent Events) runs a permanent HTTP server with bi-directional streaming capabilities. In Cursor case, SSE MCP server can run literally anywhere and can centrally manage all credentials needed for talking to backend services (e.g. Splunk API in our case).</li>
+<li>Large Language Model (LLM): This is a type of AI model designed to understand, generate, and manipulate natural language text. Built using deep learning techniques, LLMs use neural networks with billions or even trillions of parameters and are trained on extensive text data.</li>
+<li>Generative AI: This refers to a model’s ability to create new data or content that resembles the data it was trained on.</li>
+<li>Inference: This is the process of making predictions or decisions based on a model’s training data.</li>
 </ul>
-<h2 id="implementation">Implementation</h2>
-<p>I have used golang SDK: <code>github.com/mark3labs/mcp-go</code> which offers very comfortable way of register new MCP Tools (and Prompts/Resources/etc.) so that we can focus mainly on the functionality of the Tool itself.</p>
-<p>MCP Tool <code>list_splunk_fired_alerts</code> registration includes definition of the function parameters and looks as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	<span style="color:#a6e22e">alertsTool</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">NewTool</span>(<span style="color:#e6db74">&#34;list_splunk_fired_alerts&#34;</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">WithDescription</span>(<span style="color:#e6db74">&#34;List Splunk fired alerts (paginated by count and offset arguments)&#34;</span>),
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">WithNumber</span>(<span style="color:#e6db74">&#34;count&#34;</span>, <span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">Description</span>(<span style="color:#e6db74">&#34;Number of results to return (default 100)&#34;</span>)),
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">WithNumber</span>(<span style="color:#e6db74">&#34;offset&#34;</span>, <span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">Description</span>(<span style="color:#e6db74">&#34;Offset for pagination (default 0)&#34;</span>)),
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">WithString</span>(<span style="color:#e6db74">&#34;ss_name&#34;</span>, <span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">Description</span>(<span style="color:#e6db74">&#34;Search name pattern to filter alerts (default \&#34;*\&#34;)&#34;</span>)),
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">WithString</span>(<span style="color:#e6db74">&#34;earliest&#34;</span>, <span style="color:#a6e22e">mcp</span>.<span style="color:#a6e22e">Description</span>(<span style="color:#e6db74">&#34;Time range to look back (default \&#34;-24h\&#34;)&#34;</span>)),
-</span></span><span style="display:flex;"><span>	)
-</span></span></code></pre></div><p>In this case we want the MCP Tool to list all fired Splunk alerts within the specified timeframe, filtered by the alert name. equivalent of this <code>curl</code> call:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -s -X POST <span style="color:#e6db74">&#34;https://SPLUNK-URL:8089/services/search/jobs/export&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d search<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;search index=_audit action=alert_fired ss_name=&#34;*Alert_CRITICAL*&#34; earliest=-24h | table _time, ss_name&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d output_mode<span style="color:#f92672">=</span>json <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Authorization: Bearer </span>$SPLUNK_TOKEN<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span>
-</span></span></code></pre></div><p>The Tool function will execute a similar query, however in golang and with parametrised <code>ss_name</code>(Splunk alert name) and <code>earliest</code> fields while implementing pagination as well.</p>
-<p>Under the hood the following steps are executed:</p>
+<h2 id="first-experiments">First Experiments</h2>
+<p>Our first step was to identify the components needed for our stack. We determined that we required three key components:</p>
+<ul>
+<li>Large Language Model (LLM): This is the core of our system, providing the data generated from the learning process that the inference engine uses to produce responses.</li>
+<li>Serving Engine: This component handles the deployment and execution of the LLM.</li>
+<li>User Frontend: This is the interface through which users interact with the AI system.
+At the time, our main information source was <a href="https://huggingface.co/">Hugging Face</a>, a valuable resource where the AI/ML community shares information and LLM models. Although Hugging Face offers LLMs as a service, our strict security requirements ruled out this option.</li>
+</ul>
+<h2 id="llm-model">LLM Model</h2>
+<p>To start, we opted for a small 8GB model, the <a href="https://huggingface.co/google/flan-t5-base">google/flan-t5-base</a>, which can run on a CPU without issues. While it may not deliver extraordinary results, it is suitable for basic inference tasks. Each LLM has its strengths and weaknesses, influenced by factors like model size, purpose, and features. Some models are general-purpose, while others are tailored for specific tasks or support special features like <a href="https://platform.openai.com/docs/guides/function-calling">function calling</a>. Additionally, some models are multilingual or vary in the number of parameters.</p>
+<p>As the model size increases, so do the hardware requirements for hosting it. After testing several Mistral and Mixtral LLMs, we decided that Meta&rsquo;s Llama3 was the best fit for our chat and programmatic use cases.</p>
+<p>An LLM is represented by a collection of files. This set typically includes a README file, a configuration file with metadata, a tokenizer file that governs conversion of the raw text into tokens, and the largest component, the model&rsquo;s weights.</p>
+<p>A token is a piece of a word that helps the LLM organize data efficiently. Tokens are stored in a multidimensional space known as the embedding space, which can have hundreds or even thousands of dimensions. Tokens are grouped based on similarity, which can be measured. The <a href="https://projector.tensorflow.org/">Tensorflow Projector</a> provides a useful visualization of this concept.</p>
+<figure><img src="/images/ai/token-dimensions.png">
+</figure>
+
+<p><strong>Weights</strong> are the largest component of an LLM and play a crucial role in transforming data as it passes through the network. They determine how inputs are converted into outputs. Along with biases, weights are referred to as the &ldquo;parameters&rdquo; of the LLM. Generally, more parameters mean a smarter model. Weights can be stored in various file formats, and Meta&rsquo;s Llama3 uses the <code>.safetensors</code> format, which is optimized for security by excluding executable code and also aims to enhance performance.</p>
+<p>The complexity of LLMs is vast, and this is just a basic overview. For a deeper dive, check out <a href="https://bbycroft.net/llm">this LLM visualization</a>.</p>
+<p>Once you choose an LLM, you need to decide where to host it. Options include using Hugging Face as an LLM SaaS provider, leveraging cloud services like <a href="https://aws.amazon.com/sagemaker/">AWS SageMaker</a>, or self-hosting. We opted for self-hosting on our Kubernetes cluster. This required downloading the LLM model from Hugging Face using an ephemeral Kubernetes Pod and storing it in a persistent volume. If you go this route, choose the best storage class available. Although the costs are minimal compared to the GPU nodes needed later, the performance benefits are significant. Faster storage speeds are crucial for efficiently loading and warming up the model every time you restart your AI platform, saving valuable time.</p>
+<h2 id="llm-serving-engine">LLM-Serving Engine</h2>
+<p>An LLM is essentially a collection of files that need to be hosted and made accessible for processing. Serving frameworks are used for this purpose. At the time of our analysis, the most popular options were <code>TGI</code> (Text Generation Inference) and <code>vLLM</code>. After comparing features, we chose TGI. Keep in mind that new frameworks and features are continually being developed, so our choice might not suit everyone’s needs.</p>
+<p>We initially deployed TGI on a CPU node to get familiar with the basics. As we progressed and tested more LLMs, we had to upgrade our hardware, moving from dedicated CPU nodes to G4 and G5 EC2 instances, and finally to the high-end <a href="https://instances.vantage.sh/aws/ec2/p4d.24xlarge">p4d.24xlarge</a> EC2 instance with Nvidia A100 GPUs. The setup didn’t work perfectly at first, but fortunately, the <a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/getting-started.html">Nvidia GPU operator for Kubernetes</a> can be installed using Helm charts, and sample CUDA Pod templates are available to test GPU functionality.</p>
+<p>TGI is well-documented, and configuring it involves several key changes. We instructed TGI to use our self-hosted LLM rather than connecting to Hugging Face over the internet and adjusted token limits. The default token limits in TGI are not suitable for corporate use. The most crucial parameters to adjust are <code>MAX_INPUT_LENGTH</code> and <code>MAX_TOTAL_TOKENS</code>. These settings control how many tokens TGI allows for user input (the &ldquo;prompt&rdquo;) and how many additional tokens it can generate, helping to manage video memory effectively.</p>
+<p>TGI configuration can be further customized to manage individual GPU cores or apply live LLM quantization (which reduces weight size to save memory, albeit at the cost of response quality).</p>
+<p>TGI provides several <a href="https://huggingface.github.io/text-generation-inference/">API endpoints</a>. The basic <code>/generate</code> endpoint offers raw generative AI functionality, generating the next tokens based on the input. We selected the more complex <code>/v1/chat/completions</code> endpoint, which maintains conversation context on the client side. This endpoint keeps track of previous prompts and responses, maintaining the state and history of the conversation to help the LLM understand the context for each new input.</p>
+<p>We later used the <code>/v1/chat/completions</code> API endpoint for programmatic access, which will be discussed further in the &ldquo;AI Applications&rdquo; section. This endpoint is also used by the UI frontend.</p>
+<h2 id="user-frontend">User Frontend</h2>
+<p>The user frontend is essential for daily and non-programmatic use cases. Early on, we realized that a UI with a locally hosted LLM would enable new use cases not feasible with public ChatGPT, such as handling sensitive data or source code.</p>
+<p>We explored several open-source options and chose <a href="https://github.com/huggingface/chat-ui">Chat-UI</a> for its attractive and stable design. Chat-UI supports multiple LLM backends simultaneously, which was beneficial during our testing of various models.</p>
+<p>We successfully integrated Chat-UI with OKTA and made minor customizations to enhance the user experience.</p>
+<p>Chat-UI uses MongoDB to store individual chats and contexts, allowing users to revisit and continue previous conversations with the LLM. MongoDB cleanup provides a quick and safe method for deleting past conversations, which is useful for data retention. Alternatively, you can use the paid MongoDB Atlas service for advanced data retention policies.</p>
+<p>No user data is stored on the TGI side. Instead, the client (Chat-UI or API client) manages the conversation history and provides it to the LLM (via the TGI API) as needed as part of the context window.</p>
+<h2 id="ai-applications">AI Applications</h2>
+<p>With TGI API and Chat-UI in place, we turned our attention to developing an AI application. One of the most interesting applications was a security review tool for pull requests in our version control system, Git.</p>
+<p>Our stack included Golang for the backend and frontend, containerized and managed with Helm charts, and deployed using ArgoCD — a standard DevOps approach. Since TGI API exchanges JSON data, the internal logic was relatively straightforward. However, prompt engineering was a significant challenge. Despite having a powerful LLM, we needed to learn how to interact with it effectively. Initially, we assumed the LLM could understand and analyze pull requests and Git diffs, but it soon became clear that this was not the case.</p>
+<p>Fortunately, large language models like those from OpenAI use a role-based model for organizing messages between the client and the LLM:</p>
+<ul>
+<li>System messages: Messages from the client that set the tone and configure the LLM’s persona. For example, <code>[System]: You are a skilled pull request analyst with a deep understanding of source code changes</code>.</li>
+<li>User messages: The actual prompt submitted by the user, which you would normally enter in ChatGPT.</li>
+<li>Assistant messages: Responses from the LLM.</li>
+</ul>
+<p>It’s important to note that the LLM doesn’t only process the latest prompt; it receives the entire context window, which includes the history of previous interactions, up to the configured size of te context window. Since TGI and its LLM are stateless, maintaining this context is crucial for accurate responses.</p>
+<p><em>When you click &ldquo;New chat&rdquo; in ChatGPT, the context window is cleared, and you start with a fresh context. However, OpenAI/ChatGPT likely tracks user identity in other ways.</em></p>
+<h3 id="prompt-engineering">Prompt engineering</h3>
+<p>Understanding &ldquo;User&rdquo; messages and setting the right &ldquo;System&rdquo; message are just the beginning. Here’s how to craft effective &ldquo;User&rdquo; prompts:</p>
 <ol>
-<li>The client (Cursor) processes the user prompt and checks the available MCP Tools automatically. If the appropriate MCP Tool is found, it is offered for execution.</li>
+<li>Be Detailed: Don’t worry about writing lengthy prompts. While it may seem cumbersome in Chat UIs, for programmatic integrations, it’s a one-time setup and a small part of the overall context window capacity. Use as many details as needed.</li>
+<li>Verify Responses: After receiving an initial answer from the LLM, ask it to double-check and refine its response to correct any inaccuracies.</li>
+<li>Provide Context: Clearly explain your goal and the reason behind your question to help the LLM understand and respond appropriately.</li>
+<li>Use Formatting: Utilize orthographic features like uppercase keywords to emphasize important terms and make your prompts more impactful.</li>
+<li>Give Examples: Provide examples of the responses you expect to guide the LLM and ensure it stays focused on relevant aspects while minimizing irrelevant information.</li>
+<li>Break It Down: Divide complex tasks or questions into smaller, sequential steps rather than presenting them all at once. This helps the LLM address each part more effectively.</li>
+<li>Limit Response Size: Be mindful of the context window length when submitting long inputs. If responses might be too lengthy, ask the LLM to limit its output to a specific number of characters or to summarize before delivering the final response. Alternatively, manage responses in separate threads and present the final output to the user.</li>
 </ol>
-<figure><img src="/images/mcp/fired.png">
-</figure>
-
-<ol start="2">
-<li>Cursor uses its LLM to transform user&rsquo;s prompt into the parameters expected by the Tool function. You can see that the Cursor overwrote the default payload from <code>-24h</code> to <code>-48h</code> by understanding human language <code>...within the last two days...</code> in the prompt.</li>
-</ol>
-<figure><img src="/images/mcp/fired-payload.png">
-</figure>
-
-<ol start="3">
-<li>User confirms execution of the MCP Tool in Cursor UI and the payload is delivered to the MCP Server.</li>
-<li>MCP Server runs Splunk API call.</li>
-<li>Splunk provides JSON respons back to MCP Server.</li>
-<li>MCP server forwards Splunk response back to the Cursor where Cursor&rsquo;s LLM already understands JSON format without any extra effort.</li>
-<li>MCP Response is added into the Cursor&rsquo;s context and remembered and can be used later on in the Cursor chat.</li>
-</ol>
-<h3 id="json-rpc">JSON-RPC</h3>
-<p>The underlying call between the AI agent (Cursor) and MCP server uses <a href="https://www.jsonrpc.org/">JSON-RPC</a> and the real payload looks as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;jsonrpc&#34;</span>: <span style="color:#e6db74">&#34;2.0&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;method&#34;</span>: <span style="color:#e6db74">&#34;tools/call&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;params&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;list_splunk_fired_alerts&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;arguments&#34;</span>: {
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;count&#34;</span>: <span style="color:#ae81ff">100</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;earliest&#34;</span>: <span style="color:#e6db74">&#34;-24h&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ss_name&#34;</span>: <span style="color:#e6db74">&#34;*Alert_CRITICAL*&#34;</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="cursor-configuration">Cursor configuration</h2>
-<p>MCP server is configured via Cursor&rsquo;s UI Settings which modifies local file <code>~/.cursor/mcp.json</code></p>
-<figure><img src="/images/mcp/mcpconf.png">
-</figure>
-
-<h3 id="mcpjson-for-stdio-transport-mode">mcp.json for STDIO transport mode</h3>
-<p>Secrets have to be managed locally.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;mcpServers&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;splunk_stdio&#34;</span>: {
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Splunk MCP Server (STDIO)&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;MCP server for Splunk integration&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;stdio&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;/Users/juraj/data/github.com/jkosik/mcp-server-splunk/cmd/mcp-server-splunk/mcp-server-splunk&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;env&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;SPLUNK_URL&#34;</span>: <span style="color:#e6db74">&#34;https://your-splunk-instance:8089&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;SPLUNK_TOKEN&#34;</span>: <span style="color:#e6db74">&#34;your-splunk-token&#34;</span>
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="mcpjson-sse-transport-mode">mcp.json SSE transport mode</h3>
-<p>Handles session management and allows centralised management of secrets used by the MCP Tools.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;mcpServers&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;splunk_sse&#34;</span>: {
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Splunk MCP Server (SSE)&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;MCP server for Splunk integration (SSE mode)&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;sse&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;http://MCP-SERVER:3001/sse&#34;</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
-<p>The Model Context Protocol represents a significant step forward in AI agentic world and boost development of MCP interfaces for hundreds of services. By providing a standardized way to connect AI models with real-world data and tools, MCP enables more powerful, context-aware, and practical AI assistants and highly-needed standardisation.</p>
-<p>The full codebase used in this blog post—along with a detailed <code>README.md</code> explaining the technical setup—is available on GitHub: <a href="https://github.com/jkosik/mcp-server-splunk">https://github.com/jkosik/mcp-server-splunk</a>.</p>
-<h3 id="make-the-ide-a-single-tool-for-all-tasks">Make the IDE a single tool for all tasks</h3>
-<p>The MCP protocol not only standardizes data access and extends LLM context. It also enables task execution across remote systems.</p>
-<p>The video below demonstrates one of the public MCP databases: <a href="https://smithery.ai">smithery.ai</a>, which streamlines the registration and deployment of MCP servers to your preferred IDEs and even allows direct execution of MCP Tools via its UI.</p>
-<p>Everything shown in the video can also be performed through Cursor or Copilot. For example, simply ask your code assistant:
-<code>Create a GitHub repository &quot;My repo&quot;, clone it, and build a skeleton structure for my new Golang Hello World app.</code></p>
-<figure><img src="/images/mcp/smithery.gif">
-</figure>
-
-<p>Happy coding!</p>
+<p>Prompt engineering is a deep and evolving field, deserving of its own dedicated discussion.</p>
+<h3 id="final-application-tuning">Final application tuning</h3>
+<p>With all the building blocks in place, we could focus on fine-tuning response formatting. This included features like syntax highlighting, asking the LLM to generate a final risk score for pull requests, and adding parameters to the UI for analyzing pull requests, individual commits, and diffs between selected commits.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>LLMs alone cannot achieve Artificial General Intelligence (AGI) because they focus solely on language. AGI requires additional capabilities, such as sensory perception and an understanding of the world beyond written text. Currently, even in the realm of generative AI, options for generating next video frames in a sequence are still limited.</p>
+<p>Despite these limitations, LLMs offer significant value for use cases involving written and spoken language. There are numerous LLMs available, including smaller models tailored for specific tasks or multi-agent systems where AI agents collaborate on atomic tasks to achieve excellent results. The future of automation, machine learning, and AI is promising and continues to evolve rapidly.</p>
+<p>By the way, I had our LLM review and optimize this article. If you spot any inconsistencies, you can blame AI! :)</p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
 
       <li class="font-semibold my-4">Tags:</li>
         <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/ai/">AI</a></li>
-        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/architecture/">Architecture</a></li>
     </ul>
 </div>
 
@@ -294,7 +193,7 @@ Transport is simply how all these pieces talk to each other securely and efficie
 
     <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
 
-      <a class="flex items-center group" href="http://localhost:1313/">
+      <a class="flex items-center group" href="https://jkosik.github.io/">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
           <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
           <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
@@ -352,6 +251,6 @@ Transport is simply how all these pieces talk to each other securely and efficie
 
 </div>
 </footer>
-      <script src="/js/insertoggle.js"></script>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
 </body>
 </html>

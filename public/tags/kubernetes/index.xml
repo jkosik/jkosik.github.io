@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes on Juraj Kosik</title>
-    <link>http://localhost:1313/tags/kubernetes/</link>
+    <link>https://jkosik.github.io/tags/kubernetes/</link>
     <description>Recent content in Kubernetes on Juraj Kosik</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 May 2022 14:15:05 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jkosik.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Microk8s NFS Addon </title>
-      <link>http://localhost:1313/posts/microk8s/</link>
+      <link>https://jkosik.github.io/posts/microk8s/</link>
       <pubDate>Fri, 20 May 2022 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/posts/microk8s/</guid>
+      <guid>https://jkosik.github.io/posts/microk8s/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://microk8s.io/&#34;&gt;Microk8s&lt;/a&gt; is a lightweight Kubernetes installation from Canonical easily extensible by &amp;ldquo;Addons&amp;rdquo;. We recognize &lt;a href=&#34;https://github.com/canonical/microk8s-core-addons&#34;&gt;Core&lt;/a&gt; and &lt;a href=&#34;https://github.com/canonical/microk8s-community-addons&#34;&gt;Community&lt;/a&gt; Addons.&#xA;Addon is mostly a Helm Chart or set of Kubernetes manifests enabled and disabled in a user friendly way, as &lt;code&gt;microk8s enable MY_ADDON&lt;/code&gt; and &lt;code&gt;microk8s disable MY_ADDON&lt;/code&gt;.&#xA;This article describes end-to-end process of building multi-node Microk8s cluster for developing Microk8s Addon, testing and PR procedures.&lt;/p&gt;</description>
     </item>
     <item>
       <title>ModSecurity Rules Management in Kubernetes</title>
-      <link>http://localhost:1313/posts/modsecurity/</link>
+      <link>https://jkosik.github.io/posts/modsecurity/</link>
       <pubDate>Thu, 01 Oct 2020 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/posts/modsecurity/</guid>
+      <guid>https://jkosik.github.io/posts/modsecurity/</guid>
       <description>&lt;p&gt;&lt;em&gt;This article was published in the Deutsche Telekom Pan-Net Blog&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;how-to-manage-modsecurity-rules-for-nginx-using-web-ui-kubernetes-cicd-and-git&#34;&gt;How to manage ModSecurity rules for Nginx using web UI, Kubernetes, CICD and git&lt;/h2&gt;&#xA;&lt;p&gt;Most of the online companies nowadays understand the risk of exposing web applications to the Internet. We are not any exception. As many others we are running the workloads in Kubernetes and try to utilize this platform for ensuring application security as well.&lt;/p&gt;</description>
     </item>
   </channel>

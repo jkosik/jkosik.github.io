@@ -2,87 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Juraj Kosik</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://jkosik.github.io/tags/</link>
     <description>Recent content in Tags on Juraj Kosik</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 04 May 2025 14:15:05 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jkosik.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
-      <link>http://localhost:1313/tags/ai/</link>
+      <link>https://jkosik.github.io/tags/ai/</link>
       <pubDate>Sun, 04 May 2025 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/ai/</guid>
+      <guid>https://jkosik.github.io/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Feature</title>
-      <link>http://localhost:1313/tags/feature/</link>
+      <link>https://jkosik.github.io/tags/feature/</link>
       <pubDate>Sun, 04 May 2025 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/feature/</guid>
+      <guid>https://jkosik.github.io/tags/feature/</guid>
       <description></description>
     </item>
     <item>
       <title>Crypto</title>
-      <link>http://localhost:1313/tags/crypto/</link>
+      <link>https://jkosik.github.io/tags/crypto/</link>
       <pubDate>Sun, 29 Dec 2024 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/crypto/</guid>
+      <guid>https://jkosik.github.io/tags/crypto/</guid>
       <description></description>
     </item>
     <item>
       <title>Architecture</title>
-      <link>http://localhost:1313/tags/architecture/</link>
+      <link>https://jkosik.github.io/tags/architecture/</link>
       <pubDate>Wed, 04 Sep 2024 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/architecture/</guid>
+      <guid>https://jkosik.github.io/tags/architecture/</guid>
       <description></description>
     </item>
     <item>
       <title>Cloud</title>
-      <link>http://localhost:1313/tags/cloud/</link>
+      <link>https://jkosik.github.io/tags/cloud/</link>
       <pubDate>Thu, 16 Mar 2023 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/cloud/</guid>
+      <guid>https://jkosik.github.io/tags/cloud/</guid>
       <description></description>
     </item>
     <item>
       <title>DNS</title>
-      <link>http://localhost:1313/tags/dns/</link>
+      <link>https://jkosik.github.io/tags/dns/</link>
       <pubDate>Thu, 16 Mar 2023 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/dns/</guid>
+      <guid>https://jkosik.github.io/tags/dns/</guid>
       <description></description>
     </item>
     <item>
       <title>Kubernetes</title>
-      <link>http://localhost:1313/tags/kubernetes/</link>
+      <link>https://jkosik.github.io/tags/kubernetes/</link>
       <pubDate>Fri, 20 May 2022 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/kubernetes/</guid>
+      <guid>https://jkosik.github.io/tags/kubernetes/</guid>
       <description></description>
     </item>
     <item>
       <title>Security</title>
-      <link>http://localhost:1313/tags/security/</link>
+      <link>https://jkosik.github.io/tags/security/</link>
       <pubDate>Thu, 01 Oct 2020 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/security/</guid>
+      <guid>https://jkosik.github.io/tags/security/</guid>
       <description></description>
     </item>
     <item>
       <title>Browser</title>
-      <link>http://localhost:1313/tags/browser/</link>
+      <link>https://jkosik.github.io/tags/browser/</link>
       <pubDate>Tue, 03 Dec 2019 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/browser/</guid>
+      <guid>https://jkosik.github.io/tags/browser/</guid>
       <description></description>
     </item>
     <item>
       <title>Google</title>
-      <link>http://localhost:1313/tags/google/</link>
+      <link>https://jkosik.github.io/tags/google/</link>
       <pubDate>Tue, 03 Dec 2019 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/google/</guid>
+      <guid>https://jkosik.github.io/tags/google/</guid>
       <description></description>
     </item>
     <item>
       <title>Logs</title>
-      <link>http://localhost:1313/tags/logs/</link>
+      <link>https://jkosik.github.io/tags/logs/</link>
       <pubDate>Wed, 13 Jun 2018 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/logs/</guid>
+      <guid>https://jkosik.github.io/tags/logs/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Architecture on Juraj Kosik</title>
-    <link>http://localhost:1313/tags/architecture/</link>
+    <link>https://jkosik.github.io/tags/architecture/</link>
     <description>Recent content in Architecture on Juraj Kosik</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 04 Sep 2024 14:15:05 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jkosik.github.io/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>On-prem AI</title>
-      <link>http://localhost:1313/posts/ai/</link>
+      <link>https://jkosik.github.io/posts/ai/</link>
       <pubDate>Wed, 04 Sep 2024 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/posts/ai/</guid>
+      <guid>https://jkosik.github.io/posts/ai/</guid>
       <description>&lt;p&gt;This blog post provides a high-level overview of building a self-hosted AI system on-premises from scratch. Given the complexity of the topic, I&amp;rsquo;ll highlight key points that should prompt further self-study. My goal is to give you a basic understanding of the components involved, how they interact, and the steps needed to set up AI infrastructure locally.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Large-Scale Log Management in Cloud</title>
-      <link>http://localhost:1313/posts/logs-at-scale/</link>
+      <link>https://jkosik.github.io/posts/logs-at-scale/</link>
       <pubDate>Wed, 13 Jun 2018 14:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/posts/logs-at-scale/</guid>
+      <guid>https://jkosik.github.io/posts/logs-at-scale/</guid>
       <description>&lt;p&gt;Many security guys have already faced a challange to deploy scalable Log Management solution in Cloud using open-source tools only. So had I and documented our approach and shared some hints for you.&#xA;In the case study published on &lt;a href=&#34;https://www.graylog.org/post/large-scale-log-management-deployment-with-graylog-a-customer-perspective&#34;&gt;Graylog Blog&lt;/a&gt; you can find details from the infrastructure and VM level up to the SIEM layer covering &lt;a href=&#34;https://en.wikipedia.org/wiki/Infrastructure_as_code&#34;&gt;Infrasturcture as a Code&lt;/a&gt; and &lt;a href=&#34;https://en.wikipedia.org/wiki/CI/CD&#34;&gt;CICD&lt;/a&gt; as well.&lt;/p&gt;</description>
     </item>
   </channel>
