@@ -15,4 +15,3 @@ hugo
 
 hugo serve
 ```
-
