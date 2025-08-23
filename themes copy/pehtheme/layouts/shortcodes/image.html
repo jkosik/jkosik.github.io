@@ -1,0 +1,16 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "Image" -}}
+{{- $caption := .Get "caption" -}}
+{{- $class := .Get "class" | default "rounded-lg" -}}
+
+<figure class="my-6">
+  {{- with $image := resources.Get $src }}
+    {{- $image := $image.Resize "750x" }}
+    <img class="{{ $class }}" src="{{ $image.Permalink }}" alt="{{ $alt }}" width="{{ $image.Width }}" height="{{ $image.Height }}" loading="lazy">
+  {{- else }}
+    <img class="{{ $class }}" src="{{ $src | absURL }}" alt="{{ $alt }}" loading="lazy" style="max-width: 100%; height: auto;">
+  {{- end }}
+  {{- if $caption }}
+    <figcaption class="text-center italic text-sm mt-2 text-zinc-600">{{ $caption }}</figcaption>
+  {{- end }}
+</figure>
