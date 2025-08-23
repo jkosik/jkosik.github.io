@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Feature on Juraj Kosik</title>
+    <link>https://jkosik.github.io/tags/feature/</link>
+    <description>Recent content in Feature on Juraj Kosik</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 May 2025 14:15:05 +0700</lastBuildDate>
+    <atom:link href="https://jkosik.github.io/tags/feature/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Supercharging your AI agent with MCP (Model Context Protocol)</title>
+      <link>https://jkosik.github.io/posts/ai/</link>
+      <pubDate>Sun, 04 May 2025 14:15:05 +0700</pubDate>
+      <guid>https://jkosik.github.io/posts/ai/</guid>
+      <description>&lt;p&gt;In this blog post, I’ll show you how I supercharged the Cursor code assistant by feeding it real-time data from remote data sources — essentially teaching it things it wasn’t pre-trained to know. Technology described offers huge range of other use cases and is a &amp;ldquo;new big thing in AI&amp;rdquo;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+baseURL = 'https://jkosik.github.io/'
+languageCode = 'en-us'
+title = 'Juraj Kosik'
+theme = 'pehtheme'
+
+summaryLength = '20' # <- 20 words are approximately 160 characters
+
+
+[pagination]
+	pagerSize = 6 # <- Set the desired number of posts per page
+
+[menu] # Menu management
+	[[menu.main]]
+		name = 'Home'
+		pageRef = '/'
+		weight = 10
+	[[menu.main]]
+		name = 'About'
+		pageRef = '/about'
+		weight = 15
+	[[menu.main]]
+		name = 'Tags'
+		pageRef = '/tags'
+		weight = 20
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.116.0"
+  [module.mounts] # Directing the static folder to assets.
+  	source = 'assets'
+  	target = 'static'

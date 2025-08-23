@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Subdomain Takeover | Juraj Kosik</title>
+
+<meta name="description" content="Stealing domain of a world-known company may be easy when company lacks scrutiny around their DNS records.">
+      <link rel="stylesheet" href="/css/main.min.584aed796ba9d245f84009d57da9662e9c02059611972780263728b442fc25ff.css" integrity="sha256-WErteWup0kX4QAnVfalmLpwCBZYRlyeAJjcotEL8Jf8=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://jkosik.github.io/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://jkosik.github.io/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://jkosik.github.io/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://jkosik.github.io/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://jkosik.github.io/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://jkosik.github.io/">Juraj Kosik</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://jkosik.github.io/">Juraj Kosik</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://jkosik.github.io/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="max-w-4xl mx-auto mb-14">
+
+  <article class="prose lg:prose-lg mx-auto">
+
+    <header class="not-prose">
+
+      <h1 id="title" class="text-4xl font-bold leading-normal">Subdomain Takeover</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Stealing domain of a world-known company may be easy when company lacks scrutiny around their DNS records. </p>
+
+      </div>
+
+      <div id="writer" class="flex items-center space-x-4"><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+          <li class="font-semibold my-2"></li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2023-03-16T14:15:05&#43;07:00">March 16, 2023</time>
+          </li>
+
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            8 min read
+          </li>
+
+        </ul></div>
+
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://jkosik.github.io/images/domain-takeover/big_hu_2d89cc13392e9ae2.png" alt="" width="750" height="422">
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>Have you been thinking about taking over somebody else&rsquo;s domain or subdomain and manage it as your own one? Let me demonstrate today, that it may not be that hard.</p>
+<p>There is a well known company, let&rsquo;s call it Bluepill owning bluepill.com domain. For sure strongly protected by highly skilled DNS admins, firewalls, log management systems. The easiest way how to &ldquo;steal&rdquo; a domain is to wait until the domain expires and purchase it sooner than the original owner. Of course, this is a lame approach and rarely works.</p>
+<p>What if we take completely different approach and rather take control over the resources pointed to by the legitimate DNS records (e.g. CNAMEs)? From the victim&rsquo;s perspective there is no difference. We will simply &ldquo;re-use&rdquo; exiting DNS setup and take over downstream elements.</p>
+<p>Enter the world of subdomain takeover.</p>
+<h2 id="bit-of-theory">Bit of Theory</h2>
+<p>The most frequent DNS records point to an IP address (A-type record) or further downstream FQDN (CNAME-type record).
+In pre-cloud era it was expected that primary DNS record, CNAME records and target IP addresses are owned by the same entity. However it is not the case in the cloud world where resources emerge and disappear and oftentimes are even ephemeral and owned by various companies.</p>
+<p>Imagine the following DNS entry:</p>
+<pre tabindex="0"><code>www.example.com A 1.2.3.4
+</code></pre><p>The domain <code>www.example.com</code> points to an IP address of an EC2 instance in AWS cloud. In case we deprovision our server, IP address can be released for completely different customer. New owner of the IP address can create own DNS records (e.g. <code>www.newcustomer.com</code>) pointing again to <code>1.2.3.4</code>. The problem emerges, when the owner of <code>www.example.com</code> does not deprovision his original DNS record and still keeps parallel path to the somebody else&rsquo;s server. This is also called &ldquo;dangling&rdquo; DNS record. In case <code>1.2.3.4</code> is adopted by a malicious actor, bad things can happen.</p>
+<p>The following image depicts the situation:</p>
+<figure><img src="/images/domain-takeover/domain-takeover.png">
+</figure>
+
+<p>In the real world, attack vectors mostly do not include IP address takeover since it may be not that easy to acquire the right IP address on-demand.
+Attacker would rather look for public cloud services which can easily be acquired.
+I.e. non-existent cloud resources to which dangling DNS records still point to.</p>
+<p>Attacker can also pre-register cloud resources which do not have any corresponding DNS record yet in place, however it is expected that such DNS record will be created soon by the victim.
+E.g. <code>www.victim.com CNAME mycompany.com.s3-website-eu-west-1.amazonaws.com</code>. Once the victim creates DNS record and does not configure the application yet, attacker is already controlling the subdomain.</p>
+<p>Let&rsquo;s discuss dangling DNS entry for <strong>AWS S3 buckets</strong> to narrow down the explanantion of the problem.
+Attack path would be as follows:</p>
+<ol>
+<li>Victim created S3 bucket hosting static web site and pointed his corporate FQDN to it.</li>
+<li>Victim deprovisioned S3 bucket and forgot to remove DNS entry, making a dangling DNS record.</li>
+<li>Attacker identifies dangling DNS record and re-creates S3 bucket to let requests pass through the original FQDN to &ldquo;his&rdquo; S3 bucket.</li>
+<li>Attacker mimics legitimate victim&rsquo;s portal in his S3 bucket using static website or redirects users where needed and steals credentials afterwards.</li>
+</ol>
+<h2 id="attacking-bluepillcom">Attacking bluepill.com</h2>
+<h3 id="enumerate-dns">Enumerate DNS</h3>
+<p>First we need to enumerate victim&rsquo;s DNS zone. We can execute DNS bruteforce attack or simply utilize services which are enumerating public subdomains already, e.g. Virustotal, AbuseIPDB, TLS certificate transparency logs or many others.
+As a result we got 3005 DNS records within <code>bluepill.com</code>.</p>
+<h3 id="identify-active-dns-records">Identify active DNS records</h3>
+<p>Once we have a raw list of subdomains it is needed to test which domains are active and afterwards analyze responses.
+We would look for those subdomains, which CNAME to AWS S3 domains like <code>BUCKETNAME.s3.amazonaws.com</code> or <code>BUCKETNAME.s3-website-REGION.amazonaws.com</code> (used for <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html">static website hosted in the S3 bucket</a>).</p>
+<p>These responses deserve further investigation:</p>
+<pre tabindex="0"><code>mpp.bluepill.com.		       3600	IN	CNAME	mpp.bluepill.com.s3-website-eu-west-1.amazonaws.com.
+ediint3.bluepill.com.   	    300	IN	CNAME	blank-page.com.s3-website-eu-west-1.amazonaws.com.
+ediint4.bluepill.com.         300	IN	CNAME	blank-page.com.s3-website-eu-west-1.amazonaws.com.
+devfederatenew.bluepill.com.  300 IN	CNAME	blank-page.com.s3-website-eu-west-1.amazonaws.com.
+ofb.bluepill.com.	    	    300	IN	CNAME	blank-page.com.s3-website-eu-west-1.amazonaws.com.
+primeppd.bluepill.com.     	300	IN	CNAME	blank-page.com.s3-website-eu-west-1.amazonaws.com.
+</code></pre><h2 id="analyze-dns-responses">Analyze DNS responses</h2>
+<ul>
+<li><code>mpp.bluepill.com</code> points to <code>mpp.bluepill.com.s3-website-eu-west-1.amazonaws.com.</code> which is a static AWS website hosted in <code>mpp.bluepill.com.s3.amazonaws.com</code> S3 bucket (Bucket name: mpp.bluepill.com).</li>
+</ul>
+<p>Opening the URL in the browser results in confirmation, that the S3 bucket already exists and is (presumably) under Bluepill&rsquo;s control.
+Unfortunately the bucket does not allow public access so we move on:</p>
+<figure><img src="/images/domain-takeover/screenshot01-mpp.png">
+</figure>
+
+<p>Further subdomains have something in common. They all point to the <code>blank-page.com</code> S3 bucket.</p>
+<ul>
+<li>
+<p><code>ediint3.bluepill.com</code> redirects to <code>https://catalog.industrialautomationco.com/</code>. Not sure how <code>industrialautomationco.com</code> is connected with <code>bluepill.com</code> though.
+<em>Note (remember for later): S3 bucket static website allows to host the website directly in the local S3 bucket, in external S3 bucket or can redirect to external URLs which was also this case.</em></p>
+</li>
+<li>
+<p><code>ediint4.bluepill.com</code> and <code>ofb.bluepill.com</code> manifested miscofigured static websites.</p>
+</li>
+</ul>
+<p>And now comes the most interesting part:</p>
+<ul>
+<li><code>devfederatenew.bluepill.com. 300    IN	CNAME	blank-page.com.s3-website-eu-west-1.amazonaws.com.</code></li>
+</ul>
+<p><code>devfederatenew.bluepill.com</code> provides different error.
+Seems as if <code>devfederatenew.bluepill.com</code> subdomain points to <code>blank-page.com</code> S3 bucket and applies <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html">static website redirection rules</a> to redirect traffic to external S3 bucket. And this time to the <strong>non-existent</strong> S3 bucket <code>devfederatenew.bluepill.com</code> as indicated directly by the <code>BucketName</code> field in the error message:</p>
+<figure><img src="/images/domain-takeover/screenshot02-nobucket.png">
+</figure>
+
+<p>Let&rsquo;s try to register this bucket and see if packets will reach it. The action is successful, however we are still getting an error:</p>
+<figure><img src="/images/domain-takeover/screenshot03-wrongregion.png">
+</figure>
+
+<p>We have created S3 bucket in the wrong AWS Region - the default one <code>us-west-1</code>. S3 buckets are global resources and there is no Region reference in the bucket URL. However static website redirect expected bucket in the same Region. AWS error response was very descriptive and helpful again.</p>
+<p>We have to migrate our bucket to <code>eu-west-1</code> Region which was easily asssumed from the original DNS responses analysed in the very beginning. AWS does not allow direct migration of S3 bucket between Regions. We have to destroy and recreate the bucket. The only issues is that AWS reserves ~1 hour window before allowing to re-create S3  with the same name. Simple script helped to retry bucket creation in <code>eu-west-1</code> so that nobody was faster then us.</p>
+<p>Now the bucket is created in the correct Region and we are getting promising 404 error indicating that we have just minor bucket configuration problem to resolve:</p>
+<figure><img src="/images/domain-takeover/screenshot04-goodregion.png">
+</figure>
+
+<p>After a while the static website is configured in the S3 bucket <code>devfederatenew.bluepill.com</code> which is under our control and we can upload any pages, including redirection rules, client-side Javascript and so on:</p>
+<figure><img src="/images/domain-takeover/screenshot05-hacked.png">
+</figure>
+
+<p><strong>We have successfully taken over Bluepill subdomain!</strong>.</p>
+<p>Now bad actor could mimic Bluepill design and launch various kinds of further attacks.</p>
+<h2 id="responsible-disclosure">Responsible disclosure</h2>
+<p>At this point the vulnerability was shared with the vendor via &ldquo;responsible disclosure&rdquo; and shared with <a href="https://hackerone.com">https://hackerone.com</a> which has provided additional communication channels towards Bluepill.
+The vulnerability was assessed as HIGH with score of 7.5 out of 10. The problem was fixed in ~1 week.</p>
+<p>In the meantime I have recalled not inspecting the last subdomain pointing to the same S3 bucket via <code>primeppd.bluepill.com</code> URL. To my surprise my browser displayed something that does not look Bluepill-related:</p>
+<figure><img src="/images/domain-takeover/screenshot06-primepdd.png">
+</figure>
+
+<p>Seems as somebody already took over another Bluepill subdomain and misused it for own benefits.
+Apparently the original fix was only about deleting <code>devfederatenew.bluepill.com</code> CNAME record so that it does not reach S3. However, the underlying S3 bucket <code>blank-page.com</code> was not auditted for further misconfigurations. Bluepill was instructed to review the underlying bucket configuration and DNS entries deeply, including all redirection rules.</p>
+<h2 id="public-cloud-attack-surface">Public cloud attack surface</h2>
+<p>Public clouds significantly expand the scale of subdomains we can take over. See e.g. the list of <a href="https://learn.microsoft.com/en-us/azure/security/fundamentals/azure-domains">Azure cloud domain</a>. More of them have a potential to be taken over when dangling DNS records are in place. And now multiply the amount of domains by the amount of public cloud providers and companies using their services.
+Dangling DNS records have no expiration per se and improper administration of DNS records offers a lot of space and time to find weak points.</p>
+<h2 id="beyond-s3-and-cnames">Beyond S3 and CNAMEs</h2>
+<ul>
+<li>
+<p>Subdomain takeover is not related only to A or CNAME records. In case subdomains are delegated to external name servers, you can hijack dangling NS record and take over full sudomain and even create further DNS entries.</p>
+</li>
+<li>
+<p>Multiple cloud services allow us to create resources with full control over their resource&rsquo;s final FQDN. There is no reference to the victim&rsquo;s cloud account or randomized number which would prevent us to re-create deprovisioned resource easily. Besides AWS S3 bucket we can encounter this behaviour in GCP Cloud Storage, Azure Cloud Services (classic), Azure Websites and elsewhere.</p>
+</li>
+<li>
+<p>Besides S3 buckets and well-know cloud services, attention must be paid also to dangling pointers to:</p>
+<ul>
+<li>Wordpress.com pages</li>
+<li>GitHub or GitLab pages</li>
+<li>Git repositories</li>
+<li>Ngrok tunnels</li>
+<li>OCI Image registries</li>
+<li>etc.</li>
+</ul>
+</li>
+</ul>
+<h2 id="countermeasures">Countermeasures</h2>
+<ul>
+<li>Audit public cloud DNS services for dangling DNS records. Multiple GitHub projects are active in this regard.</li>
+<li>Implement &ldquo;Infratructure as Code&rdquo; so that DNS record management and cloud resource provisioning and deprovisioning are handled as one atomic unit.</li>
+<li>Do not use domain-named S3 buckets, e.g. <code>mycompany.com</code>. Mind that <code>s3.amazonaws.com</code> and <code>s3-website-REGION.amazonaws.com</code> subdomains can be enumerated directly and can provide list of easy targets. Mind also, that habit of S3 buckets with embedded company name provide space for bucket pre-creation attacks similar to those which have been misused during <a href="https://jfrog.com/blog/npm-package-hijacking-through-domain-takeover-how-bad-is-this-new-attack/">package hijacking in NPM</a> or PyPI repositories.</li>
+<li>Cloud providers should avoid services where the user has full control over the resource FQDN. Embedding e.g. cloud account ID or random number to the resource FQDN provides significant obstacle for the attacker to take over somebody else&rsquo;s resource.</li>
+<li>Cloud providers should provide controls who can create domain-named cloud resources. <a href="https://cloud.google.com/storage/docs/domain-name-verification">GCP uses some countermeasures for Google Cloud Storage</a> to control who can create domain-named buckets.</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/10-Test_for_Subdomain_Takeover">https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/10-Test_for_Subdomain_Takeover</a></li>
+</ul>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/dns/">DNS</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/cloud/">Cloud</a></li>
+    </ul>
+</div>
+
+
+
+  </article>
+
+</div>
+
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://jkosik.github.io/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+
+        <span class="text-2xl font-semibold uppercase">Juraj Kosik</span>
+      </a>
+
+      <p class="font-semibold">
+        Cybersecurity, DevSecOps, AI, and Crypto.
+      </p>
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.github.com/jkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+			</svg>
+		</a>
+	</li>
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.linkedin.com/in/jkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.521 1.248 1.327 1.248h.015zm4.908 8.212V9.359c0-.215.016-.43.08-.584.175-.43.574-.877 1.243-.877.877 0 1.228.662 1.228 1.634v3.862h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.6 5.6 0 0 1 .016-.025V6.169h-2.4c.03.677 0 7.225 0 7.225h2.4z"/>
+			</svg>
+		</a>
+	</li>
+</ul>
+
+    </div>
+
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+    <p class="text-sm">Based on Hugo and <a href="https://github.com/fauzanmy/pehtheme-hugo" target="_blank" rel="noopener">Pehtheme.</a></p>
+  </div>
+
+</div>
+</footer>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Minting own cryptocurrency | Juraj Kosik</title>
+
+<meta name="description" content="Understanding the process of crypto minting and monetizing the token on the market.">
+      <link rel="stylesheet" href="/css/main.min.584aed796ba9d245f84009d57da9662e9c02059611972780263728b442fc25ff.css" integrity="sha256-WErteWup0kX4QAnVfalmLpwCBZYRlyeAJjcotEL8Jf8=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://jkosik.github.io/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://jkosik.github.io/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://jkosik.github.io/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://jkosik.github.io/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://jkosik.github.io/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://jkosik.github.io/">Juraj Kosik</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://jkosik.github.io/">Juraj Kosik</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://jkosik.github.io/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="max-w-4xl mx-auto mb-14">
+
+  <article class="prose lg:prose-lg mx-auto">
+
+    <header class="not-prose">
+
+      <h1 id="title" class="text-4xl font-bold leading-normal">Minting own cryptocurrency</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">Understanding the process of crypto minting and monetizing the token on the market. </p>
+
+      </div>
+
+      <div id="writer" class="flex items-center space-x-4"><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+          <li class="font-semibold my-2"></li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2024-12-29T14:15:05&#43;07:00">December 29, 2024</time>
+          </li>
+
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            20 min read
+          </li>
+
+        </ul></div>
+
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://jkosik.github.io/images/crypto/big_hu_fe4d183a2c6c357f.png" alt="" width="750" height="422">
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>The year 2024 marked another thrilling crypto bull run, capturing widespread mainstream attention. In this blog, we’ll take you through the entire process of minting your own cryptocurrency on the Solana blockchain, listing it on a crypto exchange to monetize your efforts, and exploring how bad actors could exploit these same steps to commit fraud.</p>
+<p><strong>Disclaimer</strong>: This blog is for educational purposes only. Be mindful of the legal and tax implications of any actions you take based on this guide.</p>
+<p>Crypto frauds come in all shapes and sizes, ranging from simple scams to highly sophisticated schemes. Here, we focus on empowering everyday users with knowledge while avoiding an overload of technical jargon.</p>
+<p>For those eager to dive deeper, you’ll find additional learning resources throughout the blog, marked with a <code>Self-study</code> tag. These are optional but highly valuable for expanding your understanding of the topic. If you’re short on time, feel free to skip them — you’ll still grasp the essential points covered in this article.</p>
+<h2 id="cryptocurrency">Cryptocurrency</h2>
+<h3 id="understanding-cryptocurrency-and-its-building-blocks">Understanding cryptocurrency and its building blocks</h3>
+<p>Cryptocurrency is a universally agreed-upon and accepted form of digital value. Unlike physical assets like gold or cash, cryptocurrency exists entirely in the virtual realm, represented as a piece of cryptographically secured data. This data is stored in a specialized structure called a blockchain — a decentralized, tamper-resistant ledger that ensures transparency and security.</p>
+<p>Self-study: <a href="https://cointelegraph.com/learn/articles/how-does-blockchain-work-a-beginners-guide-to-blockchain-technology">What is crypto and blockchain?</a></p>
+<p>Cryptocurrency is brought into existence through a process known as &ldquo;mining.&rdquo; Similar to physical gold mining, where effort leads to rewards, crypto mining requires computational work, consuming electricity to solve complex cryptographic puzzles. This process forms the basis of the Proof of Work (PoW) consensus mechanism. However, alternative mechanisms exist, such as Proof of Stake (PoS), which relies on staking existing assets and uses the term &ldquo;minting&rdquo; instead of &ldquo;mining&rdquo;.</p>
+<p>Self-study: <a href="https://www.kraken.com/learn/proof-of-work-vs-proof-of-stake">Proof of Work vs. Proof of Stake</a></p>
+<p>Cryptocurrency can be broadly categorized into &ldquo;coins&rdquo; and &ldquo;tokens.&rdquo; Both function as representations of value, usable for payments or as digital stores of wealth.</p>
+<ul>
+<li>A coin is native to its blockchain, such as Bitcoin (BTC) for the Bitcoin blockchain, Ether (ETH) for Ethereum, or Solana (SOL) for the Solana blockchain.</li>
+<li>A token is built on top of an existing blockchain. Tokens can be fungible (like stablecoins or altcoins) or non-fungible (NFTs). Blockchains like Ethereum and Solana natively support tokens, while Bitcoin accommodates tokens through more complex methods. The process of creating tokens is known as &ldquo;minting&rdquo;.</li>
+</ul>
+<p>Self-study: <a href="https://coinmarketcap.com/academy/article/coin-vs-token:-what-is-the-difference">Coin vs. Token</a></p>
+<p><strong>In this blog, we will create a token on the Solana blockchain and the token will be publicly traded.</strong></p>
+<h3 id="solana-blockchain">Solana blockchain</h3>
+<p>The Solana blockchain has gained immense popularity, with its native token, SOL, consistently ranking among the top 10 cryptocurrencies by market capitalization. What sets Solana apart from Bitcoin is its innovative consensus mechanism and distinct focus.</p>
+<p>Unlike Bitcoin, which relies on Proof of Work (PoW) to secure its network, Solana employs a highly efficient Proof of History (PoH) mechanism, integrated with Proof of Stake (PoS). This combination ensures faster transaction processing and lower fees, making it an attractive platform for developers and users alike.</p>
+<p>Solana’s primary strength lies in its ability to simplify the creation and deployment of fungible tokens (like stablecoins) and non-fungible tokens (NFTs). Additionally, it facilitates seamless cross-chain bridging, enabling interoperability with other blockchain networks — an essential feature in today’s interconnected crypto ecosystem.</p>
+<p>Self-study: <a href="https://www.moonpay.com/learn/bitcoin/bitcoin-vs-solana">Bitcoin vs. Solana</a></p>
+<p>For this blog’s purposes, it’s enough to understand that Solana operates with Addresses and Accounts. Tokens are transferred between Addresses and &ldquo;physically&rdquo; stored within Accounts. Interestingly, an Address can exist without an associated Account when performing specific actions, like token minting.</p>
+<p>Solana employs an account-based model, where a Solana Account keeps track of token balances, updating them via debits and credits. This contrasts sharply with Bitcoin’s UTXO (Unspent Transaction Output) model. In Bitcoin, there’s no centralized account; instead, the blockchain tracks and stores the outputs of every transaction individually within the ledger.</p>
+<p>Self-study: <a href="https://medium.com/@scatdao/lets-learn-about-utxo-and-account-based-models-6e26b520e810">Account-based model vs. UTXO model</a></p>
+<p>Each Solana Address is derived from a cryptographic keypair. The public key in the keypair serves as the Address itself, used for sending and receiving tokens. The private key is critical for signing and authorizing transactions, ensuring only the owner of the Address can initiate changes or access funds.</p>
+<h2 id="lets-mint-our-tokens">Let&rsquo;s mint our tokens</h2>
+<p>Every operation on a blockchain, including minting your own token, incurs a cost. On the Solana blockchain, these costs are minimal, requiring only a small fraction of SOL. However, most blockchains provide a testnet environment where users can experiment without real financial risks, mirroring the functionality of the production mainnet.</p>
+<p>Solana goes a step further by offering both a testnet and a devnet. For this guide, we’ll use the devnet.</p>
+<p>Self-study: <a href="https://help.solflare.com/en/articles/6328814-differences-between-mainnet-devnet-and-testnet-and-how-to-switch-between-on-solflare">Solana testnet and devnet</a></p>
+<p>Minting consists of the following steps:</p>
+<ol>
+<li>Prepare a local environment to interact with Solana blockchain via CLI</li>
+<li>Create minter&rsquo;s Address - recognized also as Mint Authority</li>
+<li>Create the token Address, token Account and the token itself</li>
+<li>Associate metadata to the token</li>
+<li>Mint the token</li>
+<li>Transact</li>
+<li>Improve the reputation of the token</li>
+<li>Go to the market and monetize</li>
+</ol>
+<h3 id="1-prepare-a-local-environment">1. Prepare a local environment</h3>
+<p>Install Rust and Solana CLI on your machine. Alternatively you can execute the whole process from within the Docker container built for this purpose.</p>
+<p>I re-used the following <a href="https://blog.networkchuck.com/posts/create-a-solana-token/#dockerfile">Dockerfile</a>:</p>
+<pre tabindex="0"><code># Use a lightweight base image
+FROM debian:bullseye-slim
+
+# Set non-interactive frontend for apt
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install required dependencies and Rust
+RUN apt-get update &amp;&amp; apt-get install -y \
+    curl build-essential libssl-dev pkg-config nano \
+    &amp;&amp; curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+    &amp;&amp; apt-get clean &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+# Add Rust to PATH
+ENV PATH=&#34;/root/.cargo/bin:$PATH&#34;
+
+# Verify Rust installation
+RUN rustc --version
+
+# Install Solana CLI
+RUN curl -sSfL https://release.anza.xyz/stable/install | sh \
+    &amp;&amp; echo &#39;export PATH=&#34;$HOME/.local/share/solana/install/active_release/bin:$PATH&#34;&#39; &gt;&gt; ~/.bashrc
+
+# Add Solana CLI to PATH
+ENV PATH=&#34;/root/.local/share/solana/install/active_release/bin:$PATH&#34;
+
+# Verify Solana CLI installation
+RUN solana --version
+
+# Set up Solana config for Devnet
+RUN solana config set -ud
+
+# Set working directory
+WORKDIR /solana-token
+
+# Default command to run a shell
+CMD [&#34;/bin/bash&#34;]
+</code></pre><p>After building the image by <code>docker build -t solana .</code> all my further steps were executed from the container CLI:</p>
+<pre tabindex="0"><code>&gt; docker run -it --rm --mount type=bind,src=./volume,dst=/solana-token solana
+</code></pre><p>Do not forget to create a Docker volume or mount the local folder to persist the data. During the process you will generate Solana keypairs which are necessary for further interaction with the blockchain and we need to store them permanently.</p>
+<h3 id="2-create-minters-address">2. Create minter&rsquo;s Address</h3>
+<p>Minting is executed as a transaction on the blockchain, and like all transactions, it must be signed and authorized. To do this, we require a special keypair.</p>
+<p>Reminder: An Address is generated from a keypair. While an Account (also referred to as a &ldquo;Wallet&rdquo;) can store funds received at an Address, we don’t need an Account at this stage of the process.</p>
+<p>Create a keypair prefixed by <code>aa</code> for our easier identification on blockchain and during the next steps:</p>
+<pre tabindex="0"><code>&gt; solana-keygen grind --starts-with aa:1
+
+Searching with 8 threads for:
+        1 pubkey that starts with &#39;aa&#39; and ends with &#39;&#39;
+Wrote keypair to aamebEXztWv5VjC6KeBWHbpb62X2uE3XtqaqMfY8D7X.json
+</code></pre><p>This step produces a JSON file with a keypair. The string <code>aamebEXztWv5VjC6KeBWHbpb62X2uE3XtqaqMfY8D7X</code> represents the Address and is at the same the public key. The Address identifies also the Mint Authority later on.</p>
+<p><code>solana-keygen</code> command has more options and you can define preferred starting and trailing Address characters, prevent the JSON file creation and generate passphrase instead. You can even select the language for your passphrase:</p>
+<pre tabindex="0"><code>&gt; solana-keygen grind --starts-and-ends-with A:M:1 --ignore-case --use-mnemonic --word-count 24 --language japanese --no-outfile --no-bip39-passphrase
+
+Searching with 8 threads for:
+	1 pubkey that starts with &#39;a&#39; and ends with &#39;m&#39;
+==========================================================================================================================================================================================================================================================================================================================
+Found matching key Ad6iPYyWaVDTpS9CCQZJzoBd4mcBqtXit15WpYZ7aPDM
+
+Save this seed phrase to recover your new keypair:
+こもん じてん ようす げどく のりもの てくび うけとる れいせい たんめい もうどうけん いもたれ せりふ くねくね りけん もらう しらせる いんしょう あらためる おうさま りそう いせかい ぶんぐ だんねつ りろん
+==========================================================================================================================================================================================================================================================================================================================
+</code></pre><p>Commands <code>solana config set --keypair xyz.json</code>, <code>solana config set --url devnet</code> and <code>solana config get</code> will become very useful when starting experimenting and switching between devnet and mainnet. Setting the right &ldquo;config&rdquo; ensures we are using the right blockchain and the right identity.</p>
+<p>For now, we want to stay in devnet:</p>
+<pre tabindex="0"><code>&gt; solana config set --url devnet
+
+Config File: /root/.config/solana/cli/config.yml
+RPC URL: https://api.devnet.solana.com
+WebSocket URL: wss://api.devnet.solana.com/ (computed)
+Keypair Path: aamebEXztWv5VjC6KeBWHbpb62X2uE3XtqaqMfY8D7X.json
+Commitment: confirmed
+</code></pre><p>Now we have minter&rsquo;s Address in place which will act as <code>Mint Authority</code>. The address has zero balance now:</p>
+<pre tabindex="0"><code>&gt; solana balance
+0 SOL
+</code></pre><p>Accounts are created also implicitely when the Address receives initial funds.</p>
+<p>Minting and transacting on the Solana blockchain require spending some fractions of SOL token. In the mainnet we would need real SOLs and fund <code>aamebEXztWv5VjC6KeBWHbpb62X2uE3XtqaqMfY8D7X</code> Address in advance.</p>
+<p>Devnet allows as free generation of fake SOLs via <a href="https://faucet.solana.com/">https://faucet.solana.com/</a>. These SOL tokens can be used for minting, transactions, and testing all functionalities without spending real SOL. 1 SOL is sufficient for all remaining steps from this guide.</p>
+<p>Generate fake SOLs and now Mint Authority has funds for the further steps:</p>
+<pre tabindex="0"><code>&gt; solana balance
+1 SOL
+</code></pre><p>Mint Authority Address is available on mainnet as well, however Address has still a zero balance:</p>
+<pre tabindex="0"><code>&gt; solana config set --url mainnet-beta
+
+&gt; solana balance
+0 SOL
+</code></pre><p>Switch back to devnet and let&rsquo;s continue:</p>
+<pre tabindex="0"><code>&gt; solana config set --url devnet
+</code></pre><h3 id="3-create-the-address-for-the-token-token-account-and-the-token-itself">3. Create the Address for the token, token Account and the token itself</h3>
+<p>Minted tokens must have a dedicated Address and also corresponding Account.</p>
+<p>Let&rsquo;s create both.</p>
+<pre tabindex="0"><code>&gt; solana-keygen grind --starts-with mm:1
+
+Searching with 8 threads for:
+        1 pubkey that starts with &#39;mm&#39; and ends with &#39;&#39;
+Wrote keypair to mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA.json
+
+&gt; spl-token create-account mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA
+
+Creating account DxAmvwfPQRJe9C2jvvgtjvwqzRe9m9AuATtXA6XfH9zr
+</code></pre><p>Now create the token itself:</p>
+<pre tabindex="0"><code>&gt; spl-token create-token \
+--program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb \
+--enable-metadata \
+--decimals 9 \
+mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA.json
+
+Creating token mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA under program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb
+To initialize metadata inside the mint, please run `spl-token initialize-metadata mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA &lt;YOUR_TOKEN_NAME&gt; &lt;YOUR_TOKEN_SYMBOL&gt; &lt;YOUR_TOKEN_URI&gt;`, and sign with the mint authority.
+
+Address:  mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA
+Decimals:  9
+</code></pre><p>Token creation on Solana is governed by a built-in &ldquo;Program&rdquo; that defines how fungible and non-fungible tokens are implemented. The SPL Token Program is a smart contract, a core part of Solana’s infrastructure, maintained and audited by the community, which reduces risks compared to deploying custom contracts.</p>
+<p>While it’s possible to create custom smart contracts on Solana to tailor token behavior—such as automating token distribution or integrating with external applications — this also opens the door for malicious actors. Fraudsters can deploy their own contracts with harmful features, such as preventing token resale, imposing excessive transaction fees, freezing specific addresses from transacting, or enabling unlimited token minting capabilities.</p>
+<p>Self-study: <a href="https://spl.solana.com/token-2022">Solana Token Program</a>.</p>
+<h3 id="4-associate-metadata-to-the-token-for-better-reputation">4. Associate metadata to the token for better reputation</h3>
+<p>At this point, we have an anonymous token with no name or logo. To make it more identifiable, we can attach metadata to the token. This metadata can include the token’s name, description, and an icon that will be displayed in the Solana Explorer and across all markets and crypto exchanges where the token is listed.</p>
+<p><strong>Our token will be called <code>Krypton</code>.</strong></p>
+<p>Create the token icon and upload the icon into the publicly available location, e.g. GitHub or IPFS. Afterwards refer to the image in the metadata JSON file as follows:</p>
+<pre tabindex="0"><code>{
+  &#34;name&#34;: &#34;Krypton Coin&#34;,
+  &#34;symbol&#34;: &#34;KRYPTON&#34;,
+  &#34;description&#34;: &#34;Noble crypto gas&#34;,
+  &#34;image&#34;: &#34;https://TOKEN-ICON-LOCATION.png&#34;
+}
+</code></pre><p>Store the metadata JSON again to publicly reachable location.
+In my case it is <code>https://teal-glad-wren-997.mypinata.cloud/ipfs/bafkreihuky2npbxicpdxj5qtxhjuemgeb4jwxhrkiwyrsvz3wcxnkz4yqm</code></p>
+<p>Once metadate JSON file is publicly reachable, link it to the token:</p>
+<pre tabindex="0"><code>&gt; spl-token initialize-metadata \
+mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA \
+&#34;Krypton Coin&#34; \
+&#34;KRYPTON&#34; \
+https://teal-glad-wren-997.mypinata.cloud/ipfs/bafkreihuky2npbxicpdxj5qtxhjuemgeb4jwxhrkiwyrsvz3wcxnkz4yqm
+</code></pre><p>As a result, <a href="https://explorer.solana.com/address/mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA">Solana Explorer</a> shows Krypton coin&rsquo;s icon and related details.
+<figure><img src="/images/crypto/metadata.png">
+</figure>
+</p>
+<h3 id="5-mint-the-token">5. Mint the token</h3>
+<p>We have defined the token Address, token Account, token definition itself and associated metadata to the token.</p>
+<p>We are ready to mint!</p>
+<p>Let&rsquo;s mint 2000 Kryptons:</p>
+<pre tabindex="0"><code>&gt; spl-token mint mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA 2000
+
+Minting 2000 tokens
+  Token: mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA
+  Recipient: DxAmvwfPQRJe9C2jvvgtjvwqzRe9m9AuATtXA6XfH9zr
+</code></pre><p>You can repeat this step as many times as needed and mint further tokens - similarly to what governments do ;).</p>
+<h3 id="6-transact">6. Transact</h3>
+<p>Tokens are stored in the token Account, and the Mint Authority is responsible for authorizing transactions involving these tokens.</p>
+<p>Let&rsquo;s assume there is another Address <code>92PjKtt6y5qufxZVdAKHU5huj8CDuMpj9Pfy9SfQg9eL</code> created by CLI using <code>solana-keygen grind...</code> or directly in Crypto wallet on your laptop or cell phone.</p>
+<p>While still authenticated as Mint Authority&hellip;</p>
+<pre tabindex="0"><code>&gt; solana config get
+
+Config File: /root/.config/solana/cli/config.yml
+RPC URL: https://api.devnet.solana.com
+WebSocket URL: wss://api.devnet.solana.com/ (computed)
+Keypair Path: aamebEXztWv5VjC6KeBWHbpb62X2uE3XtqaqMfY8D7X.json
+Commitment: confirmed
+</code></pre><p>&hellip;transfer 10 Kryptons to <code>92PjKtt6y5qufxZVdAKHU5huj8CDuMpj9Pfy9SfQg9eL</code></p>
+<pre tabindex="0"><code>&gt; spl-token transfer mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA 10 92PjKtt6y5qufxZVdAKHU5huj8CDuMpj9Pfy9SfQg9eL --fund-recipient --allow-unfunded-recipient
+</code></pre><p>All tokens were received to <code>92PjKtt6y5qufxZVdAKHU5huj8CDuMpj9Pfy9SfQg9eL</code> Address during the time are stored on <a href="https://explorer.solana.com/address/92PjKtt6y5qufxZVdAKHU5huj8CDuMpj9Pfy9SfQg9eL/tokens?cluster=devnet">Solana blockchain</a>.</p>
+<p>Let&rsquo;s summarise:
+The Mint Authority <code>aamebEXztWv5VjC6KeBWHbpb62X2uE3XtqaqMfY8D7X</code> minted 2000 Kryptons on the Solana devnet. Tokens were minted to the Address <code>mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA</code> as shown in the <a href="https://explorer.solana.com/address/mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA?cluster=devnet">Solana Explorer for token Address</a>.</p>
+<figure><img src="/images/crypto/token.png">
+</figure>
+
+<p>Mint Authority is eligible to spend minted tokens. In the screenshot from <a href="https://explorer.solana.com/address/aamebEXztWv5VjC6KeBWHbpb62X2uE3XtqaqMfY8D7X/tokens?cluster=devnet">Solana Explorer for Mint Authority</a> below, our Minting Autority minted 2 separate tokens and already spent (transfered) some of of the tokens:</p>
+<ul>
+<li><code>mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA</code> (Krypton Coin, original supply 2000)</li>
+<li><code>papRGXY6uYXD3hrK3crvk5MjoHmEgaS3uLypLWtvppb</code> (Papuga Coin, original supply 1000000)</li>
+</ul>
+<figure><img src="/images/crypto/mint-authority.png">
+</figure>
+
+<h3 id="7-improve-the-reputation-of-the-token">7. Improve the reputation of the token</h3>
+<p>By default, any newly created token has a poor reputation.
+The reputation can be checked on <a href="https://rugcheck.xyz/tokens/mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA">RugCheck</a>.</p>
+<figure><img src="/images/crypto/rug_check.png">
+</figure>
+
+<p>Remember the term &ldquo;rug&rdquo;, as we’ll revisit it later when discussing rug pull scams.</p>
+<p>To help harden the token and improve its reputation, we can take a few initial steps:</p>
+<ul>
+<li>Distribute the token supply to a wider range of Addresses (wallets) to ensure the assets aren’t concentrated in just a few hands.</li>
+<li>Irreversibly disable further token minting by running the command:</li>
+</ul>
+<pre tabindex="0"><code>&gt; spl-token authorize mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA mint --disable
+</code></pre><p>Executing these steps will reduce some of the warnings displayed on RugCheck.</p>
+<h3 id="8-go-to-the-market-and-monetize">8. Go to the market and monetize</h3>
+<p>Remember that all steps above have been executed on the Solana devnet.</p>
+<p>To start trading, we need a &ldquo;real&rdquo; Krypton token on the Solana mainnet.</p>
+<p>Moving to the Solana mainnet is very easy. We just need to switch to the mainnet:</p>
+<pre tabindex="0"><code>&gt; solana config set --url mainnet-beta
+</code></pre><p>We can reuse the existing Mint Authority Address to send real SOL for minting tokens. A small amount, around 0.03 SOL, is enough to mint the tokens and perform multiple test transactions.</p>
+<p>The token address can also be reused. Simply create the token (<code>spl-token create-token...</code>), initialize its metadata, and you’re ready to start minting. On the devnet, we minted 2000 tokens, while on the mainnet, we minted <a href="https://explorer.solana.com/address/mmA7XRTuehAmivkWuz554YUTNQpX7STHgWbJj6ZDcnA">36 million tokens</a>. Remember, you can continue minting tokens indefinitely unless, as the minting authority, you disable this option.</p>
+<p>Now, we have a token on the production Solana mainnet, and we can transact with others. We can send the token, and recipients can send it further.</p>
+<p>But wait — what about the &ldquo;price&rdquo; of the token compared to others or cryptocurrencies?
+Let’s dive into the world of token exchanges.</p>
+<h2 id="monetizing-the-token">Monetizing the token</h2>
+<p>The market price of any asset is determined by the interplay of supply and demand. At present, we only have the supply side: 36 million Kryptons.
+However, there’s no established market or true price yet, meaning tokens can be exchanged at any value—or even given away for free — without requiring a counter-value.</p>
+<p>We have the power to create our own market, and there are multiple ways to do so. BThe next section describes is just a snapshot of the possibilities. There are countless strategies and variations we can explore to monetize and market our tokens.</p>
+<h3 id="crypto-markets">Crypto markets</h3>
+<h4 id="1-own-market-and-direct-sale">1. Own market and direct sale</h4>
+<p>The price of Kryptons can be fixed against any chosen asset, such as USD, or dynamically adjusted based on current demand — much like the frenzied tactics
+of Wall Street brokers. This method depends on having enough &ldquo;market makers&rdquo; — people willing to not only buy Kryptons but also provide an environment where they can be resold at any time.</p>
+<p>Challenge: Maintaining sufficient market makers (users placing buy and sell orders) to prevent an illiquid market.</p>
+<h4 id="2-initial-coin-offering-ico-and-launchpads">2. Initial Coin Offering (ICO) and Launchpads</h4>
+<p>Just like an IPO (Initial Public Offering) for stocks, crypto tokens can be sold to the public through an ICO (Initial Coin Offering). This method is popular among startup projects as it helps build a community of token holders while raising funds for the project. ICOs are often supported by Launchpads, which serve as token sale platforms and conduct due diligence to protect buyers.</p>
+<p>Challenge: An ICO demands substantial effort, marketing, and additional costs. Moreover, it sometimes carries the risk of being perceived as fraudulent activity.</p>
+<p>Self-study: <a href="https://www.fool.com/terms/i/initial-coin-offering/">ICO</a></p>
+<h4 id="3-airdrops-and-community-driven-approach">3. Airdrops and community-driven approach</h4>
+<p>The mint authority can freely distribute small amounts of tokens as &ldquo;airdrops&rdquo; to a broad audience, helping to establish a large community of potential users. Projects can further incentivize users to claim or earn airdrops by engaging with the project in specific ways.</p>
+<p>Challenge: The distributed value is spread thin, with no strong assurance of future trading activity or that token holders will engage with exchanges. Many tokens risk becoming dormant.</p>
+<p>Self-study: <a href="https://airdrops.io/">Airdrops</a></p>
+<h4 id="4-listing-on-centralized-crypto-exchange-cex">4. Listing on centralized crypto exchange (CEX)</h4>
+<p>Major crypto exchanges like Binance, Kraken, and Coinbase offer a wide array of token pairs for buying and selling. However, enabling such trades requires navigating a complex legal and regulatory process.</p>
+<p>Challenge: The listing process can be expensive and time-consuming.</p>
+<p>Self-study: <a href="https://cointelegraph.com/learn/articles/a-beginners-guide-on-how-to-get-your-crypto-token-listed-on-an-exchange">Listing the token at CEX</a></p>
+<h4 id="5-liquidity-pools-and-automated-market-makers-amm">5. Liquidity pools and Automated Market Makers (AMM)</h4>
+<p>THIS will be our choice and Liquidity pools will be explored in the next chapter.</p>
+<h3 id="liquidity-pools">Liquidity pools</h3>
+<p>Selling tokens directly doesn’t guarantee that the seller will buy them back, which can make the token less appealing for trading. This is where liquidity pools come in. A liquidity pool is a mechanism that ensures tokens can always be bought or sold — within the limits of the pool itself.</p>
+<p>Naturally, you can’t buy more tokens than the pool holds. However, you can always extend the pool — think of it like pouring more water into a swimming pool.</p>
+<p>How do we make sure trades are always possible? The key lies in &ldquo;pouring&rdquo; both the token and its trading pair into the pool.
+For example, if you want to create a market for the Krypton/SOL trading pair, you’ll need to supply a certain amount of Kryptons (which are free to mint and can be created as needed) alongside some trusted and liquid SOL tokens.</p>
+<p>Platforms like <a href="https://raydium.io">Raydium</a> enable you to create your own liquidity pools or contribute liquidity (trading pair of your choice) to existing pools and earn fees in return.</p>
+<p>In my case, I decided to set up a liquidity pool for the Krypton/SOL pair, investing 8 million Kryptons and 0.5 SOL. The amount of SOL I chose to invest while establishing the pool determines the initial exchange rate.</p>
+<p>Let’s break it down with some math.</p>
+<pre tabindex="0"><code>8 000 000 Krypton = 0.5 SOL
+Krypton / SOL = 0.5 / 8 000 000 = 0.000000063
+</code></pre><p>Once the pool is created and funded with Kryptons and SOL tokens, <a href="https://raydium.io">Raydium</a> will declare the initial exchange rate for the Krypton/SOL pair. For example, with my investment, the starting exchange rate is 0.000000063. If I had invested more SOL, the initial exchange rate would have been higher.</p>
+<p>After establishing the Krypton/SOL liquidity pool, our token becomes publicly visible and tradable on platforms like <a href="https://dexscreener.com/">Dex Screener</a>.</p>
+<figure><img src="/images/crypto/dex.png">
+</figure>
+
+<p>To start trading, potential traders need to connect their crypto wallets with some SOL tokens to Raydium and swap SOL for Krypton.</p>
+<p>The Krypton/SOL liquidity pool initially contains a fixed number of Kryptons (8,000,000) and SOLs (0.5). When someone buys Kryptons, the pool dynamics shift: Kryptons are removed from the pool, and additional SOL tokens are added, as illustrated in the following example.</p>
+<p>After the token was introduced to the market, traders purchased several million Kryptons, leaving only 5.7 million Kryptons in the pool. As a result, the pool now holds 0.69 SOL — an increase of 0.19 SOL compared to my initial investment.</p>
+<figure><img src="/images/crypto/liq_pool.png">
+</figure>
+
+<p>The new ratio of Kryptons and SOLs establishes a new exchange rate and, consequently, a new token price.</p>
+<p>Especially during the initial token placement on the market, bots and traders can introduce significant volatility. As Kryptons are bought up, the pool may become depleted, while more SOLs are added. This makes Kryptons scarcer, driving the price up.</p>
+<figure><img src="/images/crypto/krypton_sol.png">
+</figure>
+
+<h3 id="frauds">Frauds</h3>
+<p>WARNING: The section below is for educational purposes only and tries to explain anatomy of the crypto frauds.</p>
+<p>Crypto fraudsters can use two simple methods to siphon SOLs from a liquidity pool. Keep in mind that Solana (SOL) is a publicly trusted cryptocurrency, listed on all major exchanges, and can easily be swapped for USD or EUR.</p>
+<p>Fraudsters often wait until a significant amount of SOLs accumulate in the liquidity pool before attempting to drain them. This accumulation can be artificially boosted through fraudulent marketing campaigns.</p>
+<h4 id="fraud-1">Fraud #1</h4>
+<p>As the minting authority, the fraudster has the ability to mint new Kryptons or may have set aside a few million Kryptons for themselves. Nothing prevents them from buying out all the SOLs in the pool and later converting them into fiat currency (USD or EUR).</p>
+<h4 id="fraud-2">Fraud #2</h4>
+<p>The fraudster, who is also the liquidity pool creator, can remove the liquidity pool entirely and retrieve its contents — meaning they can extract the more valuable SOLs while leaving behind the now - worthless Kryptons. When a liquidity pool is created on Raydium, the pool owner is issued special LP (Liquidity Provider) tokens. These LP tokens can be &ldquo;burned&rdquo; in a special blockchain process, which makes the pool permanent and increases trust. However, the fraudster would likely avoid burning the LP tokens, keeping backdoors open for manipulation.</p>
+<h4 id="fraud-n">Fraud #N</h4>
+<p>Frauds can become more complex when custom smart contracts are used to implement token minting. While I’ve used the native Solana &ldquo;Program,&rdquo; which is audited and transparent, it still leaves room for fraudulent activity. By using a custom smart contract, a fraudster gains more control over token supply, token transactions, or even the ability to directly steal tokens.</p>
+<p>These types of scams are commonly referred to as &ldquo;rug pulls&rdquo; in the crypto world, where the fraudster suddenly withdraws the valuable tokens, leaving investors with nothing.</p>
+<p>Self-study: <a href="https://www.soliduslabs.com/post/rug-pull-crypto-scams">Rug Pull crypto scam</a></p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>Liquidity pools are a legitimate and powerful mechanism for bringing tokens to life and providing a space for investors to trade. However, as a trader, always exercise caution—verify the credibility of the token before diving in.</p>
+<p>At its core, minting tokens is a process controlled by a smart contract, which dictates how and when new tokens are created. While this process is meant to be automated and secure, if not properly designed, audited, or secured, it can become a loophole for fraud.</p>
+<p>Much like the intentions of bad actors, token programs, dApps, and underlying smart contracts are ultimately just lines of code. These codes can be vulnerable or, in the worst cases, maliciously crafted to deceive and defraud unsuspecting users.</p>
+<p>Fraud in the crypto world is vast and can take many forms, far beyond what we&rsquo;ve covered in this article. But to help protect yourself, keep an eye out for these red flags:</p>
+<ul>
+<li><strong>Unclear or Anonymous Team</strong>: If you can’t find reliable information about the project’s creators, it&rsquo;s a red flag. Lack of transparency is often a tactic to hide bad intentions.</li>
+<li><strong>Promises of Guaranteed Returns</strong>: If it sounds too good to be true, it probably is. Promises of high, risk-free returns are often used to lure in unsuspecting investors.</li>
+<li><strong>Unverified or Audited Smart Contracts</strong>: Always check if the smart contract has been audited by a reputable third party. An unaudited contract may have vulnerabilities that can be exploited.</li>
+<li><strong>Fake or Misleading Tokenomics</strong>: Watch for token models that don’t make sense or seem too complicated to understand. If the distribution mechanism looks suspicious, it’s worth investigating further.</li>
+<li><strong>Illiquid Market with No Trading Volume</strong>: If a token is listed on exchanges but lacks real trading volume or liquidity, it could be a sign that it’s a scam or a &ldquo;pump-and-dump&rdquo; scheme.</li>
+<li><strong>Unnecessary Complexity</strong>: If the project is overly complicated or unclear about how it works, it could be hiding something. Legitimate projects are usually clear and easy to understand.</li>
+<li><strong>&ldquo;Rug Pull&rdquo; Potential</strong>: If the contract allows the creators to withdraw liquidity at will or gives them too much control over the token, it increases the risk of a rug pull—where they drain the liquidity and disappear.</li>
+</ul>
+<p>Stay vigilant, always do your own research, and protect your investments. The crypto world can be a rewarding space, but it&rsquo;s also full of risks, and you need to be prepared for the potential threats out there.</p>
+<h2 id="fun-fact">Fun fact</h2>
+<p>In addition to education, our family began using a custom <a href="https://explorer.solana.com/address/papRGXY6uYXD3hrK3crvk5MjoHmEgaS3uLypLWtvppb?cluster=devnet">Papuga Coin</a> to reward the kids for completing household tasks. My children have installed the <a href="https://phantom.com/">Phantom crypto wallet</a> on their phones and earn Papugas throughout the month for helping out around the house or assisting each other.</p>
+<figure><img src="/images/crypto/phantom.png">
+</figure>
+
+<p>Daddy serves as the centralized exchange, converting Papugas into fiat currency (EUR) at the end of each month.</p>
+<p>All transactions are stored on the blockchain: <a href="https://explorer.solana.com/tx/2Rpp9rEa5g1dVmnqRkBn9Y7RkjMdBJzt2oF9o9eLErV8ARPiL47HojLNBxt2NRYovpGoskUupyiEP3For8qF89Mp?cluster=devnet">https://explorer.solana.com/tx/2Rpp9rEa5g1dVmnqRkBn9Y7RkjMdBJzt2oF9o9eLErV8ARPiL47HojLNBxt2NRYovpGoskUupyiEP3For8qF89Mp?cluster=devnet</a></p>
+<figure><img src="/images/crypto/payment-meta.png">
+</figure>
+
+<p>All transactions take place on the Solana devnet and incur no fees. If you’d like a few thousand Papugas for free, just let the author of this blog know! :)</p>
+<p><strong>In our family, even chores come with a crypto reward. Papugas for everyone!</strong></p>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/crypto/">Crypto</a></li>
+    </ul>
+</div>
+
+
+
+  </article>
+
+</div>
+
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://jkosik.github.io/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+
+        <span class="text-2xl font-semibold uppercase">Juraj Kosik</span>
+      </a>
+
+      <p class="font-semibold">
+        Cybersecurity, DevSecOps, AI, and Crypto.
+      </p>
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.github.com/jkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+			</svg>
+		</a>
+	</li>
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.linkedin.com/in/jkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.521 1.248 1.327 1.248h.015zm4.908 8.212V9.359c0-.215.016-.43.08-.584.175-.43.574-.877 1.243-.877.877 0 1.228.662 1.228 1.634v3.862h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.6 5.6 0 0 1 .016-.025V6.169h-2.4c.03.677 0 7.225 0 7.225h2.4z"/>
+			</svg>
+		</a>
+	</li>
+</ul>
+
+    </div>
+
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+    <p class="text-sm">Based on Hugo and <a href="https://github.com/fauzanmy/pehtheme-hugo" target="_blank" rel="noopener">Pehtheme.</a></p>
+  </div>
+
+</div>
+</footer>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+</body>
+</html>

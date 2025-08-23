@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Logs on Juraj Kosik</title>
+    <link>https://jkosik.github.io/tags/logs/</link>
+    <description>Recent content in Logs on Juraj Kosik</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Jun 2018 14:15:05 +0700</lastBuildDate>
+    <atom:link href="https://jkosik.github.io/tags/logs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Large-Scale Log Management in Cloud</title>
+      <link>https://jkosik.github.io/posts/logs-at-scale/</link>
+      <pubDate>Wed, 13 Jun 2018 14:15:05 +0700</pubDate>
+      <guid>https://jkosik.github.io/posts/logs-at-scale/</guid>
+      <description>&lt;p&gt;Many security guys have already faced a challange to deploy scalable Log Management solution in Cloud using open-source tools only. So had I and documented our approach and shared some hints for you.&#xA;In the case study published on &lt;a href=&#34;https://www.graylog.org/post/large-scale-log-management-deployment-with-graylog-a-customer-perspective&#34;&gt;Graylog Blog&lt;/a&gt; you can find details from the infrastructure and VM level up to the SIEM layer covering &lt;a href=&#34;https://en.wikipedia.org/wiki/Infrastructure_as_code&#34;&gt;Infrasturcture as a Code&lt;/a&gt; and &lt;a href=&#34;https://en.wikipedia.org/wiki/CI/CD&#34;&gt;CICD&lt;/a&gt; as well.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

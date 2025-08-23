@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Microk8s NFS Addon  | Juraj Kosik</title>
+
+<meta name="description" content="How to develop Microk8s &#34;Addon&#34; and make it up to the official version release.">
+      <link rel="stylesheet" href="/css/main.min.584aed796ba9d245f84009d57da9662e9c02059611972780263728b442fc25ff.css" integrity="sha256-WErteWup0kX4QAnVfalmLpwCBZYRlyeAJjcotEL8Jf8=" crossorigin="anonymous">
+
+<link rel="icon" type="image/svg+xml" href="https://jkosik.github.io/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="https://jkosik.github.io/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://jkosik.github.io/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://jkosik.github.io/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="https://jkosik.github.io/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="https://jkosik.github.io/">Juraj Kosik</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://jkosik.github.io/">Juraj Kosik</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="https://jkosik.github.io/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="max-w-4xl mx-auto mb-14">
+
+  <article class="prose lg:prose-lg mx-auto">
+
+    <header class="not-prose">
+
+      <h1 id="title" class="text-4xl font-bold leading-normal">Microk8s NFS Addon </h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">How to develop Microk8s &#34;Addon&#34; and make it up to the official version release. </p>
+
+      </div>
+
+      <div id="writer" class="flex items-center space-x-4"><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+          <li class="font-semibold my-2"></li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2022-05-20T14:15:05&#43;07:00">May 20, 2022</time>
+          </li>
+
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            6 min read
+          </li>
+
+        </ul></div>
+
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="https://jkosik.github.io/images/microk8s-addon/big_hu_64e2534a25986f6b.png" alt="" width="750" height="422">
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p><a href="https://microk8s.io/">Microk8s</a> is a lightweight Kubernetes installation from Canonical easily extensible by &ldquo;Addons&rdquo;. We recognize <a href="https://github.com/canonical/microk8s-core-addons">Core</a> and <a href="https://github.com/canonical/microk8s-community-addons">Community</a> Addons.
+Addon is mostly a Helm Chart or set of Kubernetes manifests enabled and disabled in a user friendly way, as <code>microk8s enable MY_ADDON</code> and <code>microk8s disable MY_ADDON</code>.
+This article describes end-to-end process of building multi-node Microk8s cluster for developing Microk8s Addon, testing and PR procedures.</p>
+<p>Microk8s comes with <code>hostpath-storage</code> Core Addon which creates <code>microk8s-hostpath</code> Storage Class with ReadWriteOnce (RWO) access mode. This mode is fully sufficient of single-node setup where all Pods live on the same node and can share access to a common PVC in read-write mode. We are hitting multiple limits in multi-node cluster. That is why I am going to build Microk8s Addon for NFS Server Provisioner backed by hostpath Persistent Volume.</p>
+<p>Real world usecase we are targeting is as follows:</p>
+<ul>
+<li>Multi-node Microk8s cluster</li>
+<li>One dedicated node acting as NFS Server with sufficiently large disk space</li>
+<li>Workloads spread on any other nodes being able to share common Persistance Volume Claim</li>
+</ul>
+<p>My Addon will be re-using popular <a href="https://artifacthub.io/packages/helm/kvaps/nfs-server-provisioner">nfs-server-provisioner</a> Helm Chart with parametrization customized for our setup.</p>
+<h2 id="installing-microk8s">Installing Microk8s</h2>
+<p>I will use <a href="https://multipass.run/">multipass</a>, Canonical&rsquo;s native virtualization platform to launch two node Kubernetes cluster (<code>master</code> node and <code>worker1</code> node). Two nodes are needed to properly test ReadWriteMany access mode.</p>
+<pre tabindex="0"><code>&gt; multipass launch --name master -m 3G --disk 50G
+&gt; multipass launch --name worker1 -m 3G --disk 50G
+
+❯ multipass list
+Name                    State             IPv4             Image
+master                  Running           10.66.64.198     Ubuntu 20.04 LTS
+worker1                 Running           10.66.64.93      Ubuntu 20.04 LTS
+
+❯ multipass shell master
+ubuntu@master:~$ sudo snap install microk8s --classic --channel=1.24/stable
+microk8s (1.24/stable) v1.24.0 from Canonical✓ installed
+
+ubuntu@master:~$ sudo usermod -a -G microk8s $USER
+ubuntu@master:~$ sudo chown -f -R $USER ~/.kube
+
+# login/logout
+
+ubuntu@master:~$ microk8s status
+microk8s is running
+...snipped...
+</code></pre><p>Microk8s is now running as a single-node. Let&rsquo;s enable one of Core Addons - for DNS.</p>
+<pre tabindex="0"><code>ubuntu@master:~$ microk8s enable dns
+</code></pre><p>We are ready to install <code>worker1</code> node and join it to the cluster. For joining we will need a &ldquo;join URL&rdquo; generated on the <code>master</code> node.</p>
+<pre tabindex="0"><code>ubuntu@master:~$ sudo microk8s add-node
+...snipped
+Use the &#39;--worker&#39; flag to join a node as a worker not running the control plane, eg:
+microk8s join 10.66.64.198:25000/5011f5eb7649dd23100dd8284d4fb523/780b412277c2 --worker
+...snipped...
+
+❯ multipass shell worker1
+ubuntu@worker1:~$ sudo snap install microk8s --classic --channel=1.24/stable
+ubuntu@worker1:~$ sudo microk8s join 10.66.64.198:25000/5011f5eb7649dd23100dd8284d4fb523/780b412277c2 --worker
+</code></pre><p>If all goes well, we should have 2-node cluster up and running. We can now manage our cluster from the <code>master</code> node.
+For convenience let&rsquo;s avoid using <code>microk8s kubectl</code> or <code>microk8s.kubectl</code> and use bash aliases.</p>
+<pre tabindex="0"><code>❯ multipass shell master
+ubuntu@master:~$ echo &#34;alias kubectl=&#39;microk8s kubectl&#39;&#34; &gt;&gt; ~/.bash_aliases
+ubuntu@master:~$ source ~/.bash_aliases
+
+ubuntu@master:~$ kubectl get node
+NAME      STATUS   ROLES    AGE   VERSION
+master    Ready    &lt;none&gt;   13m   v1.24.0-2+59bbb3530b6769
+worker1   Ready    &lt;none&gt;   73s   v1.24.0-2+59bbb3530b6769
+</code></pre><p>We can also export Microk8s kubeconfig using <code>microk8s config</code> command and operate the cluster from the host system.
+Mind, that <code>microk8s</code> commands still have to be run from the <code>master</code> node (or any future control plane node), since <code>microk8s</code> binary is running just there.</p>
+<h2 id="developing-addon">Developing Addon</h2>
+<h3 id="process">Process</h3>
+<p>The process can be summarized as follows:</p>
+<ul>
+<li>Fork <a href="https://github.com/canonical/microk8s-community-addons">Community</a> Addons repository</li>
+<li>Develop your Addon in your repository in a feature branch</li>
+<li>Add your Addons repository into your cluster for manual test</li>
+<li>Develop programatic tests for your Addon using GitHub Workflows</li>
+<li>Run Github Workflows test in your repository</li>
+<li>If all good, raise PR to the source repo (Canonical)</li>
+</ul>
+<h3 id="nfs-volume-provisioner">NFS Volume Provisioner</h3>
+<p>Addons are organized in the following structure:</p>
+<pre tabindex="0"><code>addons.yaml         Authoritative list of addons included in this repository. See format below.
+addons/
+    &lt;addon1&gt;/
+        enable      Executable script that runs when enabling the addon
+        disable     Executable script that runs when disabling the addon
+    &lt;addon2&gt;/
+        enable
+        disable
+    ...
+</code></pre><p><code>addons.yaml</code> helps <code>microk8s</code> binary to identify your Addon in the repository and describes the Addon:</p>
+<pre tabindex="0"><code>    - name: &#34;nfs&#34;
+      description: &#34;NFS Server Provisioner&#34;
+      version: &#34;1.4.0&#34;
+      check_status: &#34;statefulset.apps/nfs-server-provisioner&#34;
+      supported_architectures:
+        - amd64
+</code></pre><p>Individual Addons are maintained in own directory. Directory always contains <code>enable</code> and <code>disable</code> script and optionally any other files needed by the Addon, e.g. additional Kubernetes manifests.</p>
+<p>Microk8s is distributed as a Snap package and Addons are managed through this Snap package as well. Each Snap package uses set of <a href="https://snapcraft.io/docs/environment-variables">Snap specific environment variables</a>
+which can be utilized by our <code>enable</code> and <code>disable</code> scripts. One of the most important Snap environment variable is <code>SNAP</code> variable which links our scripts to the native scripts, wrappers or binaried baked into the Microk8s Snap package itself.</p>
+<h3 id="enable-script">Enable Script</h3>
+<p>Full code can be found here: <a href="https://github.com/canonical/microk8s-community-addons/tree/main/addons/nfs">https://github.com/canonical/microk8s-community-addons/tree/main/addons/nfs</a>.</p>
+<p>Let&rsquo;s see some of the sections of the <code>enable</code> script for our Addon.</p>
+<p>This is the example of Addon accessing <code>microk8s</code>&rsquo;s binaries and configs, baked in the package or generated during the Snap installation.</p>
+<pre tabindex="0"><code>KUBECTL=&#34;$SNAP/kubectl --kubeconfig=${SNAP_DATA}/credentials/client.config&#34;
+&#34;$SNAP/microk8s-enable.wrapper&#34; helm3
+HELM=&#34;$SNAP_DATA/bin/helm3 --kubeconfig=$SNAP_DATA/credentials/client.config&#34;
+</code></pre><p>Now we are deploying the NFS Server Provisioner Helm Chart. Yes, it is simple as that.</p>
+<pre tabindex="0"><code>if [ -z &#34;$NODE_NAME&#34; ]; then
+   $HELM upgrade -i nfs-server-provisioner nfs-ganesha-server-and-external-provisioner/nfs-server-provisioner \
+      --version $CHART_VERSION \
+      --namespace $NAMESPACE --set persistence.enabled=true --set persistence.storageClass=&#39;-&#39;
+else
+   $HELM upgrade -i nfs-server-provisioner nfs-ganesha-server-and-external-provisioner/nfs-server-provisioner \
+      --version $CHART_VERSION \
+      --namespace $NAMESPACE --set persistence.enabled=true --set persistence.storageClass=&#39;-&#39; --set nodeSelector.&#34;kubernetes\.io/hostname&#34;=$NODE_NAME
+fi
+</code></pre><p>Here I am using <code>helm repo add</code> and <code>helm install/upgrade</code> on-the-fly. You can however template Kubernetes manifests in advance,
+update as needed and store them inside the Addon directory.
+Since the Addon can be developed in any programming language which <code>microk8s</code> Snap is capable to run, options are pretty vast.</p>
+<p>Parametrization is again up to the Addon developer. I prefer being user-friendly and maximize abstraction from the underlying Helm Chart.
+In case the customer is technically skilled and needs detailed parametrization, then it is perhaps better to deploy Helm Chart directly and manage values files separately.</p>
+<p>In my case, the Addon allows selection of Microk8s node on which the NFS Server Provisioner will be running and serving it&rsquo;s disk space.</p>
+<pre tabindex="0"><code>microk8s enable nfs -n NODE_NAME
+</code></pre><h2 id="testing-the-addon">Testing the Addon</h2>
+<p>For real testing, let&rsquo;s add our code as a new &ldquo;addons repo&rdquo; into the testing Microk8s cluster.
+I recommend to remove primary community &ldquo;addons repo&rdquo; first (if  present on the cluster):</p>
+<pre tabindex="0"><code>ubuntu@master:~$ microk8s disable community
+ubuntu@master:~$ microk8s addons repo add mycommunity https://github.com/jkosik/microk8s-community-addons --reference MY-FEATURE-BRANCH
+ubuntu@master:~$ microk8s addons repo list
+</code></pre><p>This way only one set of community Addons will be present on the cluster.
+Even though you can install Addon from defined a &ldquo;addons repo&rdquo; by calling <code>microk8s enable mycommunity/ADDON_NAME</code>, I experienced some glitches with duplicate Addon names.</p>
+<p>Lets&rsquo;s confirm available &ldquo;addons repos&rdquo; and launch our new Addon (Addon name is <code>nfs</code> as defined previously in <code>addons.yaml</code>)</p>
+<pre tabindex="0"><code>ubuntu@master:~$ microk8s addons repo list
+REPO       ADDONS SOURCE
+mycommunity     18 https://github.com/jkosik/microk8s-community-addons@880519
+core           17 (built-in)
+
+ubuntu@master:~$ microk8s enable nfs
+Infer repository mycommunity for addon nfs
+Infer repository core for addon helm3
+Enabling Helm 3
+...snipped...
+NFS Server Provisioner is installed
+</code></pre><p>At this point our Addon should be installed on the cluster and we can proceed with testing.
+In case a bug is identified, just push the code to the feature branch and reload Addons repo:</p>
+<pre tabindex="0"><code>microk8s addons repo update mycommunity
+</code></pre><p>Optionally you can update files and folders directly in:</p>
+<pre tabindex="0"><code>ubuntu@master:~/microk8s-community-addons$ ls /var/snap/microk8s/common/addons/
+core  mycommunity
+</code></pre><h2 id="automated-tests">Automated tests</h2>
+<p>Microk8s Core and Community Addons already contain GitHub workflows and <code>pytest</code>s for existing Addons.
+It is pretty straightforward to extend them for out usecase.</p>
+<h2 id="publish">Publish</h2>
+<p>If all goes ok, finally you can raise PR from our repository to Canonical&rsquo;s base repository.
+After merge, you Addon becomes part of Microk8s Community Addons. However nothing prevents you to share your own personal Addon repository directly to outside world.</p>
+<p>Good luck with your new Addons!</p>
+<p>(Addon described in this howto was merged and adopted in <a href="https://microk8s.io/docs/release-notes">MicroK8S v1.25</a>)</p>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/kubernetes/">Kubernetes</a></li>
+    </ul>
+</div>
+
+
+
+  </article>
+
+</div>
+
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="https://jkosik.github.io/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+
+        <span class="text-2xl font-semibold uppercase">Juraj Kosik</span>
+      </a>
+
+      <p class="font-semibold">
+        Cybersecurity, DevSecOps, AI, and Crypto.
+      </p>
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.github.com/jkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+			</svg>
+		</a>
+	</li>
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.linkedin.com/in/jkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.822 0-1.358.54-1.358 1.248 0 .694.521 1.248 1.327 1.248h.015zm4.908 8.212V9.359c0-.215.016-.43.08-.584.175-.43.574-.877 1.243-.877.877 0 1.228.662 1.228 1.634v3.862h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.6 5.6 0 0 1 .016-.025V6.169h-2.4c.03.677 0 7.225 0 7.225h2.4z"/>
+			</svg>
+		</a>
+	</li>
+</ul>
+
+    </div>
+
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+    <p class="text-sm">Based on Hugo and <a href="https://github.com/fauzanmy/pehtheme-hugo" target="_blank" rel="noopener">Pehtheme.</a></p>
+  </div>
+
+</div>
+</footer>
+      <script defer src="/js/insertoggle.474f9b0e08021c6519cff4e46df14ccf148285b2d3a23d6321d6e10f25c291fb.js" integrity="sha256-R0&#43;bDggCHGUZz/TkbfFMzxSChbLToj1jIdbhDyXCkfs=" crossorigin="anonymous"></script>
+</body>
+</html>
