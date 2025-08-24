@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>First steps with machine learning | Juraj Kosik</title>
+
+<meta name="description" content="A bit of theory and practical example to the machine learning process.">
+    <link rel="stylesheet" href="/css/main.css">
+
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="http://localhost:1313/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="http://localhost:1313/">Juraj Kosik</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/">Juraj Kosik</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="max-w-4xl mx-auto mb-14">
+
+  <article class="prose lg:prose-lg mx-auto">
+
+    <header class="not-prose">
+
+      <h1 id="title" class="text-4xl font-bold leading-normal">First steps with machine learning</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">A bit of theory and practical example to the machine learning process. </p>
+
+      </div>
+
+      <div id="writer" class="flex items-center space-x-4"><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+          <li class="font-semibold my-2"></li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-08-14T14:15:05&#43;07:00">August 14, 2025</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            10 min read
+          </li>
+
+        </ul></div>
+
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="http://localhost:1313/images/ml/big_hu_969686971c1056fd.png" alt="" width="750" height="422">
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>&ldquo;Artificial intelligence&rdquo;, &ldquo;Deep learning&rdquo;, &ldquo;Machine learning&rdquo;(ML) and other buzzwords are resonanting around us this decade. We all more or less know what they mean. Or do we? I started to question myself to better understand the topic and write down the notes and ended up with building a simple machine-learned model. Let me share my journey with you.</p>
+<h2 id="entering-machine-learning">Entering machine learning</h2>
+<p>There are already machines around us which looks like thinking and reasoning, like simple calculator. Well yes, but all they know is preprogrammed in the machine directly. Calculator has exact knowledge, that adding 1 to 1 results in 2 with guaranteed correctness. This is ensured by generalised algorithms.</p>
+<p>On contrary, machine learning has no exact algorithms and outcome is not precise. So why to bother?
+Machine learning shines when rules and algorithms would be overly complex if not impossible to define. E.g. to distinguish dog from cat or to detect sarcasm in teh sentence. That is why we teach the model to approximate outcome from a given input.</p>
+<figure><img src="/images/ml/in-out.png">
+</figure>
+
+<p>For example, we define set of inputs and set of expected outputs. Expected output is oftentimes called <code>label</code>, <code>ground truth</code> or <code>target</code>.</p>
+<pre tabindex="0"><code>x = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0] # input
+y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # label / ground truth
+</code></pre><p>Learning process tries to find the rule how to get from <code>X</code> to <code>Y</code>. In ideal case, the learning process will derive to the conclusion, that <code>X=2X-1</code> and use it for any input. This is extremely trivial case, in real world we have complex multi-dimensional inputs and outputs, but let&rsquo;s keep it simple for now.</p>
+<p>Let&rsquo;s summarise the core of Machine learning:</p>
+<ul>
+<li>Handles complex tasks</li>
+<li>Scales well and handles well new unseen tasks</li>
+<li>Improves by having new fresh data</li>
+<li>Needs data (instead of explicit rules)</li>
+<li>Probabilistic</li>
+</ul>
+<h2 id="real-world-use-cases">Real world use cases</h2>
+<p>Machine learning can be used in wide areas, ranging from video processing (self-driving cars), language processing (ChatGPT), predictive analysis (online trading), anomaly detection (cybersecurity), generative AI of all kinds (DALL·E, MidJourney). One can think that ML and related models always represent something &ldquo;big&rdquo;.</p>
+<p>However ML takes its place also in the world of microcontrolers, wearables for sport and health or home devices - so called TinyML. These are use cases where machine learning properties are required, but processor, memory or power consumption are limited.</p>
+<h2 id="basic-learning-process">Basic Learning process</h2>
+<p>We will use the same simple data set:</p>
+<pre tabindex="0"><code>x = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0] # input
+y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # label / ground truth
+</code></pre><p>We need to find or approximate the &ldquo;rule&rdquo; to get from <code>X</code> to <code>Y</code>. To do so, we need to select <code>learning model</code>, which is a mathematical representation how inputs are mapped to outputs. For this case the most suitable learning model is <code>linear regression model</code> which is a in mathematics represented by a linear function, in this case <code>Y=w * X  + b</code>.
+<code>w</code> is called <code>weight</code> and <code>b</code> is <code>bias</code>. Both have their role in calculating the output.</p>
+<p>There are much more complex learing models, than regression models, mainly:</p>
+<ul>
+<li>Neural network model → a network of many parameters (weights, biases).</li>
+<li>Decision tree model → tree of rules.</li>
+</ul>
+<p>Let&rsquo;s keep it simple and come back to our <code>linear regression model</code>. How to calculate weight and bias, i.e. solve the linear function?
+Answer is by <strong>guessing</strong> and improving the guesses in a loop until we reach sufficient accuracy.</p>
+<figure><img src="/images/ml/guess.png">
+</figure>
+
+<p>The following Python code runs manual single guess to try to find optimal <code>w</code> and <code>b</code> so that <code>Y=w * X  + b</code> makes the most reliable outcome.
+Our first guess is: <code>w = 3</code> and <code>b = 1</code> and we will calculate also how far we are from the ground truth, which represents <code>loss</code>.</p>
+<pre tabindex="0"><code>import math
+import matplotlib.pyplot as plt
+
+# Training data (optimal outcome: y=2x-1)
+x = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0] # input
+y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # ground truth output
+
+# Guess the model (Y=w * X + b)
+w = 3
+b = 1
+
+# Make a prediction
+y_pred = []
+
+for x_val in x:
+    y_guess = x_val * w + b
+    y_pred.append(y_guess)
+
+print(&#34;Ground truth:&#34;, y)
+print(&#34;Prediction:&#34;, y_pred)
+
+# Calculate individual losses and overall loss using RMSE (Root Mean Squared Error).
+individual_losses = []
+print(&#34;\nIndividual Losses (Squared Errors):&#34;)
+for i in range(len(x)):
+    error = y_pred[i] - y[i]
+    squared_error = error ** 2
+    individual_losses.append(squared_error)
+
+print(individual_losses)
+
+# Calculate overall loss (Root Mean Squared Error)
+mse = sum(individual_losses) / len(individual_losses)
+rmse = math.sqrt(mse)
+print(f&#34;\nOverall Loss (Root Mean Squared Error): {rmse:.2f}&#34;)
+
+...snipped...
+</code></pre><p>As a result we got an array of predicted (guessed) <code>Y</code> values, which are slightly off the ground truth and the difference represent the <code>loss</code>:</p>
+<pre tabindex="0"><code>Ground truth: [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0]
+Prediction: [-2.0, 1.0, 4.0, 7.0, 10.0, 13.0]
+
+Individual Losses (Squared Errors):
+[1.0, 4.0, 9.0, 16.0, 25.0, 36.0]
+
+Overall Loss (Root Mean Squared Error): 3.89
+</code></pre><p>The loss is calculated as Root mean squared error (RMSE). RMSE prevents negative losses cancellling out opposite ones. See <a href="https://www.appliedaicourse.com/blog/root-mean-square-error-rmse/">this page</a> to know more about the RMSE method. There are also others loss calculation methods - MAE (Mean Absolute Error), MSE (Mean Squared Error), etc.</p>
+<p>Loss visualised:
+<figure><img src="/images/ml/plot1.png">
+</figure>
+</p>
+<p>Our overall loss is 3.89 which is quite far from 0. Our guess was wrong.</p>
+<h2 id="impoved-guessing-by-gradient-descent-learning">Impoved guessing by Gradient Descent learning</h2>
+<p>We can continue in guessing, until the loss is low. It will probably take ages for larger input sets.
+We can also start observing how loss evolves based on the changes of weight and bias and make adjustments accrodingly in the next guess. This technique is called Gradient Descent. Now it can get a bit complicated&hellip;The simplest visual representation is a symetric curve and abstraction of bias:</p>
+<figure><img src="/images/ml/gradient1.png">
+</figure>
+
+<p>By adjusting weight, the loss should get closer to the minimum loss in a stable pace and over a stable gradient. We need to count few parameters: how loss evolves, how gradient (positional change between previous and new loss) evolves. We also need to decide on optimal steps of weight change in the next guess - so called learning step. Large learning step can overshoot the minimum loss. Small learning step may heavily pro,ong the learning process.</p>
+<p>No worries, here comes <code>Tensorflow</code> framework to save us! Tensorflow allows flow of the data (from simple scalar, through 1D vectors, 2D matrices, up to multidimensional data) through various computational operations.
+Tensorflow support so called GradientTape (in Python <code>tf.GradientTape</code> class) which runs Gradient Descent learning for us.</p>
+<p>Code for running Gradient Descent learning in Python:</p>
+<pre tabindex="0"><code>import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define our initial guess
+INITIAL_W = 10.0
+INITIAL_B = 10.0
+
+# Define our simple regression model
+class Model(object):
+    def __init__(self):
+        # Initialize the weights
+        self.w = tf.Variable(INITIAL_W)
+        self.b = tf.Variable(INITIAL_B)
+
+    def __call__(self, x):
+        return self.w * x + self.b
+
+# Define our loss function
+def loss(predicted_y, target_y):
+    return tf.reduce_mean(tf.square(predicted_y - target_y))
+
+
+# Define our training procedure
+def train(model, inputs, outputs, learning_rate):
+    with tf.GradientTape() as t:
+        # loss function
+        current_loss = loss(model(inputs), outputs)
+
+        # Here is where you differentiate loss function w.r.t model parameters
+        dw, db = t.gradient(current_loss, [model.w, model.b])  # dloss/dw, dloss/db
+
+        # And here is where you update the model parameters based on the learning rate chosen
+        model.w.assign_sub(learning_rate * dw)  # model.w = model.w - learning_rate*dw
+        model.b.assign_sub(learning_rate * db)  # model.b = model.b - learning_rate*db
+    return current_loss
+
+
+# Define our input data and learning rate
+xs = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0]
+ys = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0]
+LEARNING_RATE = 0.14   #0.09
+
+# Instantiate our model
+model = Model()
+
+# Collect the history of w-values and b-values to plot later
+list_w, list_b = [], []
+epochs = 50
+losses = []
+
+for epoch in range(epochs):
+    list_w.append(model.w.numpy())
+    list_b.append(model.b.numpy())
+    current_loss = train(model, xs, ys, learning_rate=LEARNING_RATE)
+    losses.append(current_loss)
+    print(&#39;Epoch %2d: w=%.2f b=%.2f, loss=%.2f&#39; %
+          (epoch, list_w[-1], list_b[-1], current_loss))
+</code></pre><p>Command output shows, how each guess iteration (called Epoch) and adjustment of weight and bias lead to the loss decrease:</p>
+<pre tabindex="0"><code>Epoch  0: w=10.00 b=10.00, loss=715.67
+Epoch  1: w=-6.19 b=3.56, loss=255.55
+Epoch  2: w=3.74 b=5.72, loss=96.13
+Epoch  3: w=-1.60 b=3.11, loss=39.55
+Epoch  4: w=1.88 b=3.47, loss=18.51
+Epoch  5: w=0.17 b=2.27, loss=10.01
+Epoch  6: w=1.44 b=2.12, loss=6.13
+Epoch  7: w=0.94 b=1.48, loss=4.08
+...snipped...
+Epoch 24: w=1.94 b=-0.82, loss=0.02
+Epoch 25: w=1.95 b=-0.85, loss=0.01
+Epoch 26: w=1.96 b=-0.87, loss=0.01
+Epoch 27: w=1.96 b=-0.89, loss=0.01
+Epoch 28: w=1.97 b=-0.90, loss=0.01
+Epoch 29: w=1.97 b=-0.92, loss=0.00
+...snipped...
+Epoch 49: w=2.00 b=-1.00, loss=0.00
+</code></pre><p>Our loss is 0.00, if weight is 2.00 and bias -1.00. We reached 100% accuracy. Which builds a learned rule <code>Y=2X-1</code>. 🎊</p>
+<p>Easy, right? But in real world it is much more complex. We can have not 1-demensional input data, but 100-dimensional. Already at 3 dimensions gradient descent looks significantly more complicated:
+<figure><img src="/images/ml/gradient2.png">
+</figure>
+</p>
+<h2 id="neural-networks">Neural networks</h2>
+<p>Regression models are now explain and we have a good foothold to make a next step - use Neural networks to find relation between our <code>X</code>-es and <code>Y</code>-s
+Neural networks is a composition of computational neurons.</p>
+<p>What in <code>neuron</code>?
+Neuron is a methaphorical term for mathematic function, e.g. <code>Y=w1 * X1 ​+ w2 * ​X2​ + ... + wN * X​N ​+ b</code>.
+Neurons are characterized also by an <code>input_shape</code> - in our 1-dimensional input set it equals 1 and it makes the neuron (function) look as <code>Y=w * X  ​+ b</code>.</p>
+<p>Neuron network is usually composed of multiple neuron layer containing multiple neurons. In our example we are ok with a one-layer network with 1 neuron inside.</p>
+<figure><img src="/images/ml/neuron1.png">
+</figure>
+
+<p>We will use again Gradien descent technique for optimised next guesses.</p>
+<p>Tensorflow offers abstraction API layer <code>keras</code> to build a neuron network and run learning process for us.</p>
+<pre tabindex="0"><code>import tensorflow as tf
+from tensorflow import keras
+import numpy as np
+
+# Define the model
+model = keras.Sequential([
+    keras.layers.Dense(units=1, input_shape=[1]) # 1 neuron, 1 input
+])
+
+# Compile the model
+model.compile(optimizer=&#39;sgd&#39;, loss=&#39;mean_squared_error&#39;) # stochastic gradient descent (sgd) and measure the loss as MSE
+
+# Training data (y=2x-1)
+xs = np.array([-1.0, 0.0, 1.0, 2.0, 3.0, 4.0], dtype=float) # input
+ys = np.array([-3.0, -1.0, 1.0, 3.0, 5.0, 7.0], dtype=float) # ground truth output
+
+
+# Train the model
+model.fit(xs, ys, epochs=50) # make a guess, measure the loss, optimise and repeat epoch-times
+
+# Make a prediction (runs the input through the trained model.)
+print(model.predict(np.array([10.0]))) # try to predict the output of 10.0
+</code></pre><p>The code tries to predict <code>Y</code> for <code>X=10</code> and result in:</p>
+<pre tabindex="0"><code>...snipped...
+Epoch 46/50
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 32ms/step - loss: 0.2438
+Epoch 47/50
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 22ms/step - loss: 0.2388
+Epoch 48/50
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 16ms/step - loss: 0.2339
+Epoch 49/50
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 18ms/step - loss: 0.2291
+Epoch 50/50
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step - loss: 0.2244
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 21ms/step
+[[17.614405]]
+</code></pre><p>By following <code>X=2X-1</code> we would get <code>19</code>. Our minimalistic neural network responds by <code>17.614405]</code>. In this case neural network was outperformed by regression learning model. However regresion model will heavily fail on more complex input data sets.
+Also in this simple case, neural network will perform well, if we increase the number of epochs (guessing iterations) or parametrise default settings of SDG(stochastic gradient descent) used for guess optimisation.</p>
+<h2 id="more-real-world-neuron-network">More real world neuron network</h2>
+<p>In real world, neuron networks can be much larger, consisted of many layers of many neurons each and also input and output elemnts can vary.</p>
+<figure><img src="/images/ml/neuron2.png">
+</figure>
+
+<p>There are also various additional functions, which are executed during the activation of neuron networks.</p>
+<p>TDDO:</p>
+<ul>
+<li>end of 3.2 - injecting pixels and get probabilities. Each output neuron represents certain digit</li>
+</ul>
+<p>Tuning:</p>
+<ul>
+<li>Activation function(s)</li>
+<li>num of layers</li>
+<li>num of neurons</li>
+<li>links..</li>
+<li>learning optimisation - &ldquo;adam&rdquo; instead of &ldquo;gradient descent&rdquo;</li>
+<li>layer relation</li>
+<li>loss calculation</li>
+</ul>
+<p>SDepends on input data</p>
+<p>Use data for training and different for validation and test</p>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/ai/">AI</a></li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/feature/">Feature</a></li>
+    </ul>
+</div>
+
+  </article>
+
+</div>
+
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="http://localhost:1313/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+
+        <span class="text-2xl font-semibold uppercase">Juraj Kosik</span>
+      </a>
+
+      <p class="font-semibold">
+        Cybersecurity, DevSecOps, AI, and Crypto.
+      </p>
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.github.com/jkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+			</svg>
+		</a>
+	</li>
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.linkedin.com/in/jurajkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.821 0-1.358.54-1.358 1.248 0 .694.521 1.248 1.327 1.248h.015zm4.908 8.212h2.4v-4.045c0-.216.016-.432.08-.586.176-.432.576-.88 1.248-.88.88 0 1.232.664 1.232 1.637v3.874h2.4v-4.146c0-2.22-1.184-3.252-2.76-3.252-1.28 0-1.845.711-2.165 1.211h.016v-1.04h-2.4c.032.672 0 7.225 0 7.225z"/>
+			</svg>
+		</a>
+	</li>
+</ul>
+
+    </div>
+
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">Powered by Hugo and <a href="https://github.com/fauzanmy/pehtheme-hugo" target="_blank" rel="noopener">Pehtheme</a></p>
+
+  </div>
+
+</div>
+</footer>
+      <script src="/js/insertoggle.js"></script>
+</body>
+</html>
