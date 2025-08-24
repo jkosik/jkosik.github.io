@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Juraj Kosik</title>
-    <link>https://jkosik.github.io/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Juraj Kosik</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 04 May 2025 14:15:05 +0700</lastBuildDate>
-    <atom:link href="https://jkosik.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Supercharging your AI agent with MCP (Model Context Protocol)</title>
-      <link>https://jkosik.github.io/posts/mcp/</link>
+      <title>Supercharging your AI agent with MCP</title>
+      <link>http://localhost:1313/posts/mcp/</link>
       <pubDate>Sun, 04 May 2025 14:15:05 +0700</pubDate>
-      <guid>https://jkosik.github.io/posts/mcp/</guid>
+      <guid>http://localhost:1313/posts/mcp/</guid>
       <description>&lt;p&gt;In this blog post, I’ll show you how I supercharged the Cursor code assistant by feeding it real-time data from remote data sources — essentially teaching it things it wasn’t pre-trained to know. Technology described offers huge range of other use cases and is a &amp;ldquo;new big thing in AI&amp;rdquo;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Minting own cryptocurrency</title>
-      <link>https://jkosik.github.io/posts/crypto/</link>
+      <link>http://localhost:1313/posts/crypto/</link>
       <pubDate>Sun, 29 Dec 2024 14:15:05 +0700</pubDate>
-      <guid>https://jkosik.github.io/posts/crypto/</guid>
+      <guid>http://localhost:1313/posts/crypto/</guid>
       <description>&lt;p&gt;The year 2024 marked another thrilling crypto bull run, capturing widespread mainstream attention. In this blog, we’ll take you through the entire process of minting your own cryptocurrency on the Solana blockchain, listing it on a crypto exchange to monetize your efforts, and exploring how bad actors could exploit these same steps to commit fraud.&lt;/p&gt;</description>
     </item>
     <item>
       <title>On-prem AI</title>
-      <link>https://jkosik.github.io/posts/ai/</link>
+      <link>http://localhost:1313/posts/ai/</link>
       <pubDate>Wed, 04 Sep 2024 14:15:05 +0700</pubDate>
-      <guid>https://jkosik.github.io/posts/ai/</guid>
+      <guid>http://localhost:1313/posts/ai/</guid>
       <description>&lt;p&gt;This blog post provides a high-level overview of building a self-hosted AI system on-premises from scratch. Given the complexity of the topic, I&amp;rsquo;ll highlight key points that should prompt further self-study. My goal is to give you a basic understanding of the components involved, how they interact, and the steps needed to set up AI infrastructure locally.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Subdomain Takeover</title>
-      <link>https://jkosik.github.io/posts/domain-takeover/</link>
+      <link>http://localhost:1313/posts/domain-takeover/</link>
       <pubDate>Thu, 16 Mar 2023 14:15:05 +0700</pubDate>
-      <guid>https://jkosik.github.io/posts/domain-takeover/</guid>
+      <guid>http://localhost:1313/posts/domain-takeover/</guid>
       <description>&lt;p&gt;Have you been thinking about taking over somebody else&amp;rsquo;s domain or subdomain and manage it as your own one? Let me demonstrate today, that it may not be that hard.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Microk8s NFS Addon </title>
-      <link>https://jkosik.github.io/posts/microk8s/</link>
+      <title>Microk8s NFS Addon</title>
+      <link>http://localhost:1313/posts/microk8s/</link>
       <pubDate>Fri, 20 May 2022 14:15:05 +0700</pubDate>
-      <guid>https://jkosik.github.io/posts/microk8s/</guid>
+      <guid>http://localhost:1313/posts/microk8s/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://microk8s.io/&#34;&gt;Microk8s&lt;/a&gt; is a lightweight Kubernetes installation from Canonical easily extensible by &amp;ldquo;Addons&amp;rdquo;. We recognize &lt;a href=&#34;https://github.com/canonical/microk8s-core-addons&#34;&gt;Core&lt;/a&gt; and &lt;a href=&#34;https://github.com/canonical/microk8s-community-addons&#34;&gt;Community&lt;/a&gt; Addons.&#xA;Addon is mostly a Helm Chart or set of Kubernetes manifests enabled and disabled in a user friendly way, as &lt;code&gt;microk8s enable MY_ADDON&lt;/code&gt; and &lt;code&gt;microk8s disable MY_ADDON&lt;/code&gt;.&#xA;This article describes end-to-end process of building multi-node Microk8s cluster for developing Microk8s Addon, testing and PR procedures.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>ModSecurity Rules Management in Kubernetes</title>
-      <link>https://jkosik.github.io/posts/modsecurity/</link>
+      <title>Web application SaaS firewall in Kubernetes</title>
+      <link>http://localhost:1313/posts/modsecurity/</link>
       <pubDate>Thu, 01 Oct 2020 14:15:05 +0700</pubDate>
-      <guid>https://jkosik.github.io/posts/modsecurity/</guid>
+      <guid>http://localhost:1313/posts/modsecurity/</guid>
       <description>&lt;p&gt;&lt;em&gt;This article was published in the Deutsche Telekom Pan-Net Blog&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;how-to-manage-modsecurity-rules-for-nginx-using-web-ui-kubernetes-cicd-and-git&#34;&gt;How to manage ModSecurity rules for Nginx using web UI, Kubernetes, CICD and git&lt;/h2&gt;&#xA;&lt;p&gt;Most of the online companies nowadays understand the risk of exposing web applications to the Internet. We are not any exception. As many others we are running the workloads in Kubernetes and try to utilize this platform for ensuring application security as well.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Google Chrome Extension</title>
-      <link>https://jkosik.github.io/posts/google-chrome/</link>
+      <link>http://localhost:1313/posts/google-chrome/</link>
       <pubDate>Tue, 03 Dec 2019 14:15:05 +0700</pubDate>
-      <guid>https://jkosik.github.io/posts/google-chrome/</guid>
+      <guid>http://localhost:1313/posts/google-chrome/</guid>
       <description>&lt;p&gt;Have you been looking for a Google Chrome Extension precisely for your usecase without any luck? Have you spent searching and trying this or that alternative and still have not found the right one? If you have been considering to write your own Chrome plugin, I am sharing a brief tutorial how to create own Extension without need to go through the extensive documentation.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Large-Scale Log Management in Cloud</title>
-      <link>https://jkosik.github.io/posts/logs-at-scale/</link>
+      <link>http://localhost:1313/posts/logs-at-scale/</link>
       <pubDate>Wed, 13 Jun 2018 14:15:05 +0700</pubDate>
-      <guid>https://jkosik.github.io/posts/logs-at-scale/</guid>
+      <guid>http://localhost:1313/posts/logs-at-scale/</guid>
       <description>&lt;p&gt;Many security guys have already faced a challange to deploy scalable Log Management solution in Cloud using open-source tools only. So had I and documented our approach and shared some hints for you.&#xA;In the case study published on &lt;a href=&#34;https://www.graylog.org/post/large-scale-log-management-deployment-with-graylog-a-customer-perspective&#34;&gt;Graylog Blog&lt;/a&gt; you can find details from the infrastructure and VM level up to the SIEM layer covering &lt;a href=&#34;https://en.wikipedia.org/wiki/Infrastructure_as_code&#34;&gt;Infrasturcture as a Code&lt;/a&gt; and &lt;a href=&#34;https://en.wikipedia.org/wiki/CI/CD&#34;&gt;CICD&lt;/a&gt; as well.&lt;/p&gt;</description>
     </item>
   </channel>

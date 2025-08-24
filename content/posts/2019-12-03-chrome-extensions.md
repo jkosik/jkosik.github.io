@@ -2,7 +2,7 @@
 title: "Google Chrome Extension"
 date: 2019-12-03T14:15:05+07:00
 slug: google-chrome
-description: How to build simple Chrome Extension from scratch.
+description: How to build a simple Chrome Extension from scratch.
 image: images/chrome-extension/big.png
 categories:
   - tech
