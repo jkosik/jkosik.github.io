@@ -83,7 +83,7 @@
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            10 min read
+            11 min read
           </li>
 
         </ul></div>
@@ -127,7 +127,7 @@ y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # label / ground truth
 <code>w</code> is called <code>weight</code> and <code>b</code> is <code>bias</code>. Both have their role in calculating the output.</p>
 <p>There are much more complex learing models, than regression models, mainly:</p>
 <ul>
-<li>Neural network model → a network of many parameters (weights, biases).</li>
+<li>Neur network model → a network of many parameters (weights, biases).</li>
 <li>Decision tree model → tree of rules.</li>
 </ul>
 <p>Let&rsquo;s keep it simple and come back to our <code>linear regression model</code>. How to calculate weight and bias, i.e. solve the linear function?
@@ -195,7 +195,9 @@ We can also start observing how loss evolves based on the changes of weight and 
 </figure>
 
 <p>By adjusting weight, the loss should get closer to the minimum loss in a stable pace and over a stable gradient. We need to count few parameters: how loss evolves, how gradient (positional change between previous and new loss) evolves. We also need to decide on optimal steps of weight change in the next guess - so called learning step. Large learning step can overshoot the minimum loss. Small learning step may heavily pro,ong the learning process.</p>
-<p>No worries, here comes <code>Tensorflow</code> framework to save us! Tensorflow allows flow of the data (from simple scalar, through 1D vectors, 2D matrices, up to multidimensional data) through various computational operations.
+<p>No worries, here comes <code>Tensorflow</code> framework to save us!</p>
+<h3 id="tensorflow">Tensorflow</h3>
+<p>Tensorflow allows flow of the data (from simple scalar, through 1D vectors, 2D matrices, up to multidimensional data) through various computational operations.
 Tensorflow support so called GradientTape (in Python <code>tf.GradientTape</code> class) which runs Gradient Descent learning for us.</p>
 <p>Code for running Gradient Descent learning in Python:</p>
 <pre tabindex="0"><code>import tensorflow as tf
@@ -283,14 +285,14 @@ Epoch 49: w=2.00 b=-1.00, loss=0.00
 <p>Regression models are now explain and we have a good foothold to make a next step - use Neural networks to find relation between our <code>X</code>-es and <code>Y</code>-s
 Neural networks is a composition of computational neurons.</p>
 <p>What in <code>neuron</code>?
-Neuron is a methaphorical term for mathematic function, e.g. <code>Y=w1 * X1 ​+ w2 * ​X2​ + ... + wN * X​N ​+ b</code>.
-Neurons are characterized also by an <code>input_shape</code> - in our 1-dimensional input set it equals 1 and it makes the neuron (function) look as <code>Y=w * X  ​+ b</code>.</p>
-<p>Neuron network is usually composed of multiple neuron layer containing multiple neurons. In our example we are ok with a one-layer network with 1 neuron inside.</p>
+Neuron is a methaphorical term for mathematic function, e.g. <code>Y=(w * X) + ( ) + ... + ( ) ​+ b</code>. The longer the polynomial more neurons the network has. Middle terms inside the polynomial contain weights and variables - not X, but products of the previous neurons. More complex the neural network, the more complext the final functions are.</p>
+<p>The most simple neural networks contains single input, single neuron and single output:</p>
 <figure><img src="/images/ml/neuron1.png">
 </figure>
 
-<p>We will use again Gradien descent technique for optimised next guesses.</p>
-<p>Tensorflow offers abstraction API layer <code>keras</code> to build a neuron network and run learning process for us.</p>
+<p>This setups results into <code>Y=(w * X) ​+ b</code> function.
+We will use again Gradient descent loss calculation.</p>
+<p>Tensorflow offers abstraction API layer <code>keras</code> to build a neural network and run learning process for us.</p>
 <pre tabindex="0"><code>import tensorflow as tf
 from tensorflow import keras
 import numpy as np
@@ -327,14 +329,34 @@ Epoch 50/50
 1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step - loss: 0.2244
 1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 21ms/step
 [[17.614405]]
-</code></pre><p>By following <code>X=2X-1</code> we would get <code>19</code>. Our minimalistic neural network responds by <code>17.614405]</code>. In this case neural network was outperformed by regression learning model. However regresion model will heavily fail on more complex input data sets.
-Also in this simple case, neural network will perform well, if we increase the number of epochs (guessing iterations) or parametrise default settings of SDG(stochastic gradient descent) used for guess optimisation.</p>
-<h2 id="more-real-world-neuron-network">More real world neuron network</h2>
-<p>In real world, neuron networks can be much larger, consisted of many layers of many neurons each and also input and output elemnts can vary.</p>
+</code></pre><p>Linear regression model (<code>X=2X-1</code>) produced the result <code>19</code>. Our minimalistic neural network responds with <code>17.614405</code>. In this case neural network was outperformed by simpler regression learning model. However regresion model will heavily fail on more complex input data sets.</p>
+<h3 id="improving-the-neuron-network">Improving the Neuron network</h3>
+<p>Neural network will perform better, if we increase the number of epochs (guessing iterations), adjust loss calculation or include more neurons.</p>
+<p>The following diagram contains two layers and three neurons in total. The same input <code>X</code> is passed through to two neurons in the first layer. First layer neurons forward their results to the second layer where a single neuron executes the final loss detection and calculation and provides the final output <code>Y</code>.</p>
 <figure><img src="/images/ml/neuron2.png">
 </figure>
 
-<p>There are also various additional functions, which are executed during the activation of neuron networks.</p>
+<p>On the code level we will change the learning model definition as follows:</p>
+<pre tabindex="0"><code># Define the model
+layer1 = keras.layers.Dense(units=2, input_shape=[1]) # input_shape is defined only for the first layer
+layer2 = keras.layers.Dense(units=1) # automatically gets inputs from the previous layer
+
+model = keras.Sequential([layer1, layer2]) # 2 layers. 2 neurons in L1, 1 neuron in L2
+</code></pre><p>&hellip;and the result will be more precise: <code>18.252928</code>.</p>
+<p>How does our original single-neuron function <code>Y=(w * X) ​+ b</code> change in multi-neuron network? Each neuron guesses own weight and bias and the output is passed as an input for the next neuron when new weight and new bias is applied:</p>
+<figure><img src="/images/ml/neuron3.png">
+</figure>
+
+<h3 id="real-world-use-cases-1">Real-world use cases</h3>
+<p>In the real world, neural networks can be much more complex and characterised by:</p>
+<ul>
+<li>many layers</li>
+<li>many neurons in each layer</li>
+<li>neurons can talk to to themselves or neurons in the same layer</li>
+<li>neuron talk to a subset of neurons in the previous layer</li>
+<li><code>X</code> and <code>Y</code> can be multidimensional</li>
+</ul>
+<p>It depends how which use case we are addressing. However this blog assumes standard feedforward networks (Dense/Sequential in Keras) where each neuron talks to all neurons in the next layer.</p>
 <p>TDDO:</p>
 <ul>
 <li>end of 3.2 - injecting pixels and get probabilities. Each output neuron represents certain digit</li>
