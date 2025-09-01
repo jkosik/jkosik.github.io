@@ -2,6 +2,7 @@ import tensorflow as tf
 from tensorflow import keras
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 # Load training data
 data = tf.keras.datasets.mnist
@@ -58,7 +59,7 @@ model.fit(training_images, training_labels, epochs=20, validation_data=(val_imag
 # Validate the model
 model.evaluate(val_images, val_labels) # Run validation again on any further validation data sets
 
-# Validate single item form the validation set (number 7). 
+# Validate single item form the validation set (number 7).
 classifications = model.predict(val_images)
 print(classifications[0]) # See the highest probability set for the 7th index
 print("Predicted class: ", np.argmax(classifications[0]))
@@ -75,3 +76,94 @@ print("The actual class: ", val_labels[0])
 print(layer1.get_weights()[0].size)
 # Total bias in the layer
 print(layer1.get_weights()[1].size)
+
+
+
+# Save the model in Keras format
+print("Saving model in Keras format")
+export_dir = 'saved_models/model-letters.keras'
+model.save(export_dir)
+
+# Convert the model to TFLite format
+print("Converting model to TFLite format")
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+# converter.optimizations = [tf.lite.Optimize.DEFAULT] # optional optimizations
+tflite_model = converter.convert()
+
+# Save the TFLite model
+tflite_path = 'saved_models/model-letters.tflite'
+with open(tflite_path, 'wb') as f:
+    f.write(tflite_model)
+print(f"TFLite model saved to: {tflite_path}")
+
+# Print model sizes for comparison
+keras_size = os.path.getsize(export_dir)
+tflite_size = os.path.getsize(tflite_path)
+print(f"Keras model size: {keras_size:,} bytes")
+print(f"TFLite model size: {tflite_size:,} bytes")
+print(f"Size reduction: {((keras_size - tflite_size) / keras_size * 100):.1f}%")
+
+# Compare accuracy between Keras and TFLite models
+print("\n=== Model Accuracy Comparison ===")
+
+# Test Keras model accuracy
+keras_predictions = model.predict(val_images)
+keras_predicted_classes = np.argmax(keras_predictions, axis=1)
+keras_accuracy = np.mean(keras_predicted_classes == val_labels)
+print(f"Keras model accuracy: {keras_accuracy:.4f} ({keras_accuracy*100:.2f}%)")
+
+# Test TFLite model accuracy
+interpreter = tf.lite.Interpreter(model_path=tflite_path)
+interpreter.allocate_tensors()
+
+# Get input and output tensors
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+print(f"TFLite input shape: {input_details[0]['shape']}")
+print(f"TFLite output shape: {output_details[0]['shape']}")
+
+# Run predictions on TFLite model
+tflite_predictions = []
+for i in range(len(val_images)):
+    # Set input tensor
+    interpreter.set_tensor(input_details[0]['index'], val_images[i:i+1].astype(np.float32))
+
+    # Run inference
+    interpreter.invoke()
+
+    # Get output
+    output_data = interpreter.get_tensor(output_details[0]['index'])
+    tflite_predictions.append(output_data[0])
+
+tflite_predictions = np.array(tflite_predictions)
+tflite_predicted_classes = np.argmax(tflite_predictions, axis=1)
+tflite_accuracy = np.mean(tflite_predicted_classes == val_labels)
+print(f"TFLite model accuracy: {tflite_accuracy:.4f} ({tflite_accuracy*100:.2f}%)")
+
+# Calculate accuracy difference
+accuracy_diff = abs(keras_accuracy - tflite_accuracy)
+print(f"Accuracy difference: {accuracy_diff:.4f} ({accuracy_diff*100:.2f} percentage points)")
+
+# Check if accuracies match closely (within 0.1% is typically acceptable)
+if accuracy_diff < 0.001:
+    print("✅ Excellent: Accuracies are nearly identical!")
+elif accuracy_diff < 0.01:
+    print("✅ Good: Accuracies are very close (< 1% difference)")
+elif accuracy_diff < 0.05:
+    print("⚠️  Acceptable: Small accuracy difference (< 5%)")
+else:
+    print("❌ Warning: Significant accuracy difference (> 5%)")
+
+# Test on a few individual samples for detailed comparison
+print(f"\n=== Sample Predictions Comparison (first 5 validation samples) ===")
+for i in range(5):
+    keras_pred_class = keras_predicted_classes[i]
+    tflite_pred_class = tflite_predicted_classes[i]
+    actual_class = val_labels[i]
+
+    match_indicator = "✅" if keras_pred_class == tflite_pred_class else "❌"
+    correct_indicator = "✅" if actual_class == keras_pred_class == tflite_pred_class else "❌"
+
+    print(f"Sample {i}: Actual={actual_class}, Keras={keras_pred_class}, TFLite={tflite_pred_class} {match_indicator} {correct_indicator}")
+

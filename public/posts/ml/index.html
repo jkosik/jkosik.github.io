@@ -6,7 +6,7 @@
 
 <title>First steps with machine learning | Juraj Kosik</title>
 
-<meta name="description" content="A bit of theory and practical example to the machine learning process.">
+<meta name="description" content="A bit of theory and practical example of the machine learning process.">
     <link rel="stylesheet" href="/css/main.css">
 
 <link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg"> 
@@ -71,7 +71,7 @@
 
       <div id="lead" class="my-6">
 
-        <p class="font-bold">A bit of theory and practical example to the machine learning process. </p>
+        <p class="font-bold">A bit of theory and practical example of the machine learning process. </p>
 
       </div>
 
@@ -83,7 +83,7 @@
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            11 min read
+            13 min read
           </li>
 
         </ul></div>
@@ -282,17 +282,20 @@ Epoch 49: w=2.00 b=-1.00, loss=0.00
 </figure>
 </p>
 <h2 id="neural-networks">Neural networks</h2>
-<p>Regression models are now explain and we have a good foothold to make a next step - use Neural networks to find relation between our <code>X</code>-es and <code>Y</code>-s
-Neural networks is a composition of computational neurons.</p>
+<p>Regression models are now explained and we have a good foothold to make a next step - Neural networks.
+Neural networks is a composition of computational neurons which together solve operations, to find relation between our <code>X</code>-es and <code>Y</code>-s.
+Machine learning using neural networks is also called deep machine learning.</p>
 <p>What in <code>neuron</code>?
-Neuron is a methaphorical term for mathematic function, e.g. <code>Y=(w * X) + ( ) + ... + ( ) ​+ b</code>. The longer the polynomial more neurons the network has. Middle terms inside the polynomial contain weights and variables - not X, but products of the previous neurons. More complex the neural network, the more complext the final functions are.</p>
+Neuron is a methaphorical term for mathematic function, e.g. <code>Y=(w * X) + ( ) + ... + ( ) ​+ b</code>. The longer the polynomial more neurons the network has. Terms inside the polynomial contain weights and inputs. Each layer is the input for thext layer.
+Weights are associated with connection between the previous and next layer - more inputs and neurons, more links between them, thus more wights.
+Biases are associated with the number of neurons in the particular layer - each neuron introduces certain bias.</p>
 <p>The most simple neural networks contains single input, single neuron and single output:</p>
 <figure><img src="/images/ml/neuron1.png">
 </figure>
 
 <p>This setups results into <code>Y=(w * X) ​+ b</code> function.
 We will use again Gradient descent loss calculation.</p>
-<p>Tensorflow offers abstraction API layer <code>keras</code> to build a neural network and run learning process for us.</p>
+<p>Tensorflow offers abstraction API <code>keras</code> for building and training ML models.</p>
 <pre tabindex="0"><code>import tensorflow as tf
 from tensorflow import keras
 import numpy as np
@@ -330,7 +333,7 @@ Epoch 50/50
 1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 21ms/step
 [[17.614405]]
 </code></pre><p>Linear regression model (<code>X=2X-1</code>) produced the result <code>19</code>. Our minimalistic neural network responds with <code>17.614405</code>. In this case neural network was outperformed by simpler regression learning model. However regresion model will heavily fail on more complex input data sets.</p>
-<h3 id="improving-the-neuron-network">Improving the Neuron network</h3>
+<h3 id="improving-the-neural-network">Improving the neural network</h3>
 <p>Neural network will perform better, if we increase the number of epochs (guessing iterations), adjust loss calculation or include more neurons.</p>
 <p>The following diagram contains two layers and three neurons in total. The same input <code>X</code> is passed through to two neurons in the first layer. First layer neurons forward their results to the second layer where a single neuron executes the final loss detection and calculation and provides the final output <code>Y</code>.</p>
 <figure><img src="/images/ml/neuron2.png">
@@ -343,36 +346,75 @@ layer2 = keras.layers.Dense(units=1) # automatically gets inputs from the previo
 
 model = keras.Sequential([layer1, layer2]) # 2 layers. 2 neurons in L1, 1 neuron in L2
 </code></pre><p>&hellip;and the result will be more precise: <code>18.252928</code>.</p>
-<p>How does our original single-neuron function <code>Y=(w * X) ​+ b</code> change in multi-neuron network? Each neuron guesses own weight and bias and the output is passed as an input for the next neuron when new weight and new bias is applied:</p>
+<p>How does our original single-neuron function <code>Y=(w * X) ​+ b</code> change in multi-neuron network? Each neuron guesses own weight and bias and the output is passed as an input for the next neuron when new weight and new bias is applied, resulting in <code>Y=(w3 * N1) + (w4 * N2) + b3</code>:</p>
 <figure><img src="/images/ml/neuron3.png">
 </figure>
 
-<h3 id="real-world-use-cases-1">Real-world use cases</h3>
+<h2 id="real-world">Real-world</h2>
 <p>In the real world, neural networks can be much more complex and characterised by:</p>
 <ul>
 <li>many layers</li>
 <li>many neurons in each layer</li>
 <li>neurons can talk to to themselves or neurons in the same layer</li>
 <li>neuron talk to a subset of neurons in the previous layer</li>
+<li>added &ldquo;activation&rdquo; functions</li>
 <li><code>X</code> and <code>Y</code> can be multidimensional</li>
+<li>and many more</li>
 </ul>
-<p>It depends how which use case we are addressing. However this blog assumes standard feedforward networks (Dense/Sequential in Keras) where each neuron talks to all neurons in the next layer.</p>
-<p>TDDO:</p>
+<p>The final computation will be a set of inter-related complex functions with inputs and outputs flow through the network in a convoluted way.
+All depends how which use case we are addressing. However this blog assumed so far a standard feedforward network (Dense/Sequential in Keras) where each neuron talks to all neurons in the next layer - that is why &ldquo;dense&rdquo;, of fully connected network.</p>
+<h3 id="training-data">Training data</h3>
+<p>ML use cases require strong training data - set of inputs producing expected outputs (called as we know &ldquo;ground truth&rdquo; or &ldquo;labels&rdquo;).
+Once training finishes, we still need to validate and test. It is recommended to split the training data to those used only for training and those that will be used for validation only. The reason is, that we want to be sure that trained model can cope properly with previously unseen data, generalises well and does not overfit (memorises only samples it was trained on). Overfitting can be result of weak data set, but also result of overtraining the model with excessive amount of epochs.
+Validation or test data introduce another dimension into the training process. Besides <code>loss</code>, we now calculate also <code>accuracy</code>.</p>
+<p>Preparing properly normalised data sets is a topic by itself. Luckily <code>tensorflow</code> provides multiple <a href="https://www.tensorflow.org/datasets/catalog/">training-ready datasets</a>, which can be loaded directly using the <code>keras</code> API we have used so far.</p>
+<p>We can load text, sound, images, and so on. Each data sets have in common, that they contain <code>data</code> and <code>label</code>. Data can be encoded representation of mp3 or writtent characters.
+Label is human a readable name of the data - e.g <code>rock/pop/jazzz</code> or <code>a/b/c/d/e...</code>. This allows something what we call data <code>classification</code> - we can say, that these data represent various rock songs.</p>
+<hr>
+<p>images processing - not jusst flattening pixels, but applying filter on picture first, map relation between surrounding pixels, extract key object features - person&rsquo;s hands, head&hellip;to assume image is a person.</p>
+<p>augment input data set by augmentation - skew, rotate - to avoid manual creation of new samples =&gt; teach model to generalise more.</p>
+<p>Model design is much more complex for more complex data.
+Dense — fully connected layer.</p>
+<p>Activation — applies an activation function.</p>
+<p>Dropout — randomly sets input units to 0 during training.</p>
+<p>Flatten — flattens input.</p>
+<p>Reshape — reshapes tensor.</p>
+<p>Permute — permutes input dimensions.</p>
+<p>RepeatVector — repeats inputs for a fixed number of timesteps.</p>
+<p>Lambda — wraps custom functions as a layer.</p>
+<p>Convolutional Layers</p>
+<p>Conv1D, Conv2D, Conv3D — 1D/2D/3D convolutions.</p>
+<p>Conv2DTranspose, Conv3DTranspose — transposed (a.k.a. deconvolutional) conv layers.</p>
+<p>SeparableConv1D, SeparableConv2D — depthwise separable convolutions.</p>
+<p>DepthwiseConv2D — depthwise convolution.</p>
+<p>Conv1DTranspose (experimental in some versions).</p>
+<p>Pooling Layers</p>
+<p>MaxPooling1D, MaxPooling2D, MaxPooling3D</p>
+<p>AveragePooling1D, AveragePooling2D, AveragePooling3D</p>
+<p>GlobalMaxPooling1D, GlobalMaxPooling2D, GlobalMaxPooling3D</p>
+<p>GlobalAveragePooling1D, GlobalAveragePooling2D, GlobalAveragePooling3D</p>
+<p>Recurrent Layers</p>
+<p>SimpleRNN</p>
+<p>GRU</p>
+<p>LSTM</p>
+<p>Bidirectional (wrapper for RNNs)</p>
+<p>TimeDistributed (wrapper to apply a layer to each timestep)</p>
+<p>Normalization &amp; Regularization</p>
+<p>BatchNormalization</p>
+<p>LayerNormalization</p>
+<p>ActivityRegularization</p>
+<p>Embedding &amp; Input</p>
+<p>Embedding — maps integers to dense vectors.</p>
+<p>InputLayer — entry point for model input.</p>
+<p>Attention &amp; Advanced Layers</p>
+<p>Attention</p>
+<p>AdditiveAttention</p>
+<p>MultiHeadAttention</p>
+<p>Merging Layers</p>
+<p>Add, Subtract, Multiply, Average, Maximum, Minimum, Concatenate, Dot</p>
 <ul>
-<li>end of 3.2 - injecting pixels and get probabilities. Each output neuron represents certain digit</li>
+<li>Custome layers</li>
 </ul>
-<p>Tuning:</p>
-<ul>
-<li>Activation function(s)</li>
-<li>num of layers</li>
-<li>num of neurons</li>
-<li>links..</li>
-<li>learning optimisation - &ldquo;adam&rdquo; instead of &ldquo;gradient descent&rdquo;</li>
-<li>layer relation</li>
-<li>loss calculation</li>
-</ul>
-<p>SDepends on input data</p>
-<p>Use data for training and different for validation and test</p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
