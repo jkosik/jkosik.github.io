@@ -41,7 +41,7 @@ def train(model, inputs, outputs, learning_rate):
 # Define our input data and learning rate
 xs = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0]
 ys = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0]
-LEARNING_RATE = 0.14   #0.09
+LEARNING_RATE = 0.14
 
 # Instantiate our model
 model = Model()
