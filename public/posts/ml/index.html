@@ -83,7 +83,7 @@
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            13 min read
+            17 min read
           </li>
 
         </ul></div>
@@ -96,53 +96,67 @@
     </figure>
 
     <div id="content" class="mb-14">
-      <p>&ldquo;Artificial intelligence&rdquo;, &ldquo;Deep learning&rdquo;, &ldquo;Machine learning&rdquo;(ML) and other buzzwords are resonanting around us this decade. We all more or less know what they mean. Or do we? I started to question myself to better understand the topic and write down the notes and ended up with building a simple machine-learned model. Let me share my journey with you.</p>
-<h2 id="entering-machine-learning">Entering machine learning</h2>
-<p>There are already machines around us which looks like thinking and reasoning, like simple calculator. Well yes, but all they know is preprogrammed in the machine directly. Calculator has exact knowledge, that adding 1 to 1 results in 2 with guaranteed correctness. This is ensured by generalised algorithms.</p>
+      <p>&ldquo;Artificial Intelligence&rdquo;, &ldquo;Deep Learning&rdquo;, &ldquo;Machine Learning&rdquo; (ML) - these buzzwords have been echoing all around us for the past decade. Most of us think we know what they mean. Or&hellip; do we?</p>
+<p>I started questioning myself, trying to get a clearer understanding of these concepts. I took some notes, played around with ideas, and somehow ended up building a simple machine learning model. So, let me share what I learned along the way.</p>
+<h2 id="entering-the-world-of-machine-learning">Entering the world of Machine Learning</h2>
+<p>Machines that &ldquo;think&rdquo; aren&rsquo;t exactly new. We’ve had devices like calculators for decades. They seem smart, they do math instantly, after all. But the truth is, they&rsquo;re just really fast at following precise instructions. Everything they do is hard-coded and guaranteed: when you add 1 + 1, it will be 2. No doubts, no debate.</p>
+<p>This is classic programming: deterministic, rule-based, and predictable.</p>
+<p>Now, enter Machine Learning (ML).
+Here, the game changes.</p>
 <p>On contrary, machine learning has no exact algorithms and outcome is not precise. So why to bother?
-Machine learning shines when rules and algorithms would be overly complex if not impossible to define. E.g. to distinguish dog from cat or to detect sarcasm in teh sentence. That is why we teach the model to approximate outcome from a given input.</p>
+Machine learning shines when writing rules and algorithms would be overly complex if not impossible to define. E.g. to distinguish dog from a cat or to detect sarcasm in the sentence.
+Instead of giving the machine rules, we give it examples, lots of them, and let it figure out the patterns. We don’t program the model, we teach it to approximate outcome from a given input.</p>
 <figure><img src="/images/ml/in-out.png">
 </figure>
 
-<p>For example, we define set of inputs and set of expected outputs. Expected output is oftentimes called <code>label</code>, <code>ground truth</code> or <code>target</code>.</p>
+<p>Let’s go back to the humble calculator. You give it some inputs, two numbers, and it gives you an output using the magical mathematical operation we call addition. Simple, right?</p>
+<p>But let’s simplify even more. Instead of dealing with two numbers on input, imagine we take just one number and transform it into another using a bit of mathematical magic. In other words, we apply a function - a rule that maps input to output.</p>
+<p>In ML, we define set of inputs and set of expected outputs. Expected output is oftentimes called a <code>ground truth</code> or <code>target</code>. <em>In the context of data classification, you can also hear the term <code>label</code> which flags the data in input and output.</em></p>
+<p>Example inputs and outputs:</p>
 <pre tabindex="0"><code>x = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0] # input
-y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # label / ground truth
-</code></pre><p>Learning process tries to find the rule how to get from <code>X</code> to <code>Y</code>. In ideal case, the learning process will derive to the conclusion, that <code>X=2X-1</code> and use it for any input. This is extremely trivial case, in real world we have complex multi-dimensional inputs and outputs, but let&rsquo;s keep it simple for now.</p>
-<p>Let&rsquo;s summarise the core of Machine learning:</p>
+y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # ground truth
+</code></pre><p>The learning process is all about figuring out the rule that takes us from <code>X</code> to <code>Y</code>. Ideally, the model will discover the underlying pattern, for example, that <code>Y = 2X - 1</code> and then use that rule to make predictions for new inputs.</p>
+<p>This is a trivial case. In the real world, things get messy. We often deal with complex, multi-dimensional inputs and outputs, images, text, sensor data, you name it. But let’s not go there just yet. For now, simple is good.</p>
+<p>Let&rsquo;s summarise the core of the Machine Learning:</p>
 <ul>
 <li>Handles complex tasks</li>
-<li>Scales well and handles well new unseen tasks</li>
+<li>Scales well and handles well new unseen data</li>
 <li>Improves by having new fresh data</li>
 <li>Needs data (instead of explicit rules)</li>
 <li>Probabilistic</li>
 </ul>
 <h2 id="real-world-use-cases">Real world use cases</h2>
-<p>Machine learning can be used in wide areas, ranging from video processing (self-driving cars), language processing (ChatGPT), predictive analysis (online trading), anomaly detection (cybersecurity), generative AI of all kinds (DALL·E, MidJourney). One can think that ML and related models always represent something &ldquo;big&rdquo;.</p>
-<p>However ML takes its place also in the world of microcontrolers, wearables for sport and health or home devices - so called TinyML. These are use cases where machine learning properties are required, but processor, memory or power consumption are limited.</p>
+<p>Machine learning is used across a wide range of fields, from video processing in self-driving cars, to language processing in the tools like ChatGPT, to predictive analytics in online trading. It powers anomaly detection in cybersecurity and fuels generative AI tools like DALL·E and MidJourney.</p>
+<p>With all this buzz, it’s easy to assume that machine learning is always part of something big - big data, big clouds, big models.</p>
+<p>But ML isn’t just for massive servers and high-end GPUs. It’s also making its way into the world of microcontrollers, wearables for sports and health, and smart home devices, a trend known as TinyML.
+These are scenarios where the benefits of machine learning are needed, but resources like processing power, memory, or battery life are limited. In these cases, ML has to go on a diet and get smart without being power-hungry.</p>
 <h2 id="basic-learning-process">Basic Learning process</h2>
-<p>We will use the same simple data set:</p>
+<p>To demonstrate the learning process, we will use the same simple data set as before:</p>
 <pre tabindex="0"><code>x = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0] # input
-y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # label / ground truth
-</code></pre><p>We need to find or approximate the &ldquo;rule&rdquo; to get from <code>X</code> to <code>Y</code>. To do so, we need to select <code>learning model</code>, which is a mathematical representation how inputs are mapped to outputs. For this case the most suitable learning model is <code>linear regression model</code> which is a in mathematics represented by a linear function, in this case <code>Y=w * X  + b</code>.
-<code>w</code> is called <code>weight</code> and <code>b</code> is <code>bias</code>. Both have their role in calculating the output.</p>
+y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # ground truth
+</code></pre><p>We need to find or approximate the &ldquo;rule&rdquo; to get from <code>X</code> to <code>Y</code>. First, we need to choose a <code>learning model</code>, which is a mathematical structure that defines how inputs are mapped to the outputs.</p>
+<p>In this simple case, let’s assume our best choice is a <code>linear regression model</code> which is represented by a linear function <code>Y=w * X  + b</code>.</p>
+<p>Here, <code>w</code> is called the weight, and <code>b</code> is the bias. Together, they define the line that our model uses to approximate the relationship between input and output.</p>
 <p>There are much more complex learing models, than regression models, mainly:</p>
 <ul>
-<li>Neur network model → a network of many parameters (weights, biases).</li>
-<li>Decision tree model → tree of rules.</li>
+<li>Neural networks - a network of many parameters (weights, biases).</li>
+<li>Decision trees - tree of rules.</li>
 </ul>
-<p>Let&rsquo;s keep it simple and come back to our <code>linear regression model</code>. How to calculate weight and bias, i.e. solve the linear function?
-Answer is by <strong>guessing</strong> and improving the guesses in a loop until we reach sufficient accuracy.</p>
+<p>Let’s stick with our simple linear regression model. The big question now is: how do we figure out the right values for <code>w</code> (weight) and <code>b</code> (bias) to make our function work?</p>
+<p>The answer?
+<strong>We guess.</strong></p>
+<p>Then we check how good the guess was. Then we guess again, but better this time. We repeat this process in a loop, gradually improving our guesses until the model is accurate enough.</p>
+<p>In other words, we let the model learn by adjusting <code>w</code> and <code>b</code> step by step, aiming to reduce the error between its predictions and the actual values. This accuracy is usually measured with some kind of error metric - basically a score telling us how &ldquo;bad&rdquo; our guesses still are.</p>
 <figure><img src="/images/ml/guess.png">
 </figure>
 
-<p>The following Python code runs manual single guess to try to find optimal <code>w</code> and <code>b</code> so that <code>Y=w * X  + b</code> makes the most reliable outcome.
-Our first guess is: <code>w = 3</code> and <code>b = 1</code> and we will calculate also how far we are from the ground truth, which represents <code>loss</code>.</p>
+<p>The <a href="https://github.com/jkosik/jkosik.github.io/blob/main/_extra/ml/1_ml-manual.py">following Python code</a> tries a single manual guess of <code>w</code> and <code>b</code>. Our first guess is: <code>w = 3</code> and <code>b = 1</code> and we will calculate also how far we are from the ground truth, which represents the <code>loss</code>.</p>
 <pre tabindex="0"><code>import math
 import matplotlib.pyplot as plt
 
 # Training data (optimal outcome: y=2x-1)
 x = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0] # input
-y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # ground truth output
+y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # ground truth
 
 # Guess the model (Y=w * X + b)
 w = 3
@@ -187,18 +201,18 @@ Overall Loss (Root Mean Squared Error): 3.89
 <figure><img src="/images/ml/plot1.png">
 </figure>
 </p>
-<p>Our overall loss is 3.89 which is quite far from 0. Our guess was wrong.</p>
+<p>Our overall loss is 3.89 which is quite far from 0 (full precision). Our first guess was very wrong.</p>
 <h2 id="impoved-guessing-by-gradient-descent-learning">Impoved guessing by Gradient Descent learning</h2>
 <p>We can continue in guessing, until the loss is low. It will probably take ages for larger input sets.
-We can also start observing how loss evolves based on the changes of weight and bias and make adjustments accrodingly in the next guess. This technique is called Gradient Descent. Now it can get a bit complicated&hellip;The simplest visual representation is a symetric curve and abstraction of bias:</p>
+We can also start observing how loss evolves based on the changes of weight and bias and make adjustments accordingly in the next guess. This technique is called Gradient Descent. Now it can get a bit complicated&hellip;The simplest visual representation is a symetric curve and abstraction of bias:</p>
 <figure><img src="/images/ml/gradient1.png">
 </figure>
 
 <p>By adjusting weight, the loss should get closer to the minimum loss in a stable pace and over a stable gradient. We need to count few parameters: how loss evolves, how gradient (positional change between previous and new loss) evolves. We also need to decide on optimal steps of weight change in the next guess - so called learning step. Large learning step can overshoot the minimum loss. Small learning step may heavily pro,ong the learning process.</p>
 <p>No worries, here comes <code>Tensorflow</code> framework to save us!</p>
-<h3 id="tensorflow">Tensorflow</h3>
-<p>Tensorflow allows flow of the data (from simple scalar, through 1D vectors, 2D matrices, up to multidimensional data) through various computational operations.
-Tensorflow support so called GradientTape (in Python <code>tf.GradientTape</code> class) which runs Gradient Descent learning for us.</p>
+<h2 id="tensorflow">Tensorflow</h2>
+<p>Tensorflow allows flow of the data (from simple scalar, through 1D vectors, 2D matrices, up to multidimensional data) through various computational operations.</p>
+<p>Tensorflow support so called GradientTape (in Python <code>tf.GradientTape</code> class) which runs Gradient Descent learning for us.</p>
 <p>Code for running Gradient Descent learning in Python:</p>
 <pre tabindex="0"><code>import tensorflow as tf
 import matplotlib.pyplot as plt
@@ -350,7 +364,8 @@ model = keras.Sequential([layer1, layer2]) # 2 layers. 2 neurons in L1, 1 neuron
 <figure><img src="/images/ml/neuron3.png">
 </figure>
 
-<h2 id="real-world">Real-world</h2>
+<p>Now we can introduce one more term - <code>tensor</code>. Tensor is a naming for all inputs, outputs and weights. I.e. the data structures of various dimensions which float across the neural network. Sometimes you may hear also a term model <code>parameters</code> which are subset of tensors. Our examples have few tens of parameters. Meta Llama or ChatGPT models have hundreds of millions or event trillion+ parameters.</p>
+<h2 id="complex-neural-networks">Complex neural networks</h2>
 <p>In the real world, neural networks can be much more complex and characterised by:</p>
 <ul>
 <li>many layers</li>
@@ -361,60 +376,96 @@ model = keras.Sequential([layer1, layer2]) # 2 layers. 2 neurons in L1, 1 neuron
 <li><code>X</code> and <code>Y</code> can be multidimensional</li>
 <li>and many more</li>
 </ul>
-<p>The final computation will be a set of inter-related complex functions with inputs and outputs flow through the network in a convoluted way.
-All depends how which use case we are addressing. However this blog assumed so far a standard feedforward network (Dense/Sequential in Keras) where each neuron talks to all neurons in the next layer - that is why &ldquo;dense&rdquo;, of fully connected network.</p>
-<h3 id="training-data">Training data</h3>
+<p>The final computation will be a set of inter-related complex functions with inputs and outputs flow through the network in a convoluted way.</p>
+<p>All depends how which use case we are addressing. So far, this blog assumed a standard feedforward network (Dense/Sequential in Keras) where each neuron talks to all neurons in the next layer - that is why &ldquo;dense&rdquo;, of fully connected network. Keras offers much more than that - <a href="https://keras.io/api/layers">tens of layer types</a> + custom layers.</p>
+<h2 id="training-data-and-data-classification">Training data and data classification</h2>
 <p>ML use cases require strong training data - set of inputs producing expected outputs (called as we know &ldquo;ground truth&rdquo; or &ldquo;labels&rdquo;).
-Once training finishes, we still need to validate and test. It is recommended to split the training data to those used only for training and those that will be used for validation only. The reason is, that we want to be sure that trained model can cope properly with previously unseen data, generalises well and does not overfit (memorises only samples it was trained on). Overfitting can be result of weak data set, but also result of overtraining the model with excessive amount of epochs.
+Once training finishes, we still need to validate and test. It is recommended to split the training data to those used only for training and those that will be used for validation only. The reason is, that we want to be sure that trained model can cope properly with previously unseen data, generalises well and does not <code>overfit</code> (memorises only samples it was trained on). Overfitting can be result of weak data set, but also result of overtraining the model with excessive amount of epochs.
 Validation or test data introduce another dimension into the training process. Besides <code>loss</code>, we now calculate also <code>accuracy</code>.</p>
 <p>Preparing properly normalised data sets is a topic by itself. Luckily <code>tensorflow</code> provides multiple <a href="https://www.tensorflow.org/datasets/catalog/">training-ready datasets</a>, which can be loaded directly using the <code>keras</code> API we have used so far.</p>
-<p>We can load text, sound, images, and so on. Each data sets have in common, that they contain <code>data</code> and <code>label</code>. Data can be encoded representation of mp3 or writtent characters.
-Label is human a readable name of the data - e.g <code>rock/pop/jazzz</code> or <code>a/b/c/d/e...</code>. This allows something what we call data <code>classification</code> - we can say, that these data represent various rock songs.</p>
-<hr>
-<p>images processing - not jusst flattening pixels, but applying filter on picture first, map relation between surrounding pixels, extract key object features - person&rsquo;s hands, head&hellip;to assume image is a person.</p>
-<p>augment input data set by augmentation - skew, rotate - to avoid manual creation of new samples =&gt; teach model to generalise more.</p>
-<p>Model design is much more complex for more complex data.
-Dense — fully connected layer.</p>
-<p>Activation — applies an activation function.</p>
-<p>Dropout — randomly sets input units to 0 during training.</p>
-<p>Flatten — flattens input.</p>
-<p>Reshape — reshapes tensor.</p>
-<p>Permute — permutes input dimensions.</p>
-<p>RepeatVector — repeats inputs for a fixed number of timesteps.</p>
-<p>Lambda — wraps custom functions as a layer.</p>
-<p>Convolutional Layers</p>
-<p>Conv1D, Conv2D, Conv3D — 1D/2D/3D convolutions.</p>
-<p>Conv2DTranspose, Conv3DTranspose — transposed (a.k.a. deconvolutional) conv layers.</p>
-<p>SeparableConv1D, SeparableConv2D — depthwise separable convolutions.</p>
-<p>DepthwiseConv2D — depthwise convolution.</p>
-<p>Conv1DTranspose (experimental in some versions).</p>
-<p>Pooling Layers</p>
-<p>MaxPooling1D, MaxPooling2D, MaxPooling3D</p>
-<p>AveragePooling1D, AveragePooling2D, AveragePooling3D</p>
-<p>GlobalMaxPooling1D, GlobalMaxPooling2D, GlobalMaxPooling3D</p>
-<p>GlobalAveragePooling1D, GlobalAveragePooling2D, GlobalAveragePooling3D</p>
-<p>Recurrent Layers</p>
-<p>SimpleRNN</p>
-<p>GRU</p>
-<p>LSTM</p>
-<p>Bidirectional (wrapper for RNNs)</p>
-<p>TimeDistributed (wrapper to apply a layer to each timestep)</p>
-<p>Normalization &amp; Regularization</p>
-<p>BatchNormalization</p>
-<p>LayerNormalization</p>
-<p>ActivityRegularization</p>
-<p>Embedding &amp; Input</p>
-<p>Embedding — maps integers to dense vectors.</p>
-<p>InputLayer — entry point for model input.</p>
-<p>Attention &amp; Advanced Layers</p>
-<p>Attention</p>
-<p>AdditiveAttention</p>
-<p>MultiHeadAttention</p>
-<p>Merging Layers</p>
-<p>Add, Subtract, Multiply, Average, Maximum, Minimum, Concatenate, Dot</p>
+<p>We can load text, sound, images, and so on. Each data sets have in common, that they contain <code>data</code> and <code>labels</code>. Data can be encoded representation of mp3, written characters, or other inputs.
+Label is human a readable name of the data, which allows data <code>classification</code>. E.g. we play various samples of the word <code>yes</code> and all samples are labeled by <code>yes</code>, i.e. tell the training model, that all these samples belong to the same category, or class.</p>
+<p>This allows something what we call data <code>classification</code> - we can say, that these data represent various rock songs.</p>
+<h3 id="training-on-specific-data-types-image">Training on specific data types (image)</h3>
+<p>Let&rsquo;s see on a high-level how to train a model to detect an image of a dog.</p>
+<p>First we need to normalise the data, apply various filters over the image to map relation between individual pixels. You also need to extract key features, e.g. when training a dog recognition, you want to extract separately legs, ears, eyes or body torso to help the model understand what characterise a &ldquo;dog&rdquo;.
+You may also need to augemnt yout training data by applying special function over the existing training data set - e.g. skew or rotate the object to allow the model to generalise as much as possible, rather than overfit.</p>
+<p>Various machine learning functions, e.g. <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">convolutions</a> may represent dog and dog parts as follows:</p>
+<figure><img src="/images/ml/dog-convolutions.png">
+</figure>
+
+<p>This kind of decomposition generates various characteristics of a dog, e.g.:</p>
 <ul>
-<li>Custome layers</li>
+<li>dog eyes are circles</li>
+<li>ears are always above eyes and triangular</li>
+<li>nose is always below eyes</li>
+<li>four legs support the body</li>
+<li>&hellip;and many more&hellip;</li>
 </ul>
+<p>When the model is trained properly, any dog image should fit in and will be properly classified. The prediction may look as follows:</p>
+<figure><img src="/images/ml/dog-detection.png">
+</figure>
+
+<h2 id="keyword-spotting">Keyword spotting</h2>
+<p>Now we enough about ML basics, guessing and measuring training accuracy, training input data, data classification and prediction. We can implement our knowledge into a real-world project - keyword spotting. Keyword spotting is used in many home devices. Think of Alexa or Siri. You say &ldquo;Hey Google&rdquo; or &ldquo;Hey Siri&rdquo; and the machine responds, because some keywords were spotted. Keywords were spotting by a so-called <code>TinyML</code> where minimalistic single-purpose model runs on a microcontroller and activates further cascaded process towards the cloud:</p>
+<ol>
+<li>User says &ldquo;Hey Google&rdquo;.</li>
+<li>TinyML model with very low latency recognises a keyword.</li>
+<li>Microcontroller records the subsequent words.</li>
+<li>Subsequent words are passed to the cloud for more heavy processing in a full speech recognition model.</li>
+<li>User is provided with a full response.</li>
+</ol>
+<p>Keyword spotting may sound as a trivial task, but is also very complex. Similarly to image detection, also sound waves must be properly processed and decomposed to train the model well.
+It is not enough to record the sound samples and measure amplitudes or overal shape on the sound wave. Even opposite words like <code>yes</code> or <code>no</code> may look surprisingly similar and would not reliable distinguish completely different words.</p>
+<figure><img src="/images/ml/yes-no.png">
+</figure>
+
+<p>When training on images, we can apply various convolution layers in our neural network. For sound wave the techniques are just different - e.g. <a href="https://en.wikipedia.org/wiki/Fourier_transform">Fourier transform</a> being one of many.
+Sound waves are decomposed and emphasise unique characteristics and sound features:</p>
+<figure><img src="/images/ml/yes-no-features.png">
+</figure>
+
+<p>Even minimalistic <a href="https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech">Micro Speech</a> model has 49 spectrographic features, each feature consisting of 40 channels of data.</p>
+<p>Anytime Alexa hears a new sound, it runs the input through various transformations in the neural network to classify the words properly.</p>
+<h2 id="rule-your-laptop-by-voice-commands">Rule your laptop by voice commands.</h2>
+<p>To avoid reinventing a wheel (and mainly save hours and hours of data preapration or model tuning), we can re-use what smart people already done.</p>
+<ul>
+<li>
+<p>No need to record own samples, use e.g. <a href="https://www.tensorflow.org/datasets/catalog/speech_commands">Google&rsquo;s Speech Commands</a> dataset: <a href="http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz">http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz</a> or <a href="http://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip">http://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip</a> and get tens of thousands voice samples with few tens of english words.</p>
+</li>
+<li>
+<p>No need to train own speech commands models. You can get hundreds of them from <a href="https://huggingface.co/models?search=speech%20command">Hugginface</a>. However you can <a href="https://github.com/tensorflow/tflite-micro/blob/main/tensorflow/lite/micro/examples/micro_speech/train/README.md">train by yourself</a> as well.</p>
+</li>
+</ul>
+<h3 id="using-pre-trained-hugging-face-models">Using Pre-trained Hugging Face Models</h3>
+<p>Let&rsquo;s demonstrate how simple it is to use a pre-trained keyword spotting model. The <a href="https://huggingface.co/anton-l/wav2vec2-base-ft-keyword-spotting">wav2vec2-base-ft-keyword-spotting</a> model achieves 98.26% accuracy and can recognize 12 different keywords including &ldquo;yes&rdquo;, &ldquo;no&rdquo;, &ldquo;up&rdquo;, &ldquo;down&rdquo;, &ldquo;left&rdquo;, &ldquo;right&rdquo;, &ldquo;on&rdquo;, &ldquo;off&rdquo;, &ldquo;stop&rdquo;, &ldquo;go&rdquo;, plus silence and unknown categories.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> transformers <span style="color:#f92672">import</span> Wav2Vec2FeatureExtractor, Wav2Vec2ForSequenceClassification
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> librosa
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the pre-trained model</span>
+</span></span><span style="display:flex;"><span>model_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;anton-l/wav2vec2-base-ft-keyword-spotting&#34;</span>
+</span></span><span style="display:flex;"><span>feature_extractor <span style="color:#f92672">=</span> Wav2Vec2FeatureExtractor<span style="color:#f92672">.</span>from_pretrained(model_name)
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> Wav2Vec2ForSequenceClassification<span style="color:#f92672">.</span>from_pretrained(model_name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load and process audio</span>
+</span></span><span style="display:flex;"><span>audio, sr <span style="color:#f92672">=</span> librosa<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;your_audio.wav&#34;</span>, sr<span style="color:#f92672">=</span><span style="color:#ae81ff">16000</span>)
+</span></span><span style="display:flex;"><span>inputs <span style="color:#f92672">=</span> feature_extractor(audio, sampling_rate<span style="color:#f92672">=</span><span style="color:#ae81ff">16000</span>, return_tensors<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pt&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make prediction</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+</span></span><span style="display:flex;"><span>    outputs <span style="color:#f92672">=</span> model(<span style="color:#f92672">**</span>inputs)
+</span></span><span style="display:flex;"><span>    predictions <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>functional<span style="color:#f92672">.</span>softmax(outputs<span style="color:#f92672">.</span>logits, dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    predicted_class <span style="color:#f92672">=</span> predictions<span style="color:#f92672">.</span>argmax()<span style="color:#f92672">.</span>item()
+</span></span><span style="display:flex;"><span>    confidence <span style="color:#f92672">=</span> predictions<span style="color:#f92672">.</span>max()<span style="color:#f92672">.</span>item()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get the label</span>
+</span></span><span style="display:flex;"><span>id2label <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>id2label
+</span></span><span style="display:flex;"><span>predicted_word <span style="color:#f92672">=</span> id2label[predicted_class]
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Predicted: </span><span style="color:#e6db74">{</span>predicted_word<span style="color:#e6db74">}</span><span style="color:#e6db74"> (confidence: </span><span style="color:#e6db74">{</span>confidence<span style="color:#e6db74">:</span><span style="color:#e6db74">.3f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>)
+</span></span></code></pre></div><p>When tested on our yes/no samples, this model achieved <strong>100% accuracy</strong> with confidence levels above 90% for all samples. The model correctly distinguished between &ldquo;yes&rdquo; and &ldquo;no&rdquo; keywords with very high reliability.</p>
+<p>The beauty of using pre-trained models is that complex audio preprocessing (like Fourier transforms and feature extraction) is already handled internally. The model was trained on thousands of samples and can immediately work with your audio files.</p>
+<p>Raw WAV data → wav_data placeholder → DecodeWav → AudioSpectrogram → AudioMicrofrontend → CNN → Output</p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">

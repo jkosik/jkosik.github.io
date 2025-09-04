@@ -1,3 +1,5 @@
+# Guessing and loss calculation based on Tensorflow and Keras (more abstraction)
+
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np

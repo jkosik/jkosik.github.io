@@ -1,3 +1,5 @@
+# Guessing and loss calculation based on Tensorflow and GradientTape
+
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np

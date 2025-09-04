@@ -1,3 +1,5 @@
+# Guessing and loss calculation based on manual calculation (weights and bias)
+
 import math
 import matplotlib.pyplot as plt
 

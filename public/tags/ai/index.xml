@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/ml/</link>
       <pubDate>Thu, 14 Aug 2025 14:15:05 +0700</pubDate>
       <guid>http://localhost:1313/posts/ml/</guid>
-      <description>&lt;p&gt;&amp;ldquo;Artificial intelligence&amp;rdquo;, &amp;ldquo;Deep learning&amp;rdquo;, &amp;ldquo;Machine learning&amp;rdquo;(ML) and other buzzwords are resonanting around us this decade. We all more or less know what they mean. Or do we? I started to question myself to better understand the topic and write down the notes and ended up with building a simple machine-learned model. Let me share my journey with you.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&amp;ldquo;Artificial Intelligence&amp;rdquo;, &amp;ldquo;Deep Learning&amp;rdquo;, &amp;ldquo;Machine Learning&amp;rdquo; (ML) - these buzzwords have been echoing all around us for the past decade. Most of us think we know what they mean. Or&amp;hellip; do we?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Supercharging your AI agent with MCP</title>
