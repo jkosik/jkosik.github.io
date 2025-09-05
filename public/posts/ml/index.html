@@ -83,7 +83,7 @@
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            17 min read
+            20 min read
           </li>
 
         </ul></div>
@@ -134,8 +134,8 @@ These are scenarios where the benefits of machine learning are needed, but resou
 <p>To demonstrate the learning process, we will use the same simple data set as before:</p>
 <pre tabindex="0"><code>x = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0] # input
 y = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0] # ground truth
-</code></pre><p>We need to find or approximate the &ldquo;rule&rdquo; to get from <code>X</code> to <code>Y</code>. First, we need to choose a <code>learning model</code>, which is a mathematical structure that defines how inputs are mapped to the outputs.</p>
-<p>In this simple case, let’s assume our best choice is a <code>linear regression model</code> which is represented by a linear function <code>Y=w * X  + b</code>.</p>
+</code></pre><p>We need to find or approximate the &ldquo;rule&rdquo; to get from <code>X</code> to <code>Y</code>. First, we need to choose a <strong>learning model</strong>, which is a mathematical structure that defines how inputs are mapped to the outputs.</p>
+<p>In this simple case, let’s assume our best choice is a <strong>linear regression model</strong> which is represented by a linear function <code>Y=w * X  + b</code>.</p>
 <p>Here, <code>w</code> is called the weight, and <code>b</code> is the bias. Together, they define the line that our model uses to approximate the relationship between input and output.</p>
 <p>There are much more complex learing models, than regression models, mainly:</p>
 <ul>
@@ -203,17 +203,31 @@ Overall Loss (Root Mean Squared Error): 3.89
 </p>
 <p>Our overall loss is 3.89 which is quite far from 0 (full precision). Our first guess was very wrong.</p>
 <h2 id="impoved-guessing-by-gradient-descent-learning">Impoved guessing by Gradient Descent learning</h2>
-<p>We can continue in guessing, until the loss is low. It will probably take ages for larger input sets.
-We can also start observing how loss evolves based on the changes of weight and bias and make adjustments accordingly in the next guess. This technique is called Gradient Descent. Now it can get a bit complicated&hellip;The simplest visual representation is a symetric curve and abstraction of bias:</p>
+<p>We can keep guessing and adjusting until the loss (the error in our predictions) gets low enough. But if we are working with large datasets, that trial-and-error approach could take forever.</p>
+<p>Instead, we can be a bit smarter about our guesses. By observing how the loss changes when we tweak the weight and bias, we can adjust them more intelligently in the next round.</p>
+<p>This clever trick is called <strong>Gradient Descent</strong>.</p>
+<p>The simplest way to visualize it is as a smooth, symmetrical curve. Imagine you are standing on a hill (that hill represents the loss). Your goal is to walk downhill, step by step, until you reach the lowest point. That lowest point is where the loss is minimal and where our model is most accurate.</p>
 <figure><img src="/images/ml/gradient1.png">
 </figure>
 
-<p>By adjusting weight, the loss should get closer to the minimum loss in a stable pace and over a stable gradient. We need to count few parameters: how loss evolves, how gradient (positional change between previous and new loss) evolves. We also need to decide on optimal steps of weight change in the next guess - so called learning step. Large learning step can overshoot the minimum loss. Small learning step may heavily pro,ong the learning process.</p>
-<p>No worries, here comes <code>Tensorflow</code> framework to save us!</p>
+<p>Gradient Descent helps us decide which way to step and how big each step should be, based on the shape of the hill beneath our feet.</p>
+<p>To make Gradient Descent work, we need to keep track of a few important things:</p>
+<ul>
+<li>How the loss is evolving after each guess?</li>
+<li>How the gradient is changing (i.e. the difference in loss between the current and previous steps)?</li>
+</ul>
+<p>Based on this information, we decide how much to adjust the weight in the next guess. This adjustment is called the learning rate (or learning step).</p>
+<p>Here’s the tricky part:</p>
+<ul>
+<li>If the learning rate is too large, we might overshoot the lowest point and bounce around without ever settling down.</li>
+<li>If it is too small, the model will learn painfully slowly. It might take forever to get anywhere useful.</li>
+</ul>
+<p>So, choosing the right learning rate is like choosing the right walking pace on that loss curve hill. Too fast? You trip and fall. Too slow? You never reach the bottom.</p>
+<p>No worries, here comes the <strong>Tensorflow</strong> framework to save us!</p>
 <h2 id="tensorflow">Tensorflow</h2>
-<p>Tensorflow allows flow of the data (from simple scalar, through 1D vectors, 2D matrices, up to multidimensional data) through various computational operations.</p>
-<p>Tensorflow support so called GradientTape (in Python <code>tf.GradientTape</code> class) which runs Gradient Descent learning for us.</p>
-<p>Code for running Gradient Descent learning in Python:</p>
+<p>TensorFlow is a powerful library that allows data to &ldquo;flow&rdquo; through a series of computational operations. It can handle everything from simple scalars to 1D vectors, 2D matrices, and even complex multi-dimensional data structures.</p>
+<p>To make things easier for us, TensorFlow also supports a handy tool called GradientTape (in Python, it is the <code>tf.GradientTape</code> class). This utility automates the Gradient Descent process by tracking the operations used to compute the loss and then calculating the gradients for us.</p>
+<p>Here is a <a href="https://github.com/jkosik/jkosik.github.io/blob/main/_extra/ml/2_ml-tf-gradienttape.py">simple example</a> of how to use Gradient Descent in Python with TensorFlow:</p>
 <pre tabindex="0"><code>import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
@@ -255,7 +269,7 @@ def train(model, inputs, outputs, learning_rate):
 # Define our input data and learning rate
 xs = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0]
 ys = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0]
-LEARNING_RATE = 0.14   #0.09
+LEARNING_RATE = 0.14
 
 # Instantiate our model
 model = Model()
@@ -272,7 +286,7 @@ for epoch in range(epochs):
     losses.append(current_loss)
     print(&#39;Epoch %2d: w=%.2f b=%.2f, loss=%.2f&#39; %
           (epoch, list_w[-1], list_b[-1], current_loss))
-</code></pre><p>Command output shows, how each guess iteration (called Epoch) and adjustment of weight and bias lead to the loss decrease:</p>
+</code></pre><p>Command output shows us, how each guess loop (called Epoch) and adjustment of weight and bias leads to the loss decrease:</p>
 <pre tabindex="0"><code>Epoch  0: w=10.00 b=10.00, loss=715.67
 Epoch  1: w=-6.19 b=3.56, loss=255.55
 Epoch  2: w=3.74 b=5.72, loss=96.13
@@ -290,26 +304,30 @@ Epoch 28: w=1.97 b=-0.90, loss=0.01
 Epoch 29: w=1.97 b=-0.92, loss=0.00
 ...snipped...
 Epoch 49: w=2.00 b=-1.00, loss=0.00
-</code></pre><p>Our loss is 0.00, if weight is 2.00 and bias -1.00. We reached 100% accuracy. Which builds a learned rule <code>Y=2X-1</code>. 🎊</p>
-<p>Easy, right? But in real world it is much more complex. We can have not 1-demensional input data, but 100-dimensional. Already at 3 dimensions gradient descent looks significantly more complicated:
+</code></pre><p>Our loss is 0.00, if weight is 2.00 and bias -1.00. We reached 100% accuracy. Which builds a rule <code>Y=2X-1</code>. 🎊</p>
+<p>Easy, right?</p>
+<p>Well&hellip; in the real world, things aren’t usually this simple.</p>
+<p>Instead of a single number as input (1-dimensional), real-world data often has dozens or even hundreds of dimensions. Once we move beyond 2 or 3 dimensions, things start to get tricky.</p>
+<p>Even at just 3 dimensions, visualizing Gradient Descent becomes much harder. The &ldquo;loss hill&rdquo; we talked about earlier turns into a loss landscape with valleys, ridges, plateaus, and multiple local minima. Navigating through this terrain becomes a whole new challenge.</p>
 <figure><img src="/images/ml/gradient2.png">
 </figure>
-</p>
+
 <h2 id="neural-networks">Neural networks</h2>
-<p>Regression models are now explained and we have a good foothold to make a next step - Neural networks.
-Neural networks is a composition of computational neurons which together solve operations, to find relation between our <code>X</code>-es and <code>Y</code>-s.
-Machine learning using neural networks is also called deep machine learning.</p>
+<p>Now that we have covered regression models, it is time to take the next step: neural networks.</p>
+<p>Neural networks are made up of interconnected computational units called neurons, which work together to discover relationships between our inputs (<code>X</code>s) and outputs (<code>Y</code>s). When machine learning is powered by neural networks, it is often referred to as deep learning. These models can uncover complex patterns that simpler methods can&rsquo;t easily capture.</p>
 <p>What in <code>neuron</code>?
-Neuron is a methaphorical term for mathematic function, e.g. <code>Y=(w * X) + ( ) + ... + ( ) ​+ b</code>. The longer the polynomial more neurons the network has. Terms inside the polynomial contain weights and inputs. Each layer is the input for thext layer.
-Weights are associated with connection between the previous and next layer - more inputs and neurons, more links between them, thus more wights.
-Biases are associated with the number of neurons in the particular layer - each neuron introduces certain bias.</p>
-<p>The most simple neural networks contains single input, single neuron and single output:</p>
+The term neuron in neural networks is a metaphor - it represents a mathematical function. A simple example might look like this: <code>Y = (w * X) + (...) + (...) + b</code>. The more terms (brackets) we add to this function, the more neurons the network effectively has.</p>
+<p>Each term in this function involves weights and inputs. In a neural network, the output from one layer becomes the input for the next.</p>
+<p>Weights represent the connections between neurons in adjacent layers. More inputs and more neurons mean more connections — and therefore more weights.</p>
+<p>Biases are tied to the number of neurons in a layer. Each neuron has its own bias, which modifies its output.</p>
+<p>The simplest possible neural network consists of a single input, one neuron, and a single output:</p>
 <figure><img src="/images/ml/neuron1.png">
 </figure>
 
-<p>This setups results into <code>Y=(w * X) ​+ b</code> function.
-We will use again Gradient descent loss calculation.</p>
-<p>Tensorflow offers abstraction API <code>keras</code> for building and training ML models.</p>
+<p>This setups results into single-layer neural network with single <code>Y=(w * X) ​+ b</code> function processed by a single neuron.</p>
+<p>We will use again the Gradient descent loss calculation. This time in combination with a so-called <strong>Dense</strong> neural network.
+For now it is sufficient to know, that Dense, or Fully connected neural networks are one of many types of neural networks.</p>
+<p>Tensorflow offers abstraction API <code>keras</code> for building and training neural networks used in the (following code)[https://github.com/jkosik/jkosik.github.io/blob/main/_extra/ml/3_ml-tf-keras.py]:</p>
 <pre tabindex="0"><code>import tensorflow as tf
 from tensorflow import keras
 import numpy as np
@@ -332,12 +350,8 @@ model.fit(xs, ys, epochs=50) # make a guess, measure the loss, optimise and repe
 
 # Make a prediction (runs the input through the trained model.)
 print(model.predict(np.array([10.0]))) # try to predict the output of 10.0
-</code></pre><p>The code tries to predict <code>Y</code> for <code>X=10</code> and result in:</p>
+</code></pre><p>The single neuron learn relation between <code>X</code> and <code>Y</code> and tries to predicts <code>Y</code> for <code>X=10</code> and results in:</p>
 <pre tabindex="0"><code>...snipped...
-Epoch 46/50
-1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 32ms/step - loss: 0.2438
-Epoch 47/50
-1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 22ms/step - loss: 0.2388
 Epoch 48/50
 1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 16ms/step - loss: 0.2339
 Epoch 49/50
@@ -346,50 +360,88 @@ Epoch 50/50
 1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step - loss: 0.2244
 1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 21ms/step
 [[17.614405]]
-</code></pre><p>Linear regression model (<code>X=2X-1</code>) produced the result <code>19</code>. Our minimalistic neural network responds with <code>17.614405</code>. In this case neural network was outperformed by simpler regression learning model. However regresion model will heavily fail on more complex input data sets.</p>
+</code></pre><p>Previously, our linear regression model (<code>Y = 2X - 1</code>) gave a precise result of 19.
+In contrast, our minimalistic neural network produced a result of 17.614405.</p>
+<p>In this case, the simpler regression model outperformed the neural network in terms of accuracy.
+However, while regression works well for straightforward relationships, it tends to fall short when handling more complex or nonlinear datasets and that’s where neural networks truly excel.</p>
 <h3 id="improving-the-neural-network">Improving the neural network</h3>
 <p>Neural network will perform better, if we increase the number of epochs (guessing iterations), adjust loss calculation or include more neurons.</p>
-<p>The following diagram contains two layers and three neurons in total. The same input <code>X</code> is passed through to two neurons in the first layer. First layer neurons forward their results to the second layer where a single neuron executes the final loss detection and calculation and provides the final output <code>Y</code>.</p>
+<p>The diagram below illustrates a simple neural network with two layers and three neurons in total. The same input X is passed to both neurons in the first layer. These neurons process the input and forward their results to the second layer, where a single neuron performs the final computation, typically involving loss detection and calculation, to produce the output <code>Y</code>.</p>
 <figure><img src="/images/ml/neuron2.png">
 </figure>
 
-<p>On the code level we will change the learning model definition as follows:</p>
-<pre tabindex="0"><code># Define the model
+<p>On the <a href="https://github.com/jkosik/jkosik.github.io/blob/main/_extra/ml/4_ml-tf-keras-multi.py">code level</a> we would need to change the learning model definition as follows:</p>
+<pre tabindex="0"><code>...snipped...
+# Define the model
 layer1 = keras.layers.Dense(units=2, input_shape=[1]) # input_shape is defined only for the first layer
 layer2 = keras.layers.Dense(units=1) # automatically gets inputs from the previous layer
 
 model = keras.Sequential([layer1, layer2]) # 2 layers. 2 neurons in L1, 1 neuron in L2
-</code></pre><p>&hellip;and the result will be more precise: <code>18.252928</code>.</p>
-<p>How does our original single-neuron function <code>Y=(w * X) ​+ b</code> change in multi-neuron network? Each neuron guesses own weight and bias and the output is passed as an input for the next neuron when new weight and new bias is applied, resulting in <code>Y=(w3 * N1) + (w4 * N2) + b3</code>:</p>
+...snippped...
+</code></pre><p>&hellip;and the result would be more closer to 19:</p>
+<pre tabindex="0"><code>...snipped...
+Epoch 48/50
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step - loss: 0.0343
+Epoch 49/50
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 17ms/step - loss: 0.0321
+Epoch 50/50
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 19ms/step - loss: 0.0300
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 24ms/step
+[[18.552378]]
+</code></pre><p>How does our original single-neuron function <code>Y=(w * X) ​+ b</code> looks like in multi-neuron network?</p>
+<p>Each neuron makes its own “guess” by assigning a weight and introducing a bias to the input it receives.
+The resulting output is then passed to the next neuron, which applies its own new weight and bias.
+This process continues through the network.</p>
+<p>For example, the output might take the form:
+Y = (w3 * N1) + (w4 * N2) + b3</p>
+<p>Here, N1 and N2 are the outputs from the previous layer’s neurons, w3 and w4 are the new weights, and b3 is the bias added by the last neuron.</p>
 <figure><img src="/images/ml/neuron3.png">
 </figure>
 
-<p>Now we can introduce one more term - <code>tensor</code>. Tensor is a naming for all inputs, outputs and weights. I.e. the data structures of various dimensions which float across the neural network. Sometimes you may hear also a term model <code>parameters</code> which are subset of tensors. Our examples have few tens of parameters. Meta Llama or ChatGPT models have hundreds of millions or event trillion+ parameters.</p>
+<p>While having a basic understanding of neural networks, we can extend our vocabulary a bit further:
+In the context of neural networks, a <strong>tensor</strong> is a general term for the data structures, such as inputs, outputs, and weights, that flow through the network.
+Tensors can have different dimensions, from simple scalars and vectors to complex multi-dimensional arrays.</p>
+<p>You might also hear the term <strong>model parameters</strong>. These refer to a subset of tensors - specifically the weights and biases that the model learns and adjusts during training.</p>
+<p>In our small examples, the model might have just a few dozen parameters.
+In contrast, large-scale models like Meta’s LLaMA or OpenAI’s ChatGPT have hundreds of millions or even trillions of parameters.</p>
 <h2 id="complex-neural-networks">Complex neural networks</h2>
-<p>In the real world, neural networks can be much more complex and characterised by:</p>
+<p>Neural networks can be far more complex than the simple examples we’ve seen so far
+and they’re typically characterized by several key features:</p>
 <ul>
 <li>many layers</li>
 <li>many neurons in each layer</li>
-<li>neurons can talk to to themselves or neurons in the same layer</li>
-<li>neuron talk to a subset of neurons in the previous layer</li>
-<li>added &ldquo;activation&rdquo; functions</li>
-<li><code>X</code> and <code>Y</code> can be multidimensional</li>
-<li>and many more</li>
+<li>neurons can talk to themselves or to the neurons in the same layer</li>
+<li>neuron talk to a subset of neurons in the previous layer only</li>
+<li>&ldquo;activation&rdquo; functions involved</li>
+<li>multidimensional inputs and outputs</li>
+<li>and many more&hellip;</li>
 </ul>
-<p>The final computation will be a set of inter-related complex functions with inputs and outputs flow through the network in a convoluted way.</p>
-<p>All depends how which use case we are addressing. So far, this blog assumed a standard feedforward network (Dense/Sequential in Keras) where each neuron talks to all neurons in the next layer - that is why &ldquo;dense&rdquo;, of fully connected network. Keras offers much more than that - <a href="https://keras.io/api/layers">tens of layer types</a> + custom layers.</p>
-<h2 id="training-data-and-data-classification">Training data and data classification</h2>
-<p>ML use cases require strong training data - set of inputs producing expected outputs (called as we know &ldquo;ground truth&rdquo; or &ldquo;labels&rdquo;).
-Once training finishes, we still need to validate and test. It is recommended to split the training data to those used only for training and those that will be used for validation only. The reason is, that we want to be sure that trained model can cope properly with previously unseen data, generalises well and does not <code>overfit</code> (memorises only samples it was trained on). Overfitting can be result of weak data set, but also result of overtraining the model with excessive amount of epochs.
-Validation or test data introduce another dimension into the training process. Besides <code>loss</code>, we now calculate also <code>accuracy</code>.</p>
-<p>Preparing properly normalised data sets is a topic by itself. Luckily <code>tensorflow</code> provides multiple <a href="https://www.tensorflow.org/datasets/catalog/">training-ready datasets</a>, which can be loaded directly using the <code>keras</code> API we have used so far.</p>
-<p>We can load text, sound, images, and so on. Each data sets have in common, that they contain <code>data</code> and <code>labels</code>. Data can be encoded representation of mp3, written characters, or other inputs.
-Label is human a readable name of the data, which allows data <code>classification</code>. E.g. we play various samples of the word <code>yes</code> and all samples are labeled by <code>yes</code>, i.e. tell the training model, that all these samples belong to the same category, or class.</p>
-<p>This allows something what we call data <code>classification</code> - we can say, that these data represent various rock songs.</p>
-<h3 id="training-on-specific-data-types-image">Training on specific data types (image)</h3>
-<p>Let&rsquo;s see on a high-level how to train a model to detect an image of a dog.</p>
-<p>First we need to normalise the data, apply various filters over the image to map relation between individual pixels. You also need to extract key features, e.g. when training a dog recognition, you want to extract separately legs, ears, eyes or body torso to help the model understand what characterise a &ldquo;dog&rdquo;.
-You may also need to augemnt yout training data by applying special function over the existing training data set - e.g. skew or rotate the object to allow the model to generalise as much as possible, rather than overfit.</p>
+<p>The final computation at the end of a neural network will be a composition of inter-related convoluted functions.
+So far, this article assumed a &ldquo;feedforward&rdquo; Dense neural layers where each neuron talks to all neurons
+in the next layer - that is why &ldquo;dense&rdquo;, of fully connected network. Keras offers much more than that - <a href="https://keras.io/api/layers">tens of layer types</a> and even custom layers to build super-complex neural networks.</p>
+<h2 id="training-data">Training data</h2>
+<p>Machine learning (ML) models are only as good as the data they are trained on. To build a model that performs well,
+you need a strong training dataset - a collection of input data paired with the expected outputs.</p>
+<p>But training is just the beginning. Once your model has been trained, it is crucial to validate and test it
+to ensure it performs well on new, unseen data. This is why it is standard practice to split your dataset: one part for training, and another for validation (and possibly a third for testing).
+This helps you check if the model can generalize, rather than just memorize the training data - a problem known as overfitting.</p>
+<p>Preparing well-normalized datasets is a topic of its own. Fortunately, <a href="https://www.tensorflow.org/datasets/catalog/overview">TensorFlow Datasets</a> provides a wide range of ready-to-use datasets, which can be easily loaded through the keras API we have been using.</p>
+<h2 id="data-classification">Data classification</h2>
+<p>These datasets span various data types, like text, audio, images, and more. While the format of the data may differ,
+all datasets have one thing in common: they contain both <code>data</code> and <code>labels</code>. The data might be an encoded MP3 snippet, a handwritten character, or any other input,
+while the label is a human-readable tag that helps categorize the input. For example, if we are training a model to recognize spoken words,
+we might use audio samples of the word &ldquo;yes,&rdquo; each labeled as <code>yes</code>. This tells the model that all these samples belong to the same class.</p>
+<p>This process is called <code>classification</code>. We are teaching the model to group similar data into categories.
+For instance, a classification model might learn to recognize and group different songs by genre, such as rock or jazz.</p>
+<h2 id="training-on-specific-data-types-images">Training on specific data types: Images</h2>
+<p>Let’s take a high-level look at how to train a model to recognize images of dogs.</p>
+<p>First, the data needs to be normalized. This usually means scaling the image size and also pixel values so they fall within
+a consistent range (typically 0 to 1).</p>
+<p>Next, we apply various filters over the image to help the model learn relationships between individual pixels.</p>
+<p>A key part of image-based training is feature extraction. For dog recognition, for example, the model should learn
+to identify parts like legs, ears, eyes, or the torso. These features help the model understand what visually characterizes a &ldquo;dog.&rdquo;</p>
+<p>Another important step is data augmentation. This involves applying transformations like rotation, flipping, or skewing—to the training images.
+Augmentation increases dataset diversity and helps the model generalize better, reducing the risk of overfitting.</p>
 <p>Various machine learning functions, e.g. <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">convolutions</a> may represent dog and dog parts as follows:</p>
 <figure><img src="/images/ml/dog-convolutions.png">
 </figure>
