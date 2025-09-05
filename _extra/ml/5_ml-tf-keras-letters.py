@@ -1,4 +1,4 @@
-# Training a model to recognise letters
+# Training a model to recognise letters using Tensorflow dataset - MNIST
 # Convert Keras model to TFLite model
 
 import tensorflow as tf
