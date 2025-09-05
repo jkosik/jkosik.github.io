@@ -83,7 +83,7 @@
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
-            20 min read
+            21 min read
           </li>
 
         </ul></div>
@@ -97,11 +97,17 @@
 
     <div id="content" class="mb-14">
       <p>&ldquo;Artificial Intelligence&rdquo;, &ldquo;Deep Learning&rdquo;, &ldquo;Machine Learning&rdquo; (ML) - these buzzwords have been echoing all around us for the past decade. Most of us think we know what they mean. Or&hellip; do we?</p>
-<p>I started questioning myself, trying to get a clearer understanding of these concepts. I took some notes, played around with ideas, and somehow ended up building a simple machine learning model. So, let me share what I learned along the way.</p>
+<p>I started questioning myself, trying to get a clearer understanding of these concepts. I took some notes, played around with ideas, and somehow ended up building a simple machine learning model and ML apps.</p>
+<p><strong>TLDR/video: A simple machine learning app that listens for voice commands</strong>. When it hears the word “go”, it opens a web browser. All other words are ignored.
+<video controls playsinline width="800">
+<source src="/images/ml/vid.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></p>
+<p>Let me share what I learned along the way.</p>
 <h2 id="entering-the-world-of-machine-learning">Entering the world of Machine Learning</h2>
 <p>Machines that &ldquo;think&rdquo; aren&rsquo;t exactly new. We’ve had devices like calculators for decades. They seem smart, they do math instantly, after all. But the truth is, they&rsquo;re just really fast at following precise instructions. Everything they do is hard-coded and guaranteed: when you add 1 + 1, it will be 2. No doubts, no debate.</p>
 <p>This is classic programming: deterministic, rule-based, and predictable.</p>
-<p>Now, enter Machine Learning (ML).
+<p>Now, enter Machine Learning.
 Here, the game changes.</p>
 <p>On contrary, machine learning has no exact algorithms and outcome is not precise. So why to bother?
 Machine learning shines when writing rules and algorithms would be overly complex if not impossible to define. E.g. to distinguish dog from a cat or to detect sarcasm in the sentence.
@@ -507,7 +513,15 @@ Sound waves are decomposed and unique characteristics and features are emphasise
 <h3 id="using-pre-trained-hugging-face-models">Using Pre-trained Hugging Face Models</h3>
 <p>Let’s see just how easy it is to use a pre-trained keyword spotting model in practice.
 The <a href="https://huggingface.co/anton-l/wav2vec2-base-ft-keyword-spotting">wav2vec2-base-ft-keyword-spotting</a> model achieves impressive 98.26% accuracy and can recognize 12 different keywords: &ldquo;yes&rdquo;, &ldquo;no&rdquo;, &ldquo;up&rdquo;, &ldquo;down&rdquo;, &ldquo;left&rdquo;, &ldquo;right&rdquo;, &ldquo;on&rdquo;, &ldquo;off&rdquo;, &ldquo;stop&rdquo;, &ldquo;go&rdquo;, plus silence and unknown classes.</p>
-<p>See the commented code</p>
+<p>See a <a href="https://github.com/jkosik/jkosik.github.io/blob/main/_extra/ml/8_realtime_go_detection_and_action.py">ready-to-use Python code</a> that listens for a voice command and opens your browser (in this case, Chrome on macOS) when it hears the word &ldquo;go&rdquo;.
+This is the same example demonstrated in the video at the beginning of this post.</p>
+<h2 id="closing-words">Closing words</h2>
+<p>Neural networks might seem intimidating at first, but even simple models can produce powerful, real-world applications like voice-activated actions.
+As we have seen, understanding the core building blocks (neurons, weights, biases, tensors, and layers) helps demystify the &ldquo;magic&rdquo; behind AI and ML.</p>
+<p>What I have covered here is just the surface, a simplified view meant to explain the core mechanics of neural networks.
+Behind the scenes of today’s advanced AI systems are teams solving problems that span mathematics, data engineering, distributed systems, and human-centered design.</p>
+<p>While studying this topic, I gained a new level of appreciation for the people building state-of-the-art AI systems.
+It is one thing to understand a basic neural network, but designing, training, and scaling the models behind tools like ChatGPT or LLaMA is something entirely different.</p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
