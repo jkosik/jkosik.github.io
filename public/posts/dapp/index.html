@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Decentralised application (dApp) on Ink Blockchain powered by Smart contracts | Juraj Kosik</title>
+
+<meta name="description" content="How to use blockchains and Smart contracts to set up fast, cheap, tamper-proof peer-to-peer contractual relations without need for a middlemen.">
+    <link rel="stylesheet" href="/css/main.css">
+
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/favicon.svg"> 
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico"> 
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32.png"> 
+<link rel="icon" type="image/png" sizes="64x64" href="http://localhost:1313/favicon-64.png"> 
+
+</head>
+<body>
+  <header class="py-6 border-b"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col">
+	<div class="flex items-center">
+		<div class="flex items-center">
+			<button class="flex items-center space-x-2 rounded-full border py-1 pr-[5px] pl-3 group bg-zinc-100 hover:bg-zinc-200 toggle-button" data-target="menu-bar">
+				<svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+				</svg>
+				<span class="bg-blue-500 fill-white rounded-full p-1.5">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="group-hover:animate-spin bi bi-egg-fried fill-white" viewBox="0 0 16 16">
+						<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+						<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"></path>
+					</svg>
+				</span>
+			</button>
+			<div class="relative rounded-full py-1.5 px-6 bg-zinc-100 hover:bg-zinc-200 text-xl font-bold uppercase mx-2">
+				<h2><a class="before:content-[''] before:z-10 before:top-0 before:right-0 before:left-0 before:bottom-0 before:absolute before:pointer-events-auto" href="http://localhost:1313/">Juraj Kosik</a></h2>
+			</div>
+		</div>
+		<div class="flex items-center ml-auto">
+		</div>
+	</div>
+  <nav id="menu-bar" class="block mt-3 close">
+    <ul class="flex items-center flex flex-nowrap whitespace-nowrap overflow-x-auto space-x-4">
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/">Home</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/about/">About</a>
+    </li>
+    <li class="my-2">
+      <a class="rounded-full border px-6 py-2 bg-zinc-100 hover:bg-zinc-200" href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+</div></header>
+  <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8"><div id="breadcrumb" class="max-w-7xl mx-auto py-8">
+	<ul class="flex space-x-4 text-sm text-zinc-500">
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/">Juraj Kosik</a>
+		</li>
+		<li class="after:content-['❯'] after:ml-4 after:opacity-30 last:after:content-none uppercase">
+			<a href="http://localhost:1313/posts/">Posts</a>
+		</li>
+	</ul>
+</div><div class="max-w-4xl mx-auto mb-14">
+
+  <article class="prose lg:prose-lg mx-auto">
+
+    <header class="not-prose">
+
+      <h1 id="title" class="text-4xl font-bold leading-normal">Decentralised application (dApp) on Ink Blockchain powered by Smart contracts</h1>
+
+      <div id="lead" class="my-6">
+
+        <p class="font-bold">How to use blockchains and Smart contracts to set up fast, cheap, tamper-proof peer-to-peer contractual relations without need for a middlemen. </p>
+
+      </div>
+
+      <div id="writer" class="flex items-center space-x-4"><ul class="flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+          <li class="font-semibold my-2"></li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-11-08T08:15:05&#43;07:00">November 8, 2025</time>
+          </li>
+
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
+            10 min read
+          </li>
+
+        </ul></div>
+
+    </header>
+
+    <figure id="featureimage" class="rounded-xl aspect-video">
+            <img class="rounded-lg" src="http://localhost:1313/images/motivateme/big_hu_a81d28be53d6e90b.png" alt="" width="750" height="429">
+
+    </figure>
+
+    <div id="content" class="mb-14">
+      <p>Curious how Layer 2 Ethereum-based blockchains and Smart Contracts come together to power decentralized apps (dApps)?
+In this post, we will explore those principles in action by building a simple educational dApp <a href="https://motivateme.ink">Motivateme</a>.</p>
+<p>If you are already familiar with the buzzwords above, feel free to jump straight in <a href="https://motivateme.ink">https://motivateme.ink</a> or explore the code at <a href="https://github.com/jkosik/motivateme">https://github.com/jkosik/motivateme</a> and dive deeper.</p>
+<p>If terms like Ethereum, Smart Contracts, Layer 1 or Layer 2 blockchain sound new — don’t worry. Keep reading, and we will break it all down in plain English.</p>
+<h2 id="tldr-summary">TLDR Summary</h2>
+<p>The project <a href="https://motivateme.ink">Motivateme</a>:</p>
+<ol>
+<li>Deploys Smart contract on a Layer 2 Ethereum-based blockchain.</li>
+<li>Builds a web application, which interacts with the Smart contract.</li>
+<li>Allows people to motivate others by locking the award in ETH cryptocurrency and let Smart contract release the award when conditions defined in the Smart contract are met.</li>
+</ol>
+<p>This is the entire application workflow is depicted in the following graphics.
+<figure><img src="/images/motivateme/flow.png">
+</figure>
+</p>
+<h2 id="dapp-properties">dApp properties</h2>
+<p>Core of the <strong>dApp (decentralised application)</strong> is a Smart contract - a programatic version of a classic contract as we know from the physical world, however stored on the decentralised, tamper-proof blockchain.
+Even though Smart contract is the core component of the dApp, full-blown dApp could contain also further properties of decentralisation:</p>
+<ul>
+<li>Application hosted on decentralised infrastructure like <a href="https://ipfs.tech/">IPFS filesystem</a>.</li>
+<li>Permission-less frontend with no backend user management.</li>
+<li>Decentralised and community-driven governance.</li>
+<li>Decentralised arbiter who validates whether all conditions of the Smart contracts were met. Some contract conditions can be auto-validated by hardcoding them inside the Smart contract. Sometimes validation depends on events from the physical world, outside of blockchain. This problem is also resolved and addressed through <a href="https://chain.link/education/blockchain-oracles">validation Oracles</a>.</li>
+</ul>
+<p>Our <strong>MotivateMe</strong> dApp primarily focuses on Smart contracts and does not incorporate Oracles or advanced validation mechanisms. Instead, it relies on social accountability, using transparent on-chain tracking of user actions as the main form of validation.</p>
+<p>Interacting with Smart Contracts on the blockchain isn’t free and not every blockchain supports them. One of the most common environments for hosting Smart Contracts are Layer 2 blockchains built on top of Ethereum blockchain. In our case, we will be using exactly that - the <a href="https://inkonchain.com/">Ink blockchain</a>.</p>
+<h2 id="l1-and-l2-blockchains">L1 and L2 blockchains</h2>
+<p>Bitcoin or Ethereum are well-known Layer 1 blockchains. They act as a backbone for crypto transactions. Some blockchains like Bitcoin are primarily designed for transacting cryptocurrency, later extended by other functionalities though.</p>
+<p>As blockchain adoption grew, some limitation were discovered, mainly transaction speed and cost. At the same time, new use cases were identifed, such as storing NFTs or building Smart contracts. That is where Layer 2 (L2) blockchains come in and fill in the gap.</p>
+<p>L2 networks operate their own set of nodes to quickly process and sequence transactions before submitting them in batches to Layer 1 (L1) for final confirmation. This setup even allows rollbacks on L2 if required by L1. Despite that flexibility, L2 blockchains have already robust fraud-prevention mechanisms that keep the system secure.</p>
+<h3 id="layer-2-characteristics">Layer 2 characteristics</h3>
+<p>Layer 2 blockchains are connected to their parent Layer 1 blockchain. One common method of interconnection is through <strong>rollups</strong>, where L2 transactions are bundled and compressed off-chain before being submitted to L1.</p>
+<p><a href="https://www.cyfrin.io/blog/what-are-blockchain-rollups-a-full-guide-to-zk-and-optimistic-rollups?utm_source=chatgpt.com">This article</a> provides a detailed explanation of the two main types of rollups:</p>
+<ul>
+<li>Optimistic rollups</li>
+<li>Zero-knowledge rollups</li>
+</ul>
+<p>L2 chains are extensions of L1 chains and address:</p>
+<ul>
+<li>improved blockchain scalability</li>
+<li>lower transaction fees</li>
+<li>faster transactions</li>
+<li>interoperability of special-purpose L2 chains</li>
+</ul>
+<p><strong>MotivateMe</strong> dApp uses <a href="https://inkonchain.com/">Ink L2 blockchain</a> which is the implementation of <a href="https://www.optimism.io/">OP Mainnet L2 blockchain</a>.
+OP Mainnet is built on top of the Ethereum Layer 1 blockchain, leveraging its security and settlement capabilities.
+OP Mainnet’s long-term vision is to create an interoperable network of L2 chains - a connected ecosystem known as the <strong>Superchain</strong>.</p>
+<p>Even though <strong>MotivateMe</strong> is deployed on the Ink L2 blockchain, it could be easily hosted on OP Mainnet and even directly on Ethereum L1 blockchain without any significant code changes.</p>
+<p><strong>Are L2 blockchains as decentralised as Layer 1?</strong><br>
+Not entirely. Most Layer 1 blockchains have thousands of transaction validators (or miners) maintaining the network. In contrast, Layer 2 blockchains are usually operated by a core team that runs the L2 nodes and relies on centralized <strong>Sequencers</strong> to collect transactions and submit them to the fully decentralized Layer 1 network.</p>
+<p><strong>Where is my crypto stored on Layer 2?</strong><br>
+A Layer 2 blockchain is a physically separate network. Your funds on one L2 are independent from those on other L2 blockchains, as well as from your funds on the Layer 1 blockchain.</p>
+<p>Let me depict this concept on an example:</p>
+<ol>
+<li>You have 10 ETH on L1 Ethereum blockchain.</li>
+<li>You have to use L2 bridge, e.g. <a href="https://inkonchain.com/bridge">Ink bridge</a>, to transfer 10 L1 ETHs to L2.
+In reality, <strong>10 ETHs are locked on L1 using the L2 rollup Smart contract</strong> - remember this concept, since later on we will also use &ldquo;locking&rdquo; and &ldquo;Smart contract&rdquo; in our dApp.</li>
+<li>Corresponding <code>wrapped</code> ETH tokens are issued on L2 chain and can be transacted on that particular L2 chain.</li>
+</ol>
+<p>Important: Your wallet address remains the same across both layers (since they are both Ethereum-based), but your balances differ because each layer operates on its own blockchain.</p>
+<h2 id="smart-contract">Smart Contract</h2>
+<p>In a real world, classic contract is a written document with rights and liabilities of contracted parties. Limitations of a standard contract are clear and described in the follwing table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Classic contract</th>
+          <th>Smart contract</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Not reusable. Requires separate (printed) instance for new cases.</td>
+          <td>Single reusabe contract stored on the blockchain.</td>
+      </tr>
+      <tr>
+          <td>Requires trusted party to confirm signatures.</td>
+          <td>No middleman is needed. Trust based on cryptography.</td>
+      </tr>
+      <tr>
+          <td>Requires safe storage.</td>
+          <td>Stored decentrally on the blockchain.</td>
+      </tr>
+      <tr>
+          <td>Identity of contracting parties can be faked.</td>
+          <td>Tamper-proof identities.</td>
+      </tr>
+      <tr>
+          <td>Contract contents can be faked.</td>
+          <td>Tamper-proof contents.</td>
+      </tr>
+      <tr>
+          <td>Written as a static text.</td>
+          <td>Written in programming language supporting complex logic.</td>
+      </tr>
+      <tr>
+          <td>Interpreted by (potentially biased) lawyer.</td>
+          <td>Interpreted by a computer with no room for misinterpretation.</td>
+      </tr>
+  </tbody>
+</table>
+<p>Smart contract support also very complex use cases, as <a href="https://jkosik.github.io/posts/crypto/">minting own cryptocurrency as described in one of my previous blogs</a>.</p>
+<p><strong>How exactly the Smart contract looks like?</strong><br>
+This is a minimalistic Smart contract example provided by Ethereum Development Framework <a href="https://getfoundry.sh/">Foundry</a>:</p>
+<pre tabindex="0"><code>// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+contract Counter {
+    uint256 public number;
+
+    function increment() public {
+        number++;
+    }
+}
+</code></pre><p>This Smart contract has two &ldquo;contract stipulations&rdquo;:</p>
+<ol>
+<li>Callable variable <strong>number</strong> which can be read anytime. Similarly to reading a paragraph in a classic contract.</li>
+<li>Callable function <strong>increment</strong> which increments a <strong>number</strong> variable. Similarly to activating a paragraph in a classic contract when contract conditions were met.</li>
+</ol>
+<p><strong>How is the Smart Contract executed?</strong><br>
+By triggering the code. The code is executed on <a href="https://ethereum.org/developers/docs/evm/">Ethereum Virtual Machine (EVM)</a> running on Ink blockchain Sequencer nodes. <em>For L1 networks, EVM runs on every Ethereum validation node.</em><br>
+Execution is triggered by a call to a blockchain RPC endpoint - for Ink blockchain it is <a href="https://rpc-gel.inkonchain.com">https://rpc-gel.inkonchain.com</a>. Call can be executed by any user using Foundry client <code>cast</code> or through dApps user intereface.</p>
+<p><strong>How to develop a Smart contract?</strong><br>
+Classic contracts are first drafted and only then finalised. The same is possible on the blockchain. Instead of writing the contract and deploying on the blockchain immediately, you have a blockchain playground available. Each blockchain has a Mainnet, where the real transactions happen and also a Testnet or Devnet, where artificial transaction can be simulated and everything is free of charge there.
+Also Ink has a Testnet and the test RPC endpoint is <a href="https://ink-sepolia.drpc.org">https://ink-sepolia.drpc.org</a>. <a href="https://github.com/jkosik/motivateme/blob/main/README.md">MotivateMe README.md</a> explains the entire development process, including generating of fake ETHs for transacting on Testnet.</p>
+<h2 id="motivateme-dapp">MotivateMe dApp</h2>
+<p><a href="https://motivateme.ink">https://motivateme.ink</a> dApp implements Smart contract with three simple educational motivational use cases. The sender sets the motivation (or challenge) for the recipient and lock a prize money. If the conditions are met and challenge is fulfiled, reward are unlocked and released to the recipient.</p>
+<p>MotivateMe implements these 3 motivations:
+<figure><img src="/images/motivateme/select-motivation.png">
+</figure>
+</p>
+<ol>
+<li>Sender can unconditionally and immediately send money to another Ink wallet.</li>
+<li>The sender can lock the reward for a specific number of days. After that period, the eligible recipient can claim the funds by interacting with the Smart Contract - either directly via blockchain CLI client or through the dApp.</li>
+<li>The sender can lock the reward, and the recipient must then submit proof of completing the challenge through the dApp. Currently, the application only requests a simple text confirmation, but the dApp could implement its own proof-validation logic or integrate Oracles for more complex verification.</li>
+</ol>
+<h3 id="cryptography">Cryptography</h3>
+<p>Cryptography ensures, that only the eligible recipients defined by the sender can claim the reward.</p>
+<p><strong>How is sender&rsquo;s and recipient&rsquo;s identity validated?</strong><br>
+On the blockchain, trust is ensured by <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">asymmetric cryptography</a> which is built around a private and public key-pairs. Private key is used for proving the identity and signing the trasactions and public key is used for identifying the parties.</p>
+<p>In our case, the sender&rsquo;s motivations are signed by the sender&rsquo;s private key and locked for a recipient&rsquo;s public key.
+To be fully technically precise, the recipient is identified by this wallet address, which is derived from recipient&rsquo;s public key. The entire flow looks like this:</p>
+<pre tabindex="0"><code>Private Key → Public Key → Wallet Address
+</code></pre><p>When you are generating a wallet on Ethereum-compatible blockchain, like OP Mainnet or Ink, you generate a private key, which generates a corresponding public key, building a key-pair. Public key is then hashed and shortened and generates a wallet address composed of 40 hexadecimal characters, e.g. <code>0x4fcC5C461B59ECC4786CDa6Ec270bA29Eb657FAF</code>. Also a Smart contract itself has its own dedicated wallet address and all contract interactions are executes against that address.</p>
+<p>Each Smart contract interaction is in fact a blockchain transaction and each transaction has to be authenticated using the private key. When using CLI, we export our wallet&rsquo;s private key and run <strong>cast</strong>. In the following example, we initiate the call to the <strong>increment</strong> function of our testing Smart contract deployed on Ink Testnet:</p>
+<pre tabindex="0"><code>export $WALLET_PRIVATE_KEY=0xABCD...
+
+cast send 0x4fcC5C461B59ECC4786CDa6Ec270bA29Eb657FAF &#34;increment()&#34; \
+  --rpc-url https://ink-sepolia.drpc.org \
+  --private-key $WALLET_PRIVATE_KEY
+</code></pre><p>Details of this transaction can be found in the CLI as well as in the blockchain explorer: <a href="https://explorer.inkonchain.com/address/0x4fcC5C461B59ECC4786CDa6Ec270bA29Eb657FAF?tab=txs">https://explorer.inkonchain.com/address/0x4fcC5C461B59ECC4786CDa6Ec270bA29Eb657FAF?tab=txs</a> (see the <strong>increment</strong> in the Method column)</p>
+<figure><img src="/images/motivateme/transaction-testnet.png">
+</figure>
+
+<h3 id="dapp-authentication">dApp authentication</h3>
+<p>Smart contract can be deployed and interacted with directly via CLI and blockchain RPC endpoint. dApp improves user experience by friendly abstraction layer and can integrate nicely by one of authentication SDKs, like <a href="https://docs.walletconnect.network/">WalletConnect</a>, recently wrapped and rebranded as <a href="https://docs.reown.com/appkit/overview">Reown</a>.</p>
+<p>These SDKs offer easy integration with crypto wallets in browser extension or even with mobile wallets - MotivateMe supports both. Wallet private keys are stored in the browser&rsquo;s secure storage or in the mobile device. Linking the wallet to dApp is a one click operation or a simple QR code scan using a smart phone camera.</p>
+<video controls playsinline width="800" poster="/images/fallback.jpg">
+  <source src="https://mintcdn.com/reown-5552f0bb/mrXva7Pfcna94qcp/images/appkit-overview-demo.mp4?fit=max&auto=format&n=mrXva7Pfcna94qcp&q=85&s=b212237900c8ca324660b3ed38eea8d2
+  " type="video/mp4">
+  Sorry, your browser doesn’t support embedded videos.
+</video>
+<h3 id="what-happens-on-the-blockchain-stays-on-the-blockchain">&ldquo;What happens on the blockchain stays on the blockchain.&rdquo;</h3>
+<p>One of our motivation types is a Proof-of-Action motivation where the sender requires specific action and recipient proves the execution before reward is released. Both sender&rsquo;s requirement and claimant&rsquo;s proof are stored directly on the blockchain:</p>
+<ol>
+<li>Sender stores the motivation on the blockchain requesting execution from a particular (recipient&rsquo;s) wallet address <strong>0xDda568a3fc17d2377eb73c8EB6aB965eF7ED1f09</strong>:</li>
+</ol>
+<pre tabindex="0"><code>Dear Developer ABC,
+Please submit a pull request for project XYZ for 0.0001 ETH and assist us in fixing the code.
+Thank you.
+</code></pre><figure><img src="/images/motivateme/proof-requested-ui.png">
+</figure>
+
+<p>Once the motivation is created and confirmed in the sender&rsquo;s crypto wallet, transaction with the requirement defintion and eligible recipient address <strong>0xDda568a3fc17d2377eb73c8EB6aB965eF7ED1f09</strong> is recorded on the blockchain:</p>
+<pre tabindex="0"><code>✅ Proof-of-action motivation created in block 29187956
+</code></pre><p>The transaction detail can be inspected here: <a href="https://explorer.inkonchain.com/tx/0xfdb049a30d81d0572db7a93d24e62eb64bc2d611c015a22c98d2225572a95817">https://explorer.inkonchain.com/tx/0xfdb049a30d81d0572db7a93d24e62eb64bc2d611c015a22c98d2225572a95817</a></p>
+<figure><img src="/images/motivateme/proof-requested.png">
+</figure>
+
+<ol start="2">
+<li>The recipient completes the challenge and submits proof of completion. Submitting the proof and claiming the reward is a new blockchain transaction.<br>
+In our case, the proof is socially enforced, meaning there is no automated validation on-chain. However, in a more advanced implementation, this could be extended with programmatic validation within the dApp or through dedicated Oracles.<br>
+For now, the recipient (claimant) simply provides a textual proof in the dApp to which he authenticates by linking his wallet.</li>
+</ol>
+<figure><img src="/images/motivateme/proof-submitted-ui.png">
+</figure>
+
+<pre tabindex="0"><code>✅ Proof-of-action motivation claimed in block 29188192
+</code></pre><p>The transaction detail can be inspected here: <a href="https://explorer.inkonchain.com/tx/0x04a975dbaec593906a2964dc22a3e2392ee67a57d5b7a6a84330c5eb64bef689">https://explorer.inkonchain.com/tx/0x04a975dbaec593906a2964dc22a3e2392ee67a57d5b7a6a84330c5eb64bef689</a></p>
+<figure><img src="/images/motivateme/proof-submitted.png">
+</figure>
+
+<h2 id="closing-words">Closing words</h2>
+<p>For more details check <a href="https://github.com/jkosik/motivateme">https://github.com/jkosik/motivateme</a>. It includes additional information on interacting with the blockchain via the command line, as well as the full dApp source code, Smart Contract code, and deployment code using Ansible and Kubernetes.</p>
+<p>Looking ahead, Smart Contracts represent far more than a way to send or lock digital funds. They are the foundation for automated, trustless agreements that can reshape industries. Smart Contracts are evolving into a powerful tool for building transparent, self-executing systems without intermediaries.</p>
+<p>As Layer 2 networks mature and scalability improves, Smart Contracts will likely become the core logic layer of the decentralized web, enabling seamless, programmable interactions between users, organizations, and applications. The journey is just beginning and projects like MotivateMe demonstrate how even simple use cases can help pave the way toward a more open and automated digital future.</p>
+
+
+    <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
+
+      <li class="font-semibold my-4">Tags:</li>
+        <li ><a class="py-2 px-6 border rounded-full hover:bg-zinc-100 active:bg-zinc-300" href="/tags/crypto/">Crypto</a></li>
+    </ul>
+</div>
+
+  </article>
+
+</div>
+
+</main>
+  <footer class="bg-zinc-100 py-10 md:py-14"><div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+
+  <div class="flex flex-wrap space-y-6 mb-4">
+
+    <div class="w-full md:w-3/5 flex flex-col space-y-4 md:pr-8 lg:pr-10">
+
+      <a class="flex items-center group" href="http://localhost:1313/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="mr-2 group-hover:animate-spin" viewBox="0 0 16 16">
+          <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+        </svg>
+
+        <span class="text-2xl font-semibold uppercase">Juraj Kosik</span>
+      </a>
+
+      <p class="font-semibold">
+        Cybersecurity, DevSecOps, AI, and Crypto.
+      </p>
+
+    </div>
+
+    <div class="self-center flex flex-col w-full md:w-2/5">
+
+<ul id="social-media" class="flex items-center space-x-4">
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.github.com/jkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+			</svg>
+		</a>
+	</li>
+	<li>
+		<a class="w-12 h-12 rounded-full bg-white hover:bg-zinc-200 flex items-center justify-center p-2" href="https://www.linkedin.com/in/jurajkosik" target="_blank" rel="noopener noreferrer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248-.821 0-1.358.54-1.358 1.248 0 .694.521 1.248 1.327 1.248h.015zm4.908 8.212h2.4v-4.045c0-.216.016-.432.08-.586.176-.432.576-.88 1.248-.88.88 0 1.232.664 1.232 1.637v3.874h2.4v-4.146c0-2.22-1.184-3.252-2.76-3.252-1.28 0-1.845.711-2.165 1.211h.016v-1.04h-2.4c.032.672 0 7.225 0 7.225z"/>
+			</svg>
+		</a>
+	</li>
+</ul>
+
+    </div>
+
+  </div>
+
+  <div class="my-8">
+    <ul class="flex items-center space-x-4">
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/">Home</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/about/">About</a></li>
+      
+        <li><a class="decoration-auto hover:underline font-semibold" href="/tags/">Tags</a></li>
+      
+    </ul>
+  </div>
+
+  <div class="border-t pt-4">
+
+    <p class="text-sm">Powered by Hugo and <a href="https://github.com/fauzanmy/pehtheme-hugo" target="_blank" rel="noopener">Pehtheme</a></p>
+
+  </div>
+
+</div>
+</footer>
+      <script src="/js/insertoggle.js"></script>
+</body>
+</html>
