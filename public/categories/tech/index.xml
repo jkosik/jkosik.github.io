@@ -16,13 +16,6 @@
       <description>&lt;p&gt;Curious how Layer 2 Ethereum-based blockchains and Smart Contracts come together to power decentralized apps (dApps)?&#xA;In this post, we will explore those principles in action by building a simple educational dApp &lt;a href=&#34;https://motivateme.ink&#34;&gt;Motivateme&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Homework: Hacking EduPage</title>
-      <link>http://localhost:1313/posts/edupage/</link>
-      <pubDate>Sat, 08 Nov 2025 08:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/posts/edupage/</guid>
-      <description>&lt;p&gt;Over a Christmas break I took a look on an innocent-looking website of my children&amp;rsquo;s schools - Edupage. Out of curiosity and to refresh my pentesting skills. Without any expectations.&#xA;What could be that sensitive in some time school portal?&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>The Machine Learning Primer: From fundamentals to a working app</title>
       <link>http://localhost:1313/posts/ml/</link>
       <pubDate>Sat, 06 Sep 2025 08:15:05 +0700</pubDate>

@@ -79,7 +79,7 @@
 
           <li class="font-semibold my-2"></li>
 
-          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-11-08T08:15:05&#43;07:00">November 8, 2025</time>
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-03-08T08:15:05&#43;07:00">March 8, 2025</time>
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
@@ -96,7 +96,7 @@
     </figure>
 
     <div id="content" class="mb-14">
-      <p>Over the Christmas break, I took a look at what seemed like an innocent website used by my children’s school — Edupage. Partly out of curiosity, partly to refresh my pentesting skills, and with absolutely no expectations.</p>
+      <p>Over the Christmas break, I took a look at what seemed like an innocent website used by my children’s school - Edupage. Partly out of curiosity, partly to refresh my pentesting skills, and with absolutely no expectations.</p>
 <p>After all, how sensitive could a school portal really be?</p>
 <h2 id="rewinding-a-few-days-what-i-found">Rewinding a Few Days: What I Found</h2>
 <p>Very early, I had identified several serious vulnerabilities: IDOR, XSS, CSRF, and PII leaks.</p>
@@ -270,10 +270,10 @@ schoolYear = 2025
 <p>Could it be worse? It turned out that vulnerable endpoint of the Payment module is available also for the students, exposing this vulnerability to potentially hundreds of thousand potential attackers. Bad, but it got even worse later on&hellip;</p>
 <p>Mobile Edupage application allows one-click creation of public Edupage account for any school supporting guest accounts. These accounts have normally very limited permissions.
 I created public account in randomly selected foreign school I have no relation or access to.</p>
-<figure><img src="/images/edupage/print.png">
+<figure><img src="/images/edupage/public.png">
 </figure>
 
-<p>Afterwards I patched my Edupage mobile app trust my packet capturing software, re-installed it and browsed arround using my cell phone.
+<p>Afterwards I patched my Edupage mobile app to trust my packet capturing software, re-installed the app and browsed arround using my cell phone.
 After capturing few packets, I modified one of them and tried to reach the endpoint of the Payment module, which should be normally unreachable. Shockingly, I got OK response. After submitting modified payload from the previous test, I got exactly same result and collected hundreds of unique PII records from that particular school.</p>
 <p>If this were exploited by a malicious actor, DNS enumeration could be used to discover the URLs of every Edupage school. With further automation, public accounts could be created across all discovered schools, enabling large-scale scraping of personally identifiable information (PII).</p>
 <p>Given that there are over 100,000 Edupage schools, each with hundreds of users, the resulting breach could involve millions of records. Such a dataset would be extremely valuable on the black market and could be leveraged for large-scale global scamming campaigns.</p>

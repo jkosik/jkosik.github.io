@@ -16,13 +16,6 @@
       <description></description>
     </item>
     <item>
-      <title>Security</title>
-      <link>http://localhost:1313/tags/security/</link>
-      <pubDate>Sat, 08 Nov 2025 08:15:05 +0700</pubDate>
-      <guid>http://localhost:1313/tags/security/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>AI</title>
       <link>http://localhost:1313/tags/ai/</link>
       <pubDate>Sat, 06 Sep 2025 08:15:05 +0700</pubDate>
@@ -55,6 +48,13 @@
       <link>http://localhost:1313/tags/kubernetes/</link>
       <pubDate>Fri, 20 May 2022 14:15:05 +0700</pubDate>
       <guid>http://localhost:1313/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>http://localhost:1313/tags/security/</link>
+      <pubDate>Thu, 01 Oct 2020 14:15:05 +0700</pubDate>
+      <guid>http://localhost:1313/tags/security/</guid>
       <description></description>
     </item>
     <item>
