@@ -9,8 +9,15 @@ git submodule add git@github.com:fauzanmy/pehtheme-hugo.git themes/pehtheme
 
 # Copy data from themes/pehtheme to the root and adjust your content as needed.
 # !!! If changing also themes/pehtheme, make sure you deinit submodule, clean .gitmodules and .git/modules first to preserve the changes !!!
+```
 
-# publish to /public. Folder can be anytime deleted and rendered again
+### New site
+- `_extra` - custom data
+- `assets/images` - blog images
+-  `content/posts` - blog post
+
+publish to /public. Folder can be anytime deleted and rendered again
+```
 hugo
 
 hugo serve
