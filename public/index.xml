@@ -6,8 +6,15 @@
     <description>Recent content on Juraj Kosik</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Nov 2025 08:15:05 +0700</lastBuildDate>
+    <lastBuildDate>Tue, 30 Dec 2025 00:15:05 +0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Homework: Hacking EduPage</title>
+      <link>http://localhost:1313/posts/edupage/</link>
+      <pubDate>Tue, 30 Dec 2025 00:15:05 +0700</pubDate>
+      <guid>http://localhost:1313/posts/edupage/</guid>
+      <description>&lt;p&gt;Over the Christmas break, I took a look at what seemed like an innocent website used by my children’s school - &lt;a href=&#34;https://www.edupage.org/&#34;&gt;Edupage&lt;/a&gt;. Partly out of curiosity, partly to refresh my pentesting skills, and with absolutely no expectations.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Decentralised application (dApp) on Ink Blockchain powered by Smart contracts</title>
       <link>http://localhost:1313/posts/dapp/</link>

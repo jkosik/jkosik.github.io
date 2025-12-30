@@ -79,7 +79,7 @@
 
           <li class="font-semibold my-2"></li>
 
-          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-03-08T08:15:05&#43;07:00">March 8, 2025</time>
+          <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2"><time datetime="2025-12-30T00:15:05&#43;07:00">December 30, 2025</time>
           </li>
 
           <li class="before:content-['•'] before:mr-2 before:opacity-50 my-2">
@@ -96,23 +96,23 @@
     </figure>
 
     <div id="content" class="mb-14">
-      <p>Over the Christmas break, I took a look at what seemed like an innocent website used by my children’s school - Edupage. Partly out of curiosity, partly to refresh my pentesting skills, and with absolutely no expectations.</p>
+      <p>Over the Christmas break, I took a look at what seemed like an innocent website used by my children’s school - <a href="https://www.edupage.org/">Edupage</a>. Partly out of curiosity, partly to refresh my pentesting skills, and with absolutely no expectations.</p>
 <p>After all, how sensitive could a school portal really be?</p>
 <h2 id="rewinding-a-few-days-what-i-found">Rewinding a Few Days: What I Found</h2>
-<p>Very early, I had identified several serious vulnerabilities: IDOR, XSS, CSRF, and PII leaks.</p>
-<p>Theoretically, millions of unique Personally Identifiable Information (PII) records could have been exposed, creating a highly valuable asset on the black market, especially for large-scale scam and phishing campaigns. The affected data spanned students, parents, and teachers alike.</p>
-<p>I was able to impersonate Edupage users, enabling actions such as sending fake messages or approvals on behalf of teachers. This vulnerability opens the door to arbitrary changing the grades or executing destructive deletion actions.</p>
-<p>As the research progressed, I realized the true scale of the platform. According to Edupage’s official website, it operates in <strong>173 countries and serves over 150,000 schools</strong>. At that point, it became clear that these were not minor issues - they were high-impact, critical vulnerabilities.</p>
+<p>Very early, I had identified several serious vulnerabilities: IDOR, XSS, CSRF, and mainly PII leaks.
+As the research progressed, I realized the true scale of the platform. <strong>According to Edupage’s official website, it operates in 173 countries and serves over 150,000 schools. At that point, it became clear that these were not minor issues - they were high-impact, critical vulnerabilities.</strong></p>
+<p><strong>Theoretically, millions of unique Personally Identifiable Information (PII) records were exposed</strong>, creating a highly valuable asset on the black market, especially for large-scale scam and phishing campaigns. The affected data spanned students, parents, and teachers alike.</p>
+<p>I was also able to <strong>impersonate Edupage users</strong>, enabling actions such as sending fake messages or approvals on behalf of the teachers. This vulnerability opens the door to arbitrary changing the grades or executing destructive deletion actions.</p>
 <p>Before going any further, I want to give two important shout-outs to the Edupage team:</p>
 <ol>
 <li>I initially underestimated the size and reach of the platform. This is far from a small regional school portal and the scale is impressive. Well done to the Edupage team on building such a global product.</li>
-<li>Despite the severity of the findings, Edupage handled the situation professionally and responsibly. They communicated clearly, resolved the vulnerabilities in a timely manner, and even offered a bug bounty, which I hadn’t requested. Most importantly, they acted quickly to protect their users.</li>
+<li>Despite the severity of the findings, Edupage handled the situation professionally and responsibly. They communicated clearly, resolved the vulnerabilities in a timely manner, and even offered a bug bounty, which I hadn’t requested. Most importantly, they acted very quickly to protect their customer.</li>
 </ol>
 <h2 id="intro-how-application-talks-to-the-backend">Intro: How application talks to the backend</h2>
-<p>Edupage (web and mobile application) sends data to the backend application in the following form. Example:</p>
+<p>Edupage (web and mobile application) sends the POST data to the backend in the following form. Example:</p>
 <pre tabindex="0"><code>eqap=dz%3AjY%2FBasMwEES%2FxjkHB0cnH9K6B99KjQPtpWzWS7KRkIS0Tqp%2BfZy6AYNN6W00b2bEgkaG8kjSdnCm1YWQy0w9ZXkO55cvoWBp0NlmJ6Ef1PPw8AbkkHav7i502qdDAJvw9MGg3WVMjxPfDMhTo5G%2BIyvFWhXbzfaXLNmqGv9yXtjZON3oI4U90%2FXv9mPAB%2Bo8x%2FTmrpOVB42692xTXTVzJgawIRG2x4Xm%2FXYWMgwtSvpPrrYaIswT%2FON%2FIncL9RG2SNKQmd2gqlXEk3PmnSCU%2BTovbg%3D%3D&amp;eqacs=cc4995495aab70ff51814d527ee3eaa14c9423ab&amp;eqaz=1
-</code></pre><p>Not human readable, but in fact it is just encoded, compressed and checksum-ed string which follows this logic:
-<code>Original data payload → compress → base64 → add prefix → hash for checksum → URL encode</code></p>
+</code></pre><p>Not human readable, but in fact it is just encoded, compressed and checksum-ed string which follows this logic:</p>
+<p><strong>Original data payload → compress → base64 → add prefix → hash for checksum → URL encode</strong></p>
 <p>The example payload above decodes to:</p>
 <pre tabindex="0"><code>{
   &#34;ajExterne&#34;: true,
@@ -137,13 +137,13 @@ schoolYear = 2025
 <h2 id="vulnerability-1---idor-insecure-direct-object-references---low-severity">Vulnerability #1 - IDOR (Insecure Direct Object References) - LOW severity</h2>
 <p>Resources in Edupage are represented by IDs. This applies to teachers, parents, students and others. IDs are part of HTTP calls towards Edupage endpoints.
 Some IDs are school specific, some are global like Portal IDs used for changing global user settings (2FA, password resets&hellip;).</p>
-<p>Parent IDs are clearly allocated sequentially, e.g. <code>Rodic-1111</code>, <code>Rodic-1112</code>&hellip; which introduces IDOR vulnerability and individual resource IDs can be easily guessed. In combination with other vulnerabilities, identity spoofing attack can be executed.</p>
-<p>Later findings confirmed presence of IDOR also for Student IDs (<code>Student5063122</code>, <code>Student5063123</code>, etc&hellip;) and IDOR seems as a global problem.
+<p>Parent IDs were clearly allocated sequentially, e.g. <strong>Rodic-1111</strong>, <strong>Rodic-1112</strong>&hellip; which introduces IDOR vulnerability and individual resource IDs can be easily guessed. In combination with other vulnerabilities, identity spoofing attack can be executed.</p>
+<p>Later findings confirmed presence of IDOR also for Student IDs (<strong>Student5063122</strong>, <strong>Student5063123</strong>, etc&hellip;) and IDOR seems as a global problem.
 I classified this particular finding as low severity, but only in relative terms, mainly because there were other, far more critical vulnerabilities present. On its own, IDOR remains a serious security flaw and should never be underestimated.</p>
 <h2 id="vulnerability-2---ssrf-server-side-request-forgery---medium-severity">Vulnerability #2 - SSRF (Server-side Request Forgery) - MEDIUM severity</h2>
 <p>Users are normally constrained to a predefined set of endpoints exposed by an application. Backend databases and internal services should never be directly accessible to the client.</p>
 <p>However, Edupage exposed a vulnerable function that allowed an attacker to instruct the backend to execute specific actions and reach internal resources that were clearly not intended to be externally reachable.</p>
-<p>The vulnerable function is called within the following payload (already decoded):</p>
+<p>The vulnerable function is called within the following payload (decoded form):</p>
 <pre tabindex="0"><code>akcia = getBase64ImagesFromSrc
 
 nacitajImages:
@@ -154,9 +154,9 @@ nacitajImages:
 <figure><img src="/images/edupage/qr.png">
 </figure>
 </p>
-<p>This image is used by the application when generating and displaying a QR code, serving as a visually appealing background element.</p>
+<p>The image is used by the application when generating and displaying a QR code, serving as a visually appealing background element.</p>
 <p>The risk lies in the fact that the application allows the user to manipulate the URL, which is subsequently called by the backend itself. This effectively enables user-controlled input to influence backend behavior, which is a dangerous pattern that can lead to unauthorized access to internal or unintended resources.</p>
-<p><code>getBase64ImagesFromSrc</code> is a function which takes the URL as the only input parameter. I changed the URL in my packet capturing software and used URL of my webhook server instead,
+<p><strong>getBase64ImagesFromSrc</strong> is a function which takes the URL as the only input parameter. I changed the URL in my packet capturing software and used URL of my webhook server instead,
 hoping that the backend will call me back. And it did.</p>
 <p>This was my modified payload:</p>
 <pre tabindex="0"><code>akcia = getBase64ImagesFromSrc
@@ -169,7 +169,7 @@ nacitajImages:
 <figure><img src="/images/edupage/asc-hetzner.png">
 </figure>
 </p>
-<p>One of the most serious risks associated with SSRF is the ability to coerce the backend into accessing cloud metadata API endpoints, potentially allowing an attacker to exfiltrate cloud access tokens. In the worst case, this can lead to full infrastructure compromise.</p>
+<p>One of the risks associated with SSRF is the ability to coerce the backend into accessing cloud metadata API endpoints, potentially allowing an attacker to exfiltrate cloud access tokens. In the worst case, this can lead to full infrastructure compromise.</p>
 <p>In this case, certain defensive controls were in place, which limited the most obvious exploitation paths. However, not all avenues were fully closed. By carefully forging URLs and observing response timing differences, it was still possible to enumerate reachable internal services and endpoints, effectively mapping parts of the internal network from the outside.</p>
 <p>My next try was to reach protected internal admin portal:</p>
 <pre tabindex="0"><code>akcia = getBase64ImagesFromSrc
@@ -178,7 +178,7 @@ nacitajImages:
 {
   &#34;http://admin.edupage.org/&#34;: false
 }
-</code></pre><p>The backend returned a web form of admin portal that is normally not accessible from the outside. This confirmed that the request had successfully reached an internal-only service, validating the impact of the vulnerability.</p>
+</code></pre><p>The backend returned a web form of an admin portal that is normally not accessible from the outside:</p>
 <pre tabindex="0"><code>&lt;form name=&#34;loginform&#34; method=&#34;POST&#34; action=&#34;admin.php?co=prihlas&#34;&gt;
 &lt;table width=&#34;100% &#34; height=&#34;80%&#34;&gt;
 &lt;tr align=center valign=center&gt;
@@ -209,10 +209,11 @@ nacitajImages:
 &lt;/tr&gt;
 &lt;/table&gt;
 &lt;/form&gt;
-</code></pre><p>SSRF can not be underestimated, since under certsain circumstances, advanced techniques can even load local server files.</p>
-<h2 id="vulnerability-3---leaked-pii-personally-identifieable-infromation---critical-severity">Vulnerability #3 - Leaked PII (Personally identifieable infromation) - CRITICAL severity</h2>
+</code></pre><p>This confirmed that the request had successfully reached an internal-only service, validating the impact of the vulnerability.
+SSRF can not be underestimated, since under certain circumstances, advanced techniques can even load and expose local server files.</p>
+<h2 id="vulnerability-3---leaked-pii-personally-identifiable-infromation---critical-severity">Vulnerability #3 - Leaked PII (Personally identifiable infromation) - CRITICAL severity</h2>
 <p>This one is huge.</p>
-<p>Edupage allows printing the student&rsquo;s payment reports, which is pretty usefull feature.</p>
+<p>Edupage allows printing the student&rsquo;s payment reports, which is a pretty useful feature.</p>
 <figure><img src="/images/edupage/print.png">
 </figure>
 
@@ -237,7 +238,7 @@ nacitajImages:
 }
 schoolYear = 2025
 </code></pre><p>We noticed an eye-catching parameter that contained the Student ID, which immediately made me think of an IDOR vulnerability. This time, however, I tried something a bit different.</p>
-<p>I changed the Student ID to a random, non-existent value: <code>StudentXYZ</code>. Although the browser failed to render the response properly, the server still returned sensitive data - specifically, the complete list of all Edupage users for that school, including their banking details. In total, around 1,000 records were exposed for a single school.</p>
+<p>I changed the Student ID to a random, non-existent value: <strong>StudentXYZ</strong>. Although the browser failed to render the response properly, the server still returned sensitive data - specifically, the complete list of all Edupage users for the tested school. In total, around 1,000 unique records with IDs, names and banking details related to students, parents and even the teachers.</p>
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">...</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Ucitel573....&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
@@ -264,12 +265,12 @@ schoolYear = 2025
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>]<span style="color:#960050;background-color:#1e0010">,</span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">...</span>
-</span></span></code></pre></div><p>Next tested schools&hellip;another leaked 1000 PII records.</p>
+</span></span></code></pre></div><p>The next tested school&hellip;another leaked 1000 PII records.</p>
 <p>Combination of the name and bank account number constitutes Personally identifiable information (PII) which is very serious also from GDPR perspective.</p>
-<p>Collected data also revealed <code>zadavatel_id</code> which is a privileged user (mostly a Teacher role) which manages the Payment module. This can be a next step for targeted phishing attacks.</p>
-<p>Could it be worse? It turned out that vulnerable endpoint of the Payment module is available also for the students, exposing this vulnerability to potentially hundreds of thousand potential attackers. Bad, but it got even worse later on&hellip;</p>
+<p>Collected data also revealed <strong>zadavatel_id</strong> which is a privileged user (mostly a Teacher role) which manages the Payment module. This can be a next step for targeted phishing attacks.</p>
+<p>Could it be worse? It turned out that vulnerable endpoint of the Payment module is available also for the students, exposing this vulnerability to potentially hundreds of thousand of potential attackers. Bad, but it got even worse later on&hellip;</p>
 <p>Mobile Edupage application allows one-click creation of public Edupage account for any school supporting guest accounts. These accounts have normally very limited permissions.
-I created public account in randomly selected foreign school I have no relation or access to.</p>
+I created a public account in randomly selected foreign school I have no relation or access to.</p>
 <figure><img src="/images/edupage/public.png">
 </figure>
 
@@ -282,49 +283,49 @@ After capturing few packets, I modified one of them and tried to reach the endpo
 <ul>
 <li>stealing user credentials</li>
 <li>hosting malware on trusted edupage.org domain</li>
-<li>impersonating users on Edupage, including making the student&rsquo;s dream come true - to change the grades, sending messages or approvals on teacher&rsquo;s behalf&hellip;</li>
+<li>impersonating users on Edupage, including the student&rsquo;s dream - to change the grades or sending messages or approvals on teacher&rsquo;s behalf&hellip;</li>
 </ul>
 <h3 id="xss-cross-site-scripting">XSS (Cross-site Scripting)</h3>
-<p>Edupage allows storing attachments in multiple parts of the portal - chat, email, absence note attachments&hellip;The application should prevent malicious files to be uploaded, because later on the files may be executed or just opened and malicious payload can be executed in victim&rsquo;s browser. Edupage portal has some controls against uploading malicious files, but not a bullet-proof solution.</p>
-<p>It was possible to upload malicious SVG files. All attachments are stored in the Edupage cloud and can be directly reachable. This already presents a problem, since Edupage cloud and trusted edupage.org can act as a malware hosting domain.</p>
+<p>Edupage allows storing attachments in multiple parts of the portal - chat, email, absence note attachments&hellip;The application should prevent malicious files to be uploaded, because later on the files may be opened and malicious payload can be executed in the victim&rsquo;s browser. Edupage portal had some controls against uploading malicious files, but not a bullet-proof solution.</p>
+<p>It was possible to upload malicious SVG files. All attachments are stored in the Edupage cloud and can be directly reachable. This already presents a problem, since Edupage cloud and its trusted edupage.org domain can act as a malware hosting area.</p>
 <p>SVG is a graphics file format which can contain HTML or Javascript code inside. Opening malicious SVG file in the browser executes the code and infects the victim as you will see in a second.</p>
 <h3 id="csrf-cross-site-request-forgery">CSRF (Cross-site request forgery)</h3>
 <p>CSRF allows an attacker to trigger malicious actions by tricking a victim into clicking a malicious hyperlink delivered via a spam email. Another attack vector involves persuading the user to open a malicious file received by email or ideally by opening a fully legitimate-looking file hosted on a trusted portal (as demonstrated in our XSS case).</p>
 <h3 id="lets-put-it-all-together-to-send-fake-edupage-emails">Let&rsquo;s put it all together to send fake Edupage emails</h3>
 <p>The process will look as follows:</p>
 <ul>
-<li>The attacker (Juraj) uploads and stores an XSS payload in the form of a malicious SVG file on Edupage.</li>
+<li>The attacker (Juraj) uploads and stores an XSS payload in the form of a malicious SVG file on Edupage. The payload triggers creation of a fake message on victim&rsquo;s behalf.</li>
 <li>When the victim (Natalia, who may be a teacher or even an administrator) opens the file, an Edupage message is automatically and silently sent in the victim’s name, without their knowledge, to the recipient specified within the SVG file.</li>
 </ul>
 <!-- -->
 <p>The entire process visually:</p>
 <ol>
 <li>
-<p>Victim&rsquo;s view. The attacker sends dummy message to a victim. This is a group message where fake messages will be delivered to later on:
+<p>Victim&rsquo;s view. The attacker sends dummy group message to a victim. This is a group message where fake messages will be delivered to later on:
 <figure><img src="/images/edupage/1.png">
 </figure>
 </p>
 </li>
 <li>
-<p>Attacker deploys malicious payload <code>attack-blind-message.svg</code> as an attachment in a separate message. Paylaod can be delivered in other parts of the portal as well, e.g. as an absence note attachment:
+<p>Attacker deploys malicious payload <strong>attack-blind-message.svg</strong> as an attachment in a separate message. Payload can be delivered in other parts of the portal as well, e.g. as an absence note attachment:
 <figure><img src="/images/edupage/2.png">
 </figure>
 </p>
 </li>
 <li>
-<p>Victim clicks on the malicious <code>attack-blind-message.svg</code>. New tab is opened and the malicious payload silently fabricates a fake message:
+<p>Victim clicks on the malicious <strong>attack-blind-message.svg</strong>. New tab is opened and the malicious payload silently fabricates a fake message:
 <figure><img src="/images/edupage/3.png">
 </figure>
 </p>
 </li>
 <li>
-<p>Victim&rsquo;s forged message (red line) appears in the original dummy message:
+<p>Victim&rsquo;s forged message (red line) appears in the original dummy group message:
 <figure><img src="/images/edupage/4.png">
 </figure>
 </p>
 </li>
 <li>
-<p>Attacker&rsquo;s view. Victim&rsquo;s forged message as seen ih the attacker&rsquo;s view as well:
+<p>Victim&rsquo;s forged message as seen in the attacker&rsquo;s view as well:
 <figure><img src="/images/edupage/5.png">
 </figure>
 </p>
@@ -356,14 +357,13 @@ After capturing few packets, I modified one of them and tried to reach the endpo
     &lt;/body&gt;
   &lt;/foreignObject&gt;
 &lt;/svg&gt;
-</code></pre><p>Generating legit Edupage messages is just sending a standard HTTP POST request equipped with authentication cookies towards <code>/timeline/?akcia=createReply&amp;amp;eqav=1&amp;amp;maxEqav=7&quot;</code> endpoint.
+</code></pre><p>Generating legit Edupage messages is just sending a standard HTTP POST request equipped with authentication cookies towards <strong>/timeline/?akcia=createReply&amp;eqav=1&amp;maxEqav=7&quot;</strong> endpoint.
 Originally I hoped to use directly Javascript in the SVG file to trigger the malicious payload, but CSP and CORS mechanisms (out of scope of this blog) prevented that.
-Luckily, we can do the same by forcing victim opening a properly designed HTML web form, bypassing all the controls. Web form fields hold the parameters which would be normally part of legit victim&rsquo;s HTTP POST request.
+Luckily, we can do the same by forcing victim opening a properly designed HTML web form, bypassing all the controls. Web form fields hold the parameters which would be normally part of a legit victim&rsquo;s HTTP POST request.
 The web form will be opened by the victim and all victim&rsquo;s authentication cookies will be passed along and HTTP call will be successful.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>All vulnerabilities including suggested counter-measures were provided to Edupage team following all requirements of responsible disclosure and are publicly shared only after everything was remediated.</p>
-<p>This case is an evidence how informations are nowadays interconnected and spread around in IT systems and you can get large-scale personal or banking information without touching the bank.
-I am sure Edupage is now more secure platform and this bloge hopefully raised awareness for developers and users as well.</p>
+<p>All identified vulnerabilities, along with recommended countermeasures, were responsibly disclosed to the Edupage team in accordance with responsible disclosure practices and were made public only after full remediation.</p>
+<p>This case demonstrates how deeply interconnected modern IT systems are, and how large-scale personal or even banking-related information can be exposed without directly interacting with a bank’s infrastructure. Edupage is now a more secure platform, and we hope this blog post helps raise awareness among both developers and users.</p>
 
 
     <ul id="taxonomy" class="not-prose flex items-center space-x-4 flex-nowrap whitespace-nowrap overflow-x-auto">
