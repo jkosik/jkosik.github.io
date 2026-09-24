@@ -1,8 +1,8 @@
 ---
-title: "How wherecoinsgo.org Built a Public Money Trail with the Blockscout API"
+title: "Crypto donation and transparency account platform using Blockscout API"
 date: 2026-09-24T20:30:00+02:00
 slug: wherecoinsgo
-description: A crypto donation page can be more transparent than a bank transfer or a GoFundMe, because the whole history sits on a public chain and anyone can follow it. wherecoinsgo.org turns that into a readable page. Bitcoin through mempool.space, Ethereum and Ink through Blockscout.
+description: A crypto donation platform is more transparent than the conventional funding, because the whole history sits on a public chain and anyone can follow it. wherecoinsgo.org turns that into a readable page. Bitcoin through mempool.space, Ethereum and Ink through Blockscout.
 image: images/wherecoinsgo/big.png
 categories:
   - tech
@@ -11,7 +11,7 @@ tags:
   - ethereum
   - ink
   - crypto
-draft: false
+draft: true
 ---
 
 I built [wherecoinsgo.org](https://wherecoinsgo.org) because a donation in crypto can do something a normal donation cannot. A bank wire or a card payment disappears into an organisation's books. You send money, you maybe get a receipt, and after that you take their word for where it went. On a public chain the whole history is already there. In, out, what is left. Anyone can look, later, without asking permission.
