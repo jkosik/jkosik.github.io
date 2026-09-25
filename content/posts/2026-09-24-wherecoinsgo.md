@@ -44,7 +44,7 @@ On top of these features, you can build charity programs, donation services, tra
 
 ## Multi-chain
 What is multi-chain?
-Multi-chain architecture offers wider options for the customers. People can collect funds on various blockchains - Bitcoin, Ethereum, Ink...
+Multi-chain architecture offers wider options for the customers. People can collect funds on various blockchains - Bitcoin, Ethereum, Ink...Potentially you could fund your project by collecting even [meme coins](https://coinmarketcap.com/view/memes/).
 
 Ethereum and Ink are EVM-based blockchains and they use the same addresses, however the balances on each are different. See this example for the address `0x000000000000000000000000000000000000dEaD`
 - Ink: https://wherecoinsgo.org/inspect?address=0x000000000000000000000000000000000000dEaD&chain=ink
@@ -60,9 +60,8 @@ For Bitcoin, I selected traditionally [mempool.space](https://mempool.space) and
 Wherecoinsgo is not a forensics tool. I say that to myself when the tree looks too neat. Application always relies on underlying data and does not hide the fact, that is powered by Mempool and Blockscout and advanced users can still use direct hyperlinks and dive as deep as needed in full-blown blockchain explorers.
 
 Instead, Wherecoinsgo focuses on:
-- easy registration and funding project creation
+- easy registration and fund raising project creation
 - user-friendly UI also for crypto beginners
-- appealing fund-raising capabilities by embedding donation buttons on your website, shareable paylinks or payment via QR code.
+- appealing fund-raising capabilities by embedding donation buttons to your website, shareable paylinks or payment via QR code.
 
-## How can people get started?
 wherecoinsgo.org is a solo project by [Juraj Kosik](https://sk.linkedin.com/in/jurajkosik), 
