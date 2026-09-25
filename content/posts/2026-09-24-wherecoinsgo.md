@@ -47,7 +47,7 @@ What is multi-chain?
 Multi-chain architecture offers wider options for the customers. People can collect funds on various blockchains - Bitcoin, Ethereum, Ink...Potentially you could fund your project by collecting even [meme coins](https://coinmarketcap.com/view/memes/).
 
 Ethereum and Ink are EVM-based blockchains and they use the same addresses, however the balances on each are different. See this example for the address `0x000000000000000000000000000000000000dEaD`
-- Ink: https://wherecoinsgo.org/inspect?address=0x000000000000000000000000000000000000dEaD&chain=ink
+- Ink blockchain: https://wherecoinsgo.org/inspect?address=0x000000000000000000000000000000000000dEaD&chain=ink
 - Ethereum blockchain: https://wherecoinsgo.org/inspect?address=0x000000000000000000000000000000000000dEaD&chain=ethereum
 This can be surprising details for beginners looking for "lost" funds.
 
