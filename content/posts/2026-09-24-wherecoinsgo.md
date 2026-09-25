@@ -22,12 +22,13 @@ On a public blockchain the whole history is already there. In, out, what is left
 
 ### Fund raising
 1. Offers one-click creation of own Wherecoinsgo **projects** with **shareable paylinks** and QR codes, **balance views** and **transaction history** for transparent fund raising.
-{{< figure src="images/wherecoinsgo/paylink.gif" >}}
+
+{{< figure src="images/wherecoinsgo/paylink.png" >}}
 
 ### User-friendly blockchain explorer
 2. Acts as an easy to use public interface for browsing the blockchain and transactions related to the submitted crypto wallet on Bitcoin, Ethereum and [Ink](https://inkonchain.com/) blockchain.
 
-{{< figure src="images/wherecoinsgo/diagram.gif" >}}
+{{< figure src="images/wherecoinsgo/diagram.png" >}}
 
 On top of these features, you can build charity programs, donation services, transpranecy accounts for public funding and more.
 
