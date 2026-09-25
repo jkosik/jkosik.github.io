@@ -1,5 +1,5 @@
 ---
-title: "How wherecoinsgo.org built a public money trail with the Mempool and Blockscout API"
+title: "wherecoinsgo.org - blockchain-based fund raising platform using Mempool and Blockscout API"
 date: 2026-09-24T20:30:00+02:00
 slug: wherecoinsgo
 description: A crypto fund raising platform can be more transparent than conventional platforms, because the whole history sits on a public ledger. Bitcoin through mempool.space and all other blockchains through Blockscout.
@@ -56,12 +56,15 @@ To interact with the blockchain and get the transaction data, we could run own b
 
 For Bitcoin, I selected traditionally [mempool.space](https://mempool.space) and the rest of the lookups are funnelled through [Blockscout](https://www.blockscout.com/). Blockscout offers nice advantage of supporting wide range of blockchains which simplifies the platform architecture and the code is more slim and unified. We do not have to use too many 3rd party API endpoints. All the heavy lifting is done by Blockscout and expanding the product to further blockchains will be very easy.
 
-## What Wherecoins is not
-Wherecoinsgo is not a forensics tool. I say that to myself when the tree looks too neat. Application always relies on underlying data and does not hide the fact, that is powered by Mempool and Blockscout and advanced users can still use direct hyperlinks and dive as deep as needed in full-blown blockchain explorers.
+## What Wherecoinsgo is not
+[wherecoinsgo.org](https://wherecoinsgo.org) is not a forensics tool. I say that to myself when the tree looks too neat. Application always relies on underlying data and does not hide the fact, that is powered by Mempool and Blockscout and advanced users can still use direct hyperlinks and dive as deep as needed in full-blown blockchain explorers.
 
-Instead, Wherecoinsgo focuses on:
+Instead, [wherecoinsgo.org](https://wherecoinsgo.org) focuses on:
 - easy registration and fund raising project creation
 - user-friendly UI also for crypto beginners
 - appealing fund-raising capabilities by embedding donation buttons to your website, shareable paylinks or payment via QR code.
 
-wherecoinsgo.org is a solo project by [Juraj Kosik](https://sk.linkedin.com/in/jurajkosik), 
+## Quickstart
+https://wherecoinsgo.org/login
+
+*[wherecoinsgo.org](https://wherecoinsgo.org) is a solo project by [Juraj Kosik](https://sk.linkedin.com/in/jurajkosik)*
