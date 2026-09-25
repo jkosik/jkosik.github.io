@@ -67,5 +67,3 @@ Instead, [wherecoinsgo.org](https://wherecoinsgo.org) focuses on:
 
 ## Quickstart
 https://wherecoinsgo.org/login
-
-*[wherecoinsgo.org](https://wherecoinsgo.org) is a solo project by [Juraj Kosik](https://sk.linkedin.com/in/jurajkosik)*
