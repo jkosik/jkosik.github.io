@@ -35,15 +35,12 @@ On top of these features, you can build charity programs, donation services, tra
 ## Wherecoinsgo vs "traditional" fundraising
 | Feature | Wherecoinsgo | Traditional fund raising |
 |---|---|---|
-| Transaction drilldown | Infinite - follow any coin back to its origin | One layer deep, if that — a bank statement just shows a counterparty name |
+| Transaction drilldown | Infinite - follow any coin back to its origin | One layer deep — only the direct sender |
 | Money flow direction | Bidirectional — see both received and spent funds | Usually one-directional — inflows are shown, spending needs a separate report/audit |
 | Access | Public, permissionless — anyone can look, anytime, no approval needed | Private by default — statements require permission, NDA, or a formal audit request |
 | Custody of funds | Non-custodial — money moves wallet-to-wallet, the platform never holds it | Custodial — the platform/bank holds and controls the funds, with chargeback/fee/freeze risk |
 | Timeliness | Real-time — every confirmed block updates the picture instantly | Periodic — annual reports or audits, often months delayed |
 | Reach | Borderless — anyone with a wallet can give or verify, no bank account or KYC needed | Geographically and institutionally gated — banking rails, KYC, cross-border friction |
-
-## Privacy
-Platform does not store nor process any money and acts rather as an interface for blockchain explorers with user-friendly visual and easy to use paylinks, project catalogue and share buttons to provide same or better user experience comparing to the conventional fund raising platforms.
 
 ## Multi-chain
 What is multi-chain?
